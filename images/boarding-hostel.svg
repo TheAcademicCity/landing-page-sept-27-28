@@ -1,0 +1,6 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="800" viewBox="0 0 1000 800" role="img" aria-label="Boarding & Hostel placeholder">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a2c28"/><stop offset="100%" stop-color="#c4880e"/></linearGradient></defs>
+  <rect width="100%" height="100%" fill="url(#g)"/>
+  <text x="50%" y="48%" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-family="Arial,sans-serif" font-size="16" font-weight="600">Replace with photo</text>
+  <text x="50%" y="54%" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="Arial,sans-serif" font-size="12">Boarding & Hostel</text>
+</svg>
