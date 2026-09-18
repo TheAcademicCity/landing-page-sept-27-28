@@ -152,6 +152,14 @@ body {
   }
 }
 
+.site-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
 .site-brand {
   display: inline-flex;
   flex-shrink: 0;
@@ -412,40 +420,10 @@ main.site-main {
   .widget-stack { display: flex; }
 }
 
-.widget-stack.left {
-  left: 0;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-left: none;
-  border-radius: 0 0.75rem 0.75rem 0;
-}
-
 .widget-stack.right {
   right: 0;
   border-radius: 0.75rem 0 0 0.75rem;
 }
-
-.side-tab {
-  display: flex;
-  rotate: 180deg;
-  align-items: center;
-  padding: 0.875rem 0.625rem;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #fff;
-  background: var(--forest-deep);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transition: background 0.2s;
-}
-
-.side-tab:hover { background: var(--emerald); }
-.side-tab.gold { color: var(--forest-deep); background: var(--gold); }
-.side-tab.gold:hover { background: #e09d10; }
-
-.side-tab-divider { height: 1px; width: 100%; background: #2d945c; flex-shrink: 0; }
 
 .side-icon {
   display: grid;
