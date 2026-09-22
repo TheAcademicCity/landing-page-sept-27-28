@@ -462,9 +462,18 @@ textarea:focus-visible {
   object-fit: cover;
 }
 
+#boarding .f-media img {
+  object-position: 16% center;
+}
+
 section {
   padding: 76px 0;
   position: relative;
+}
+
+.achievements-section {
+  padding-bottom: 56px;
+  overflow: hidden;
 }
 
 .section-head {
@@ -1855,7 +1864,7 @@ section {
 
 .visit-divider {
   background: linear-gradient(120deg, var(--forest), var(--forest-dark) 75%);
-  padding: 52px 0;
+  padding: 32px 0;
   position: relative;
   overflow: hidden;
 }
@@ -1886,14 +1895,14 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: 24px;
   flex-wrap: wrap;
   position: relative;
 }
 
 .vd-copy { max-width: 640px; }
-.vd-copy h2 { font-size: clamp(21px, 2.4vw, 27px); color: #fff; margin: 12px 0 10px; }
-.vd-copy p { font-size: 14px; color: #cfe6de; font-weight: 500; line-height: 1.6; }
+.vd-copy h2 { font-size: clamp(21px, 2.4vw, 27px); color: #fff; margin: 8px 0 6px; }
+.vd-copy p { font-size: 14px; color: #cfe6de; font-weight: 500; line-height: 1.55; }
 .vd-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 .vd-actions .phone { display: flex; align-items: center; gap: 8px; color: #fff; font-weight: 700; font-size: 14px; }
 
