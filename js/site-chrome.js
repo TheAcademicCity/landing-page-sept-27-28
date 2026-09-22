@@ -1,7 +1,7 @@
 (function () {
   var burger = document.getElementById('siteBurger');
   var drawer = document.getElementById('mobDrawer');
-  var widgets = document.querySelectorAll('.widget-stack');
+  var widgets = document.querySelectorAll('.widget-stack, .side-action-stack');
   var year = new Date().getFullYear();
 
   document.querySelectorAll('#footYear, #footYearDesktop').forEach(function (el) {

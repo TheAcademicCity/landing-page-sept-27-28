@@ -16,8 +16,10 @@
   <link rel="stylesheet" href="css/styles.css?v=20260918sip">
   <link rel="stylesheet" href="css/home-gallery.css?v=20260918d">
   <link rel="stylesheet" href="css/achievements-gallery.css?v=20260922">
-  <link rel="stylesheet" href="css/awards-section.css?v=20260922">
-  <link rel="stylesheet" href="css/site-chrome.css?v=20260918">
+  <link rel="stylesheet" href="css/awards-section.css?v=20260922f">
+  <link rel="stylesheet" href="css/testimonials-section.css?v=20260922">
+  <link rel="stylesheet" href="css/faq-section.css?v=20260922">
+  <link rel="stylesheet" href="css/site-chrome.css?v=20260922widgets">
   <link rel="stylesheet" href="css/enquiry-modal.css">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="icon.png">
@@ -55,9 +57,10 @@
     <symbol id="ic-li" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M7 9v9H4V9h3ZM5.5 7.5A1.5 1.5 0 1 1 5.5 4.5a1.5 1.5 0 0 1 0 3ZM20 18h-3v-4.8c0-1.3-.5-2-1.5-2s-1.5.7-1.5 2V18h-3V9h3v1.2c.5-.8 1.4-1.4 2.7-1.4 2 0 3.3 1.3 3.3 4V18Z"/></symbol>
     <symbol id="ic-yt" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M21.5 8s-.2-1.4-.8-2c-.7-.8-1.5-.8-1.9-.8C16.4 5 12 5 12 5s-4.4 0-6.8.2c-.4 0-1.2 0-1.9.8-.6.6-.8 2-.8 2S2.3 9.6 2.3 11.2v1.5C2.3 14.4 2.5 16 2.5 16s.2 1.4.8 2c.7.8 1.7.8 2.1.9C6.8 19 12 19 12 19s4.4 0 6.8-.2c.4 0 1.2 0 1.9-.8.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C21.7 9.6 21.5 8 21.5 8ZM10 14.5v-5l4.5 2.5-4.5 2.5Z"/></symbol>
     <symbol id="ic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="ic-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></symbol>
   </svg>
 
-  <div class="widget-stack right" aria-label="Quick contact">
+  <div class="widget-stack left" aria-label="Quick contact">
     <a class="side-icon phone" href="tel:08047092273" title="Call 080-47092273" aria-label="Call 080-47092273"><svg><use href="#ic-phone"/></svg></a>
     <a class="side-icon" href="https://wa.me/919364898405" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp"><img src="images/icons/whatsapp.png" alt="" width="28" height="28"></a>
     <a class="side-icon side-icon-insta" href="https://www.instagram.com/the_academic_city/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
@@ -79,6 +82,21 @@
     </a>
     <a class="side-icon side-icon-gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=admissions@theacademiccity.com" target="_blank" rel="noopener" title="Email admissions@theacademiccity.com" aria-label="Email admissions@theacademiccity.com"><img src="images/icons/gmail.webp" alt="" width="32" height="32"></a>
     <a class="side-icon pin" href="#contact" title="Find us" aria-label="Find us"><svg><use href="#ic-pin"/></svg></a>
+  </div>
+
+  <div class="side-action-stack" aria-label="Enquire and chat">
+    <a class="side-action-tab side-action-tab--gold" href="#enquiry">Enquire Now!</a>
+    <div class="side-action-divider" aria-hidden="true"></div>
+    <a
+      class="side-action-bot"
+      href="https://wa.me/919364898405?text=Hi%2C%20I%20have%20a%20question%20about%20admissions%20at%20The%20Academic%20City%20School."
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Chat with us"
+      aria-label="Chat with us on WhatsApp"
+    >
+      <svg aria-hidden="true"><use href="#ic-message"/></svg>
+    </a>
   </div>
 
   <div class="site-util">
@@ -116,7 +134,7 @@
               <a href="#boarding">Boarding</a>
             </div>
           </li>
-          <li><a href="#admissions">Admissions</a></li>
+          <li><a href="#form">Admissions</a></li>
           <li class="has-drop">
             <a href="#gallery">More <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
             <div class="drop-menu">
@@ -139,7 +157,7 @@
     <a class="mob-sub" href="#academics">Academics</a>
     <a class="mob-sub" href="#cocurricular">Co-curricular</a>
     <a class="mob-sub" href="#boarding">Boarding</a>
-    <a href="#admissions">Admissions</a>
+    <a href="#form">Admissions</a>
     <span class="mob-group-label">More</span>
     <a class="mob-sub" href="#gallery">Gallery</a>
     <a class="mob-sub" href="#achievements">Achievements</a>
@@ -403,88 +421,203 @@
           <h2>Recognised Nationally &amp; Globally</h2>
         </div>
         <div class="awards-grid" role="list" aria-label="School awards and recognitions">
-          <div class="awards-grid__item awards-grid__item--scale-mobile awards-grid__item--nudge-up" role="listitem">
-            <img src="images/home/awards/isle-2022.png" alt="21CL ISLE Awards Bengaluru 2022" title="21CL ISLE Awards Bengaluru (2022)" width="286" height="282" loading="lazy" decoding="async">
+          <div class="awards-grid__item awards-grid__item--emblem" role="listitem">
+            <span class="awards-grid__logo"><img src="images/home/awards/isle-2022.png" alt="21CL ISLE Awards Bengaluru 2022" title="21CL ISLE Awards Bengaluru (2022)" width="286" height="282" loading="lazy" decoding="async"></span>
           </div>
-          <div class="awards-grid__item awards-grid__item--scale-mobile" role="listitem">
-            <img src="images/home/awards/india-school-merit-2022-23.png" alt="India School Merit Awards 2022–23" title="India School Merit Awards (2022–23)" width="262" height="281" loading="lazy" decoding="async">
+          <div class="awards-grid__item awards-grid__item--emblem" role="listitem">
+            <span class="awards-grid__logo"><img src="images/home/awards/india-school-merit-2022-23.png" alt="India School Merit Awards 2022–23" title="India School Merit Awards (2022–23)" width="262" height="281" loading="lazy" decoding="async"></span>
           </div>
-          <div class="awards-grid__item awards-grid__item--scale-mobile awards-grid__item--nudge-up" role="listitem">
-            <img src="images/home/awards/brainfeed-top-500-2022-23.png" alt="Brainfeed Top 500 Schools of India 2022–23" title="Brainfeed Top 500 Schools of India (2022–23)" width="277" height="265" loading="lazy" decoding="async">
+          <div class="awards-grid__item awards-grid__item--emblem" role="listitem">
+            <span class="awards-grid__logo"><img src="images/home/awards/brainfeed-top-500-2022-23.png" alt="Brainfeed Top 500 Schools of India 2022–23" title="Brainfeed Top 500 Schools of India (2022–23)" width="277" height="265" loading="lazy" decoding="async"></span>
           </div>
-          <div class="awards-grid__item awards-grid__item--center" role="listitem">
-            <img src="images/home/awards/oxford-2024.png" alt="University of Oxford Best Emerging Residential School for holistic learning 2024" title="University of Oxford - Best Emerging Residential School (2024)" width="866" height="361" loading="lazy" decoding="async">
+          <div class="awards-grid__item awards-grid__item--wide" role="listitem">
+            <span class="awards-grid__logo"><img src="images/home/awards/oxford-2024.png" alt="University of Oxford Best Emerging Residential School for holistic learning 2024" title="University of Oxford - Best Emerging Residential School (2024)" width="866" height="361" loading="lazy" decoding="async"></span>
           </div>
-          <div class="awards-grid__item" role="listitem">
-            <img src="images/home/awards/indo-arab-leaders-2024.png" alt="Indo Arab Leaders Summit and Award 2024" title="Indo Arab Leaders Summit &amp; Award (2024)" width="823" height="574" loading="lazy" decoding="async">
+          <div class="awards-grid__item awards-grid__item--tall" role="listitem">
+            <span class="awards-grid__logo"><img src="images/home/awards/indo-arab-leaders-2024.png" alt="Indo Arab Leaders Summit and Award 2024" title="Indo Arab Leaders Summit &amp; Award (2024)" width="823" height="574" loading="lazy" decoding="async"></span>
           </div>
-          <div class="awards-grid__item awards-grid__item--center" role="listitem">
-            <img src="images/home/awards/education-today-2024.png" alt="Education Today Dynamic School 2024" title="Education Today - Dynamic School (2024)" width="861" height="369" loading="lazy" decoding="async">
+          <div class="awards-grid__item awards-grid__item--wide" role="listitem">
+            <span class="awards-grid__logo"><img src="images/home/awards/education-today-2024.png" alt="Education Today Dynamic School 2024" title="Education Today - Dynamic School (2024)" width="861" height="369" loading="lazy" decoding="async"></span>
           </div>
-          <div class="awards-grid__item awards-grid__item--leaders" role="listitem">
-            <picture>
-              <source media="(max-width: 767px)" srcset="images/home/awards/education-leaders-2024-mobile.png">
-              <img src="images/home/awards/education-leaders-2024.png" alt="Education Leaders Awards 2024" title="Education Leaders Awards (2024)" width="277" height="265" loading="lazy" decoding="async">
-            </picture>
+          <div class="awards-grid__item awards-grid__item--emblem" role="listitem">
+            <span class="awards-grid__logo">
+              <picture>
+                <source media="(max-width: 899px)" srcset="images/home/awards/education-leaders-2024-mobile.png">
+                <img src="images/home/awards/education-leaders-2024.png" alt="Education Leaders Awards 2024" title="Education Leaders Awards (2024)" width="277" height="265" loading="lazy" decoding="async">
+              </picture>
+            </span>
           </div>
-          <div class="awards-grid__item awards-grid__item--scale-mobile" role="listitem">
-            <img src="images/home/awards/qs-i-gauge-2025-26.png" alt="QS I-GAUGE Institution of Happiness Certified 2025–26" title="QS I-GAUGE Institution of Happiness (2025–26)" width="811" height="827" loading="lazy" decoding="async">
+          <div class="awards-grid__item awards-grid__item--tall" role="listitem">
+            <span class="awards-grid__logo"><img src="images/home/awards/qs-i-gauge-2025-26.png" alt="QS I-GAUGE Institution of Happiness Certified 2025–26" title="QS I-GAUGE Institution of Happiness (2025–26)" width="811" height="827" loading="lazy" decoding="async"></span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="dark slice-top slice-bottom">
+    <section class="light testimonials-section slice-top" id="testimonials">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">In Their Words</span>
-          <h2>What our families and alumni say</h2>
+          <span class="eyebrow testimonials-section__label">Parent &amp; Student Stories</span>
+          <h2>Voices of <span class="accent-script">The Academic City School</span></h2>
         </div>
         <div class="testi-grid">
-          <div class="testi-card"><p class="quote">"From solving problems in class to finding my place in IIM-B's ecosystem."</p><p class="who">Ayush Jishnu<span>Batch of '25, TACS Alumnus</span></p></div>
-          <div class="testi-card"><p class="quote">"A choice we're proud of. The supportive community has made a real difference."</p><p class="who">Khushi Jain<span>Mother of Bhavya Jain, Grade 8</span></p></div>
-          <div class="testi-card"><p class="quote">"I was nervous, but I trusted my effort and kept going."</p><p class="who">Poorv<span>Batch of '25, CA Foundation</span></p></div>
-          <div class="testi-card"><p class="quote">"Her dedication, consistency, and commitment to excellence have led to this achievement."</p><p class="who">Akshara Pradita<span>Commerce Student, CLAT Success</span></p></div>
+          <article class="testi-card">
+            <div class="testi-card__head">
+              <div class="testi-card__avatar">
+                <img src="images/home/parents/ayush-jishnu.png" alt="Ayush Jishnu sharing his TACS journey" width="112" height="112" loading="lazy" decoding="async">
+              </div>
+              <div class="testi-card__meta">
+                <p class="testi-card__name">Ayush Jishnu</p>
+                <p class="testi-card__batch">Batch of &rsquo;25 · TACS Alumnus</p>
+              </div>
+            </div>
+            <p class="testi-card__quote">&ldquo;From solving problems in class to finding my place in IIM-B's ecosystem &mdash; it's been a journey of small lessons and big realisations.&rdquo;</p>
+          </article>
+          <article class="testi-card">
+            <div class="testi-card__head">
+              <div class="testi-card__avatar">
+                <img src="images/home/parents/khushi-jain.png" alt="Khushi Jain, parent testimonial at The Academic City School" width="112" height="112" loading="lazy" decoding="async">
+              </div>
+              <div class="testi-card__meta">
+                <p class="testi-card__name">Khushi Jain</p>
+                <p class="testi-card__batch">Mother of Bhavya Jain · Grade 8</p>
+              </div>
+            </div>
+            <p class="testi-card__quote">&ldquo;A choice we're proud of. The supportive community has made a real difference in our journey.&rdquo;</p>
+          </article>
+          <article class="testi-card">
+            <div class="testi-card__head">
+              <div class="testi-card__avatar">
+                <img src="images/home/parents/poorv.png" alt="Poorv celebrating CA Foundation success at TACS" width="112" height="112" loading="lazy" decoding="async">
+              </div>
+              <div class="testi-card__meta">
+                <p class="testi-card__name">Poorv</p>
+                <p class="testi-card__batch">Batch of &rsquo;25 · CA Foundation cleared</p>
+              </div>
+            </div>
+            <p class="testi-card__quote">&ldquo;I was nervous, but I trusted my effort and kept going. Seeing the result made everything feel worth it.&rdquo;</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="light" id="admissions">
+    <section class="light faq-section" id="faqs" style="padding-top:0;">
       <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow">Admissions 2026–27</span>
-          <h2>Five simple steps to join TACS</h2>
-          <p>No fee surprises, no jargon, just a clear path from enquiry to admission. The entire process can be completed online or in person.</p>
+        <div class="section-head faq-reveal">
+          <span class="eyebrow faq-section__label">Frequently Asked Questions</span>
+          <h2>Questions parents ask most</h2>
         </div>
-        <div class="steps" style="margin-bottom:52px;">
-          <div class="step"><div class="num">01</div><h4>Discover</h4><p>Share your child's details and grade level with our admissions team.</p></div>
-          <div class="step"><div class="num">02</div><h4>Experience</h4><p>Visit the campus in person, or take a guided virtual tour from home.</p></div>
-          <div class="step"><div class="num">03</div><h4>Assessment</h4><p>An age-appropriate entrance assessment, online or on campus.</p></div>
-          <div class="step"><div class="num">04</div><h4>Interaction</h4><p>A warm conversation about your child's interests and aspirations.</p></div>
-          <div class="step"><div class="num">05</div><h4>Admission</h4><p>Confirmation and a smooth onboarding into campus life.</p></div>
-        </div>
-        <div class="grid-3">
-          <div class="feature-item"><span class="ico">✅</span><h4>What We Look For</h4><p>A consistent academic record; a family that values structured boarding life and community; and openness to early career exploration.</p></div>
-          <div class="feature-item fi-gold"><span class="ico">🎓</span><h4>Merit Scholarships</h4><p>Scholarships may be awarded to meritorious students based on entrance exam performance, at the school's discretion.</p></div>
-          <div class="feature-item fi-violet"><span class="ico">🗓️</span><h4>Key Dates</h4><p>Admissions typically open in October, with an early-bird window through mid-December and applications closing mid-February.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="light" id="faqs" style="padding-top:0;">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow">Common Questions</span>
-          <h2>Frequently asked by parents</h2>
-        </div>
-        <div class="faq-list">
-          <details class="faq-item"><summary>Can the whole admissions process be completed online?</summary><div class="a">Yes, the application, entrance assessment, counselling and the conversation with our principal can all be completed fully online if a campus visit isn't possible right away.</div></details>
-          <details class="faq-item"><summary>Is TACS residential-only, or is day schooling available?</summary><div class="a">TACS is exclusively residential; we don't currently offer day-scholar or week-boarding options.</div></details>
-          <details class="faq-item"><summary>Can my child join TACS if they're currently on a different board?</summary><div class="a">Yes, switching boards is allowed at any grade level except Grades 10 and 12, where board continuity matters most.</div></details>
-          <details class="faq-item"><summary>When can we visit the campus?</summary><div class="a">Any day of the week, 9 AM to 6 PM. An appointment is preferred so our team can plan your visit, but it isn't required.</div></details>
-          <details class="faq-item"><summary>What's the policy on phones and gadgets?</summary><div class="a">Personal gadgets aren't permitted in the hostels; students get supervised internet access at specified times, and family calls are scheduled through the dorm parent.</div></details>
-          <details class="faq-item"><summary>What if my child has specific medical or learning needs?</summary><div class="a">We're happy to discuss individual requirements; please reach out to our admissions team directly so we can understand how best to support your child.</div></details>
-          <details class="faq-item"><summary>What happens in a medical emergency?</summary><div class="a">Our campus has full-time nursing staff and an on-call doctor round the clock, backed by partnerships with nearby hospitals for anything beyond routine care.</div></details>
+        <div class="faq-list faq-reveal faq-reveal--delay" data-faq-accordion>
+          <article class="faq-card">
+            <button type="button" class="faq-card__trigger" aria-expanded="false">
+              <span class="faq-card__question">How do I know if The Academic City School is the right boarding school for my child?</span>
+              <span class="faq-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <div class="faq-card__panel">
+              <div class="faq-card__panel-inner">
+                <p class="faq-card__answer">Choosing a boarding school is a major decision for any parent. At The Academic City School, Bengaluru, students get a structured environment that combines academics, mentoring, sports, career guidance and residential care. Parents looking for the <em>best boarding school in Bangalore</em> can visit the campus, interact with the admissions team and understand whether the environment is right for their child before making a decision.</p>
+              </div>
+            </div>
+          </article>
+          <article class="faq-card">
+            <button type="button" class="faq-card__trigger" aria-expanded="false">
+              <span class="faq-card__question">My child has never stayed away from home. How will they adjust to boarding school?</span>
+              <span class="faq-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <div class="faq-card__panel">
+              <div class="faq-card__panel-inner">
+                <p class="faq-card__answer">This is one of the most common concerns parents have. Students are supported by mentors, teachers and residential staff who help them gradually adapt to boarding life. A structured daily routine, peer interaction and regular guidance help students become comfortable, confident and increasingly independent.</p>
+              </div>
+            </div>
+          </article>
+          <article class="faq-card">
+            <button type="button" class="faq-card__trigger" aria-expanded="false">
+              <span class="faq-card__question">How will I stay connected with my child while they are at boarding school?</span>
+              <span class="faq-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <div class="faq-card__panel">
+              <div class="faq-card__panel-inner">
+                <p class="faq-card__answer">Parents naturally want to stay informed about their child&rsquo;s wellbeing and progress. The school follows structured parent communication, regular academic updates and scheduled interactions so families remain involved while students learn to manage their routines independently.</p>
+              </div>
+            </div>
+          </article>
+          <article class="faq-card">
+            <button type="button" class="faq-card__trigger" aria-expanded="false">
+              <span class="faq-card__question">Will my child get enough individual academic attention?</span>
+              <span class="faq-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <div class="faq-card__panel">
+              <div class="faq-card__panel-inner">
+                <p class="faq-card__answer">Yes. The Academic City School follows a <em>1:10 mentoring ratio</em>, helping students receive closer academic and personal guidance. Teachers and mentors track progress, provide supervised study support and help students work on areas that require additional attention.</p>
+              </div>
+            </div>
+          </article>
+          <article class="faq-card">
+            <button type="button" class="faq-card__trigger" aria-expanded="false">
+              <span class="faq-card__question">Is The Academic City School only for students preparing for NEET or JEE?</span>
+              <span class="faq-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <div class="faq-card__panel">
+              <div class="faq-card__panel-inner">
+                <p class="faq-card__answer">No. Competitive exam preparation is one part of the larger academic ecosystem. Students can explore pathways such as <em>NEET, JEE, IPMAT and CLAT</em>, while career guidance helps them understand their interests and future options. Students who are still exploring their career choices also receive guidance and support.</p>
+              </div>
+            </div>
+          </article>
+          <article class="faq-card">
+            <button type="button" class="faq-card__trigger" aria-expanded="false">
+              <span class="faq-card__question">What if my child does not know what career they want to pursue yet?</span>
+              <span class="faq-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <div class="faq-card__panel">
+              <div class="faq-card__panel-inner">
+                <p class="faq-card__answer">That is completely normal. Career guidance begins from the middle-school years so students have time to explore their strengths, interests and different career possibilities. The focus is not on forcing an early career decision, but on helping students make better-informed choices as they grow.</p>
+              </div>
+            </div>
+          </article>
+          <article class="faq-card">
+            <button type="button" class="faq-card__trigger" aria-expanded="false">
+              <span class="faq-card__question">Will boarding school become too academically stressful for my child?</span>
+              <span class="faq-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <div class="faq-card__panel">
+              <div class="faq-card__panel-inner">
+                <p class="faq-card__answer">A good boarding environment should provide structure without making every hour purely academic. At The Academic City School, students have dedicated time for academics, supervised study, sports, activities, recreation and rest. This balance is one of the factors parents often consider when searching for the <em>best boarding school in India</em> for their child.</p>
+              </div>
+            </div>
+          </article>
+          <article class="faq-card">
+            <button type="button" class="faq-card__trigger" aria-expanded="false">
+              <span class="faq-card__question">Is the campus safe and supervised for residential students?</span>
+              <span class="faq-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <div class="faq-card__panel">
+              <div class="faq-card__panel-inner">
+                <p class="faq-card__answer">Student safety and supervision are important parts of residential life. Students follow defined routines and are supported by residential staff, teachers and mentors throughout their time on campus. Parents are encouraged to visit the school personally and understand the residential facilities, supervision systems and daily student routine.</p>
+              </div>
+            </div>
+          </article>
+          <article class="faq-card">
+            <button type="button" class="faq-card__trigger" aria-expanded="false">
+              <span class="faq-card__question">What food is provided to students staying on campus?</span>
+              <span class="faq-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <div class="faq-card__panel">
+              <div class="faq-card__panel-inner">
+                <p class="faq-card__answer">Students are provided <em>six nutritious vegetarian meals every day</em>, with Jain food options available. Meals are planned to support students through their academic, sports and residential routines while ensuring variety and consistency.</p>
+              </div>
+            </div>
+          </article>
+          <article class="faq-card">
+            <button type="button" class="faq-card__trigger" aria-expanded="false">
+              <span class="faq-card__question">What is the admission process for The Academic City School, Bangalore?</span>
+              <span class="faq-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <div class="faq-card__panel">
+              <div class="faq-card__panel-inner">
+                <p class="faq-card__answer">Parents can begin by submitting an enquiry or speaking with the admissions team. The process generally includes counselling, a campus visit, student assessment and interaction, followed by registration, documentation and onboarding. Families considering the <em>best boarding school in Bangalore</em> are encouraged to visit the campus before completing the admission process.</p>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -601,7 +734,7 @@
         <div>
           <h5>Admissions</h5>
           <ul>
-            <li><a href="#admissions">How to Apply</a></li>
+            <li><a href="#form">How to Apply</a></li>
             <li><a href="https://www.theacademiccity.com/boarding">Boarding Life</a></li>
             <li><a href="#awards">Awards</a></li>
             <li><a href="#form">Contact Us</a></li>
@@ -636,7 +769,7 @@
         <div>
           <h5>Admissions</h5>
           <ul>
-            <li><a href="#admissions">How to Apply</a></li>
+            <li><a href="#form">How to Apply</a></li>
             <li><a href="https://www.theacademiccity.com/boarding">Boarding Life</a></li>
             <li><a href="#awards">Awards</a></li>
             <li><a href="#form">Contact Us</a></li>
@@ -749,5 +882,6 @@
   <script src="js/roadmap-puppet.js?v=20260918b"></script>
   <script src="js/achievements-gallery-data.js?v=20260922"></script>
   <script src="js/achievements-gallery.js?v=20260922"></script>
+  <script src="js/faq-section.js?v=20260922"></script>
 </body>
 </html>

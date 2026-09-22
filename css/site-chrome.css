@@ -420,9 +420,104 @@ main.site-main {
   .widget-stack { display: flex; }
 }
 
+.widget-stack.left {
+  left: 0;
+  border-radius: 0 0.75rem 0.75rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
 .widget-stack.right {
   right: 0;
   border-radius: 0.75rem 0 0 0.75rem;
+}
+
+/* Right: Enquire tab + chat bot */
+.side-action-stack {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 80;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0.75rem 0 0 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease-out;
+}
+
+.side-action-stack.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 1280px) {
+  .side-action-stack {
+    display: flex;
+  }
+}
+
+.side-action-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 11px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  background: var(--forest-deep);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.side-action-tab:hover {
+  background: var(--emerald);
+  color: #fff;
+}
+
+.side-action-tab--gold {
+  color: var(--forest-deep);
+  background: var(--gold);
+}
+
+.side-action-tab--gold:hover {
+  background: #e09d10;
+  color: var(--forest-deep);
+}
+
+.side-action-divider {
+  flex-shrink: 0;
+  height: 1px;
+  width: 100%;
+  background: #2d945c;
+}
+
+.side-action-bot {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  color: #fff;
+  background: var(--forest-deep);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.side-action-bot:hover {
+  background: var(--emerald);
+  color: #fff;
+}
+
+.side-action-bot svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .side-icon {
@@ -679,6 +774,7 @@ main.site-main {
 @media (prefers-reduced-motion: reduce) {
   .mob-drawer,
   .widget-stack,
+  .side-action-stack,
   .main-nav a,
   .main-nav .nav-apply { transition: none; }
 }
