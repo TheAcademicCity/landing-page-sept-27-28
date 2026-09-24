@@ -1,6 +1,6 @@
 .awards-section {
-  padding-top: clamp(28px, 3.5vw, 44px);
-  padding-bottom: clamp(56px, 7vw, 88px);
+  padding-top: clamp(16px, 2vw, 28px);
+  padding-bottom: clamp(36px, 4.5vw, 52px);
   overflow: visible;
 }
 

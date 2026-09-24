@@ -126,31 +126,44 @@
     openEnquiryModal(params.get('intent') === 'brochure' ? 'brochure' : 'general');
   }
 
-  if (enquiryForm) {
-    enquiryForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      if (enquiryError) enquiryError.textContent = '';
-      if (enquirySubmit) {
-        enquirySubmit.disabled = true;
-        enquirySubmit.textContent = 'Submitting...';
-      }
+  var enquiryPageForm = document.getElementById('enquiryFormPage');
+  var enquiryPageSubmit = document.getElementById('enquiryPageSubmitBtn');
+  var enquiryPageError = document.getElementById('enquiryPageFormError');
 
-      var data = {
-        fname: enquiryForm.fname.value.trim(),
-        lname: enquiryForm.lname.value.trim(),
-        mobile: enquiryForm.mobile.value.trim(),
-        selectclass: enquiryForm.selectclass.value,
-        campus: enquiryForm.campus.value,
-        email: enquiryForm.email.value.trim(),
-        intent: currentIntent,
-        sourcePath: window.location.pathname,
-        page_url: window.location.href,
-      };
+  function buildEnquiryPayload(form, intent) {
+    return {
+      fname: form.fname.value.trim(),
+      lname: form.lname.value.trim(),
+      mobile: form.mobile.value.trim(),
+      selectclass: form.selectclass.value,
+      campus: (form.campus && form.campus.value) || 'Bangalore',
+      email: form.email.value.trim(),
+      intent: intent,
+      sourcePath: window.location.pathname,
+      page_url: window.location.href,
+    };
+  }
+
+  function handleEnquirySubmit(form, options) {
+    return function (event) {
+      event.preventDefault();
+      var submitBtn = options.submitBtn;
+      var errorEl = options.errorEl;
+      var intent = options.getIntent ? options.getIntent() : options.intent || 'general';
+      var defaultLabel = options.getDefaultLabel
+        ? options.getDefaultLabel()
+        : options.defaultLabel || 'Submit Enquiry';
+
+      if (errorEl) errorEl.textContent = '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+      }
 
       fetch(ENQUIRY_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(buildEnquiryPayload(form, intent)),
       })
         .then(function (response) {
           return response.json().then(function (result) {
@@ -162,10 +175,10 @@
             throw new Error(payload.result.message || 'Something went wrong. Please try again.');
           }
 
-          enquiryForm.reset();
+          form.reset();
           openThankYouModal();
 
-          if (currentIntent === 'brochure') {
+          if (intent === 'brochure') {
             var link = document.createElement('a');
             link.href = BROCHURE_URL;
             link.download = 'TAC Brochure 2026.pdf';
@@ -176,17 +189,50 @@
           }
         })
         .catch(function (error) {
-          if (enquiryError) {
-            enquiryError.textContent = error.message || 'Something went wrong. Please try again.';
+          if (errorEl) {
+            errorEl.textContent = error.message || 'Something went wrong. Please try again.';
           }
         })
         .finally(function () {
-          if (enquirySubmit) {
-            enquirySubmit.disabled = false;
-            enquirySubmit.textContent =
-              currentIntent === 'brochure' ? 'Submit & Download Brochure' : 'Submit Enquiry';
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = options.getDefaultLabel
+              ? options.getDefaultLabel()
+              : defaultLabel;
           }
         });
-    });
+    };
+  }
+
+  if (enquiryForm) {
+    enquiryForm.addEventListener(
+      'submit',
+      handleEnquirySubmit(enquiryForm, {
+        submitBtn: enquirySubmit,
+        errorEl: enquiryError,
+        getIntent: function () {
+          return currentIntent;
+        },
+        getDefaultLabel: function () {
+          return currentIntent === 'brochure' ? 'Submit & Download Brochure' : 'Submit Enquiry';
+        },
+      }),
+    );
+  }
+
+  if (enquiryPageForm) {
+    enquiryPageForm.addEventListener(
+      'submit',
+      handleEnquirySubmit(enquiryPageForm, {
+        submitBtn: enquiryPageSubmit,
+        errorEl: enquiryPageError,
+        getIntent: function () {
+          return 'general';
+        },
+        getDefaultLabel: function () {
+          return 'Submit Enquiry';
+        },
+      }),
+    );
   }
 })();

@@ -1,7 +1,6 @@
 .testimonials-section {
-  padding-top: clamp(48px, 6vw, 72px);
-  padding-bottom: clamp(48px, 6vw, 72px);
-  background: #f4f8f6;
+  padding-top: var(--section-y, clamp(40px, 4.5vw, 52px));
+  padding-bottom: var(--section-y, clamp(40px, 4.5vw, 52px));
 }
 
 .testimonials-section__label {

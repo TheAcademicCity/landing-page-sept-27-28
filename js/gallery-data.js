@@ -25,7 +25,7 @@ window.HOME_GALLERY = {
     {
       id: "infrastructure",
       label: "Infrastructure",
-      layout: "featured",
+      layout: "featured-grid",
       items: [
         { label: "Campus Aerial View", height: 576, src: "images/home/gallery/infrastructure-aerial.png", alt: "Aerial view of The Academic City School campus in Bengaluru" },
         { label: "Outdoor Amphitheater", height: 200, src: "images/home/gallery/infrastructure-1.png", alt: "Outdoor amphitheater at The Academic City School campus" },

@@ -1,5 +1,10 @@
+#faqs.faq-section {
+  background: var(--surface-white, #fff);
+}
+
 .faq-section {
-  padding-bottom: clamp(48px, 6vw, 72px);
+  padding-top: var(--section-y, clamp(40px, 4.5vw, 52px));
+  padding-bottom: var(--section-y, clamp(40px, 4.5vw, 52px));
 }
 
 .faq-section__label {
@@ -111,7 +116,7 @@
   margin-top: 2px;
   border-radius: 50%;
   border: 1.5px solid rgba(15, 61, 56, 0.14);
-  background: var(--cream);
+  background: var(--paper, #f4f8f6);
   transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 }
 

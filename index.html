@@ -13,14 +13,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260918sip">
-  <link rel="stylesheet" href="css/home-gallery.css?v=20260918d">
+  <link rel="stylesheet" href="css/styles.css?v=20260924herofix">
+  <link rel="stylesheet" href="css/home-gallery.css?v=20260924galleryfix">
   <link rel="stylesheet" href="css/achievements-gallery.css?v=20260922">
+  <link rel="stylesheet" href="css/campus-section.css?v=20260924norings">
+  <link rel="stylesheet" href="css/contact-section.css?v=20260924cta">
   <link rel="stylesheet" href="css/awards-section.css?v=20260922f">
-  <link rel="stylesheet" href="css/testimonials-section.css?v=20260922">
-  <link rel="stylesheet" href="css/faq-section.css?v=20260922">
-  <link rel="stylesheet" href="css/site-chrome.css?v=20260922widgets">
-  <link rel="stylesheet" href="css/enquiry-modal.css">
+  <link rel="stylesheet" href="css/testimonials-section.css?v=20260924surfaces">
+  <link rel="stylesheet" href="css/faq-section.css?v=20260924surfaces">
+  <link rel="stylesheet" href="css/site-chrome.css?v=20260924whiteband">
+  <link rel="stylesheet" href="css/mobile-landing.css?v=20260924herotitle2">
+  <link rel="stylesheet" href="css/enquiry-modal.css?v=20260924form">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="apple-touch-icon" href="apple-icon.png">
@@ -140,7 +143,8 @@
             <div class="drop-menu">
               <a href="#gallery">Gallery</a>
               <a href="#achievements">Achievements</a>
-              <a href="#form">Contact Us</a>
+              <a href="#campus">Campus</a>
+              <a href="#contact">Contact Us</a>
             </div>
           </li>
           <li><a class="nav-apply" href="#enquiry">Apply Now</a></li>
@@ -161,7 +165,8 @@
     <span class="mob-group-label">More</span>
     <a class="mob-sub" href="#gallery">Gallery</a>
     <a class="mob-sub" href="#achievements">Achievements</a>
-    <a class="mob-sub" href="#form">Contact Us</a>
+    <a class="mob-sub" href="#campus">Campus</a>
+    <a class="mob-sub" href="#contact">Contact Us</a>
     <a class="mob-apply" href="#enquiry">Apply Now →</a>
   </nav>
 
@@ -194,10 +199,12 @@
     <section class="light" id="about">
       <div class="wrap">
         <div class="section-head">
+          <span class="kicker-label">Why TACS</span>
           <h2>Four ways every child grows at <span class="accent-script">TACS</span></h2>
           <p>A single campus, deliberately designed so academics, character, wellbeing and career-readiness develop together instead of competing for a child's time.</p>
         </div>
-        <div class="bento">
+        <p class="bento-mobile-hint">Swipe through the four ways every child grows at TACS.</p>
+        <div class="bento" id="aboutBento">
           <div class="tile b1">
             <img class="tile-photo" src="images/lp1.jpeg" alt="" width="800" height="1000" loading="lazy" decoding="async">
             <div class="tile-content">
@@ -230,6 +237,9 @@
             <div class="tile b5"><a href="https://theacademiccity.com/campus" target="_blank" rel="noopener noreferrer">📷<br>See our Campus →</a></div>
           </div>
         </div>
+        <div class="bento-mobile-dots" aria-hidden="true">
+          <span class="is-active"></span><span></span><span></span><span></span>
+        </div>
         <div class="pull-quote pull-quote--light">
           <p>"We prepare students not just for successful careers, but to become responsible, compassionate individuals."</p>
           <div class="who">A. N. Manikandan<span>Principal, M.A. · B.Ed. · PGDCA (C.S.) · B.Sc.(Hons)</span></div>
@@ -240,12 +250,12 @@
     <section class="light home-gallery" id="gallery">
       <div class="wrap" id="homeGallery">
         <div class="home-gallery-head home-gallery-head--mobile">
-          <span class="home-gallery-label">Life on Campus</span>
+          <span class="kicker-label">Life on Campus</span>
           <h2>A Glimpse Into Everyday <span class="accent-script">TACS</span></h2>
         </div>
         <div class="home-gallery-head home-gallery-head--desktop">
           <div>
-            <span class="home-gallery-label">Life on Campus</span>
+            <span class="kicker-label">Life on Campus</span>
             <h2>A glimpse into everyday <span class="accent-script">TACS</span></h2>
           </div>
           <a class="home-gallery-ig home-gallery-ig--desktop" href="https://www.instagram.com/the_academic_city/" target="_blank" rel="noopener noreferrer">
@@ -261,44 +271,49 @@
       </div>
     </section>
 
-    <section class="dark slice-top" id="academics">
+    <section class="light academics-section slice-top" id="academics">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Academics</span>
+          <span class="kicker-label">Academics</span>
           <h2>A holistic education built around <span class="accent-script">your child</span></h2>
         </div>
-        <div class="roadmap roadmap--puppet" style="margin-bottom:56px;">
-          <div class="roadmap-puppet-rig" aria-hidden="true">
-            <span class="roadmap-puppet-rig__bar"></span>
-            <span class="roadmap-puppet-rig__drop"></span>
-            <span class="roadmap-puppet-rig__anchor"></span>
-            <span class="roadmap-puppet-rig__joint"></span>
-            <span class="roadmap-puppet-rig__joint"></span>
-            <span class="roadmap-puppet-rig__joint"></span>
-            <span class="roadmap-puppet-rig__joint"></span>
-          </div>
-          <div class="stop">
-            <span class="grade-badge">GRADES 5–6</span><h4>Foundation</h4><div class="focus">Building the base</div><p class="d">Core CBSE learning in Language, Math and Science, in a curiosity-led, nurturing environment.</p>
-          </div>
-          <div class="stop" data-puppet-tall>
-            <span class="grade-badge">GRADES 7–8</span><h4>Middle</h4><div class="focus">Broadening &amp; deepening</div><p class="d">Project-based learning, early career exposure, and identifying each child's natural strengths.</p>
-          </div>
-          <div class="stop">
-            <span class="grade-badge">GRADES 9–10</span><h4>Exploration</h4><div class="focus">Board preparation</div><p class="d">Mock exams, detailed performance analysis, and closer one-on-one mentoring.</p>
-          </div>
-          <div class="stop" data-puppet-tall>
-            <span class="grade-badge">GRADES 11–12</span><h4>Focused</h4><div class="focus">Career-aligned specialisation</div><p class="d">Stream selection and structured preparation for the exams that matter for each path.</p>
-          </div>
+        <div class="roadmap roadmap--pathway" style="margin-bottom:48px;">
+          <article class="stop pathway-card pathway-card--forest">
+            <span class="pathway-card__step" aria-hidden="true">01</span>
+            <span class="grade-badge">Grades 5–6</span>
+            <h4>Foundation</h4>
+            <div class="focus">Building the base</div>
+            <p class="d">Core CBSE learning in Language, Math and Science, in a curiosity-led, nurturing environment.</p>
+          </article>
+          <article class="stop pathway-card pathway-card--emerald">
+            <span class="pathway-card__step" aria-hidden="true">02</span>
+            <span class="grade-badge">Grades 7–8</span>
+            <h4>Middle</h4>
+            <div class="focus">Broadening &amp; deepening</div>
+            <p class="d">Project-based learning, early career exposure, and identifying each child's natural strengths.</p>
+          </article>
+          <article class="stop pathway-card pathway-card--gold">
+            <span class="pathway-card__step" aria-hidden="true">03</span>
+            <span class="grade-badge">Grades 9–10</span>
+            <h4>Exploration</h4>
+            <div class="focus">Board preparation</div>
+            <p class="d">Mock exams, detailed performance analysis, and closer one-on-one mentoring.</p>
+          </article>
+          <article class="stop pathway-card pathway-card--violet">
+            <span class="pathway-card__step" aria-hidden="true">04</span>
+            <span class="grade-badge">Grades 11–12</span>
+            <h4>Focused</h4>
+            <div class="focus">Career-aligned specialisation</div>
+            <p class="d">Stream selection and structured preparation for the exams that matter for each path.</p>
+          </article>
         </div>
         <div class="integrated-programme" id="integrated-programme" aria-labelledby="integrated-programme-title">
-          <div class="integrated-programme__glow" aria-hidden="true"></div>
           <div class="integrated-programme__head">
             <div class="integrated-programme__intro">
-              <span class="integrated-programme__label">School Integrated Programme</span>
+              <span class="kicker-label">School Integrated Programme</span>
               <h2 class="integrated-programme__title" id="integrated-programme-title">Focused preparation for the future</h2>
               <p class="integrated-programme__desc">Stream + board prep + competitive exam support - structured from Day 1 of Grade 11.</p>
             </div>
-            <a class="btn btn-gold integrated-programme__cta" href="#enquiry">Enquire Now <svg width="14" height="14" aria-hidden="true"><use href="#ic-arrow"/></svg></a>
           </div>
           <div class="integrated-programme__grid">
             <article class="integrated-programme__card">
@@ -342,64 +357,73 @@
 
     <section class="light" id="cocurricular">
       <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow">Co-curricular &amp; Boarding Life</span>
+        <div class="section-head section-head--mob-tight">
+          <span class="kicker-label">Co-curricular &amp; Boarding Life</span>
           <h2>Life beyond the classroom, <span class="accent-script">built in, not squeezed in</span></h2>
-          <p>Sport during the day, a genuine home away from home once the bell rings.</p>
+          <p class="u-desk-only">Sport during the day, a genuine home away from home once the bell rings.</p>
         </div>
-        <div class="feature-row" style="margin-bottom:44px;">
-          <div class="f-copy">
-            <span class="eyebrow">Sport, every single day</span>
+        <div class="feature-row cocurricular-sport" style="margin-bottom:44px;">
+          <div class="f-copy cocurricular-sport__copy">
+            <span class="kicker-label">Sport, every single day</span>
             <h2>90 minutes of play, <span class="accent-script">non-negotiable</span></h2>
-            <p class="lead">Every student plays every day, with expert coaching, inter-house competitions, and district-to-national level opportunities for those who want to go further.</p>
-            <div class="chip-row">
-              <span class="chip">Basketball</span><span class="chip">Football</span><span class="chip">Cricket</span>
-              <span class="chip">Swimming</span><span class="chip">Volleyball</span><span class="chip">Athletics</span>
-              <span class="chip">Badminton</span><span class="chip">Kho-Kho</span><span class="chip">Pickleball</span>
+            <p class="lead">
+              <span class="u-desk-only">Every student plays every day, with expert coaching, inter-house competitions, and district-to-national level opportunities for those who want to go further.</span>
+              <span class="u-mob-only">Daily coaching, inter-house competitions, and district-to-national pathways.</span>
+            </p>
+            <div class="chip-row chip-row--sport">
+              <span class="chip">Football</span><span class="chip">Cricket</span><span class="chip">Swimming</span>
+              <span class="chip">Basketball</span><span class="chip">Athletics</span>
+              <span class="chip u-desk-only">Volleyball</span><span class="chip u-desk-only">Badminton</span>
+              <span class="chip u-desk-only">Kho-Kho</span><span class="chip u-desk-only">Pickleball</span>
             </div>
-            <div class="stat-inline"><div><b>90 min</b><span>Daily sport, every child</span></div></div>
+            <div class="stat-inline cocurricular-stat"><div><b>90 min</b><span>Daily sport, every child</span></div></div>
           </div>
-          <div class="f-media">
+          <div class="f-media cocurricular-sport__media">
             <img src="images/co-curricular/facilities-grounds.png" alt="Football and cricket ground at The Academic City School" loading="lazy" width="1200" height="900" decoding="async">
           </div>
         </div>
-        <div id="boarding" style="border-top:1px solid #e7e2d4;padding-top:44px;">
-          <div class="feature-row" style="margin-bottom:36px;">
-            <div class="f-media">
+        <div id="boarding" class="cocurricular-boarding" style="border-top:1px solid #e7e2d4;padding-top:28px;">
+          <div class="feature-row cocurricular-boarding__day" style="margin-bottom:36px;">
+            <div class="f-media u-desk-only">
               <img src="images/boarding-day-at-tacs.jpg" alt="Students and dorm parent in the TACS boarding hostel" loading="lazy" width="1200" height="800" decoding="async">
             </div>
             <div class="f-copy">
-              <span class="eyebrow">A day at TACS</span>
+              <span class="kicker-label">A day at TACS</span>
               <h2>A home away from home, <span class="accent-script">watched over</span></h2>
-              <div class="timeline" style="margin-top:20px;">
-                <div class="t-item"><div class="time">5:30 AM</div><div class="what">Wake up, yoga and a warm-up</div></div>
-                <div class="t-item"><div class="time">8:30 AM – 4:20 PM</div><div class="what">School hours</div></div>
-                <div class="t-item"><div class="time">5:00 – 6:15 PM</div><div class="what">Sport, every child, every day</div></div>
-                <div class="t-item"><div class="time">6:30 – 9:30 PM</div><div class="what">Dinner, family calls, and supervised evening study</div></div>
-                <div class="t-item"><div class="time">10:15 PM</div><div class="what">Lights off, after circle time and daily chores</div></div>
+              <div class="timeline cocurricular-timeline" role="list" aria-label="Sample boarding day schedule" style="margin-top:20px;">
+                <div class="t-item" role="listitem"><div class="time">5:30 AM</div><div class="what">Wake up, yoga and a warm-up</div></div>
+                <div class="t-item" role="listitem"><div class="time">8:30 AM – 4:20 PM</div><div class="what">School hours</div></div>
+                <div class="t-item" role="listitem"><div class="time">5:00 – 6:15 PM</div><div class="what">Sport, every child, every day</div></div>
+                <div class="t-item" role="listitem"><div class="time">6:30 – 9:30 PM</div><div class="what">Dinner, family calls, and supervised evening study</div></div>
+                <div class="t-item u-desk-only" role="listitem"><div class="time">10:15 PM</div><div class="what">Lights off, after circle time and daily chores</div></div>
               </div>
             </div>
           </div>
-          <div class="grid-4">
-            <div class="feature-item"><span class="ico">🍽️</span><h4>Six Meals a Day</h4><p>Veg and Jain options, cooked fresh on campus with farm produce.</p></div>
-            <div class="feature-item fi-emerald"><span class="ico">👪</span><h4>Dorm Parents</h4><p>One for every 10–15 students, every family's single point of contact.</p></div>
-            <div class="feature-item fi-cyan"><span class="ico">🩺</span><h4>Medical &amp; Safety</h4><p>A doctor on call round the clock, gated campus with CCTV, and confidential counselling.</p></div>
-            <div class="feature-item fi-gold"><span class="ico">📞</span><h4>Staying Connected</h4><p>Scheduled family calls, daily app updates, and an emergency line that's always open.</p></div>
+          <div class="grid-4 cocurricular-boarding__grid">
+            <div class="feature-item"><span class="ico">🍽️</span><h4>Six Meals a Day</h4><p><span class="u-desk-only">Veg and Jain options, cooked fresh on campus with farm produce.</span><span class="u-mob-only">Fresh veg &amp; Jain meals, cooked on campus.</span></p></div>
+            <div class="feature-item fi-emerald"><span class="ico">👪</span><h4>Dorm Parents</h4><p><span class="u-desk-only">One for every 10–15 students, every family's single point of contact.</span><span class="u-mob-only">One point of contact for every 10–15 students.</span></p></div>
+            <div class="feature-item fi-cyan"><span class="ico">🩺</span><h4>Medical &amp; Safety</h4><p><span class="u-desk-only">A doctor on call round the clock, gated campus with CCTV, and confidential counselling.</span><span class="u-mob-only">Doctor on call, gated campus &amp; counselling.</span></p></div>
+            <div class="feature-item fi-gold"><span class="ico">📞</span><h4>Staying Connected</h4><p><span class="u-desk-only">Scheduled family calls, daily app updates, and an emergency line that's always open.</span><span class="u-mob-only">Family calls, app updates &amp; emergency line.</span></p></div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="visit-divider" aria-label="Book a campus visit">
-      <div class="wrap visit-divider-inner">
+      <div class="wrap">
+        <div class="visit-divider-inner">
         <div class="vd-copy">
-          <span class="eyebrow" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff;">See It Before You Decide</span>
+          <span class="kicker-label u-desk-only">Campus Visit</span>
           <h2>Experience a day at TACS</h2>
-          <p>Meet our dorm parents, sit in on a class, and see the hostels, dining hall and sports facilities in person. Tours run daily, 9 AM – 6 PM, no long wait for an appointment.</p>
+          <p>
+            <span class="u-desk-only">Meet our dorm parents, sit in on a class, and see the hostels, dining hall and sports facilities in person. Tours run daily, 9 AM – 6 PM, no long wait for an appointment.</span>
+            <span class="u-mob-only">Tour hostels, classrooms and sport facilities with our team. Open daily, 9 AM – 6 PM.</span>
+          </p>
         </div>
         <div class="vd-actions">
           <a class="btn btn-gold" href="#form">Book a Campus Visit</a>
-          <a class="phone" href="tel:08047092273">📞 080-47092273</a>
+          <a class="phone u-desk-only" href="tel:08047092273">📞 080-47092273</a>
+        </div>
         </div>
       </div>
     </section>
@@ -407,17 +431,45 @@
     <section class="light achievements-section" id="achievements">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Achievements</span>
+          <span class="kicker-label">Achievements</span>
           <h2>Results our students and their parents are proud of</h2>
         </div>
       </div>
       <div class="achievements-gallery" id="achievementsGallery" aria-label="Student achievers gallery"></div>
     </section>
 
+    <section class="campus-section" id="campus" aria-labelledby="campus-heading">
+      <div class="wrap campus-section__inner">
+        <div class="section-head">
+          <span class="kicker-label">Campus Tour</span>
+          <h2 id="campus-heading">Experience life at <span class="campus-section__highlight">TACS Bangalore</span></h2>
+          <p class="campus-section__desc">
+            <span class="u-desk-only">Take a look around our Nelamangala campus — classrooms, hostels, sports and the spaces where students learn, live and grow.</span>
+            <span class="u-mob-only">Classrooms, hostels, sport and the spaces where students learn and live.</span>
+          </p>
+        </div>
+        <div class="campus-video">
+          <div class="campus-video__frame">
+            <iframe
+              src="https://www.youtube.com/embed/GNA4LAdz4AM?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;modestbranding=1"
+              title="TACS Bangalore campus tour"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="campus-section__actions">
+          <a class="btn btn-gold" href="#enquiry">Book a Campus Visit</a>
+        </div>
+      </div>
+    </section>
+
     <section class="light awards-section" id="awards">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow awards-section__label">Awards &amp; Recognitions</span>
+          <span class="kicker-label">Awards &amp; Recognitions</span>
           <h2>Recognised Nationally &amp; Globally</h2>
         </div>
         <div class="awards-grid" role="list" aria-label="School awards and recognitions">
@@ -442,7 +494,7 @@
           <div class="awards-grid__item awards-grid__item--emblem" role="listitem">
             <span class="awards-grid__logo">
               <picture>
-                <source media="(max-width: 899px)" srcset="images/home/awards/education-leaders-2024-mobile.png">
+                <source media="(max-width: 767px)" srcset="images/home/awards/education-leaders-2024-mobile.png">
                 <img src="images/home/awards/education-leaders-2024.png" alt="Education Leaders Awards 2024" title="Education Leaders Awards (2024)" width="277" height="265" loading="lazy" decoding="async">
               </picture>
             </span>
@@ -457,7 +509,7 @@
     <section class="light testimonials-section slice-top" id="testimonials">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow testimonials-section__label">Parent &amp; Student Stories</span>
+          <span class="kicker-label">Parent &amp; Student Stories</span>
           <h2>Voices of <span class="accent-script">The Academic City School</span></h2>
         </div>
         <div class="testi-grid">
@@ -501,10 +553,10 @@
       </div>
     </section>
 
-    <section class="light faq-section" id="faqs" style="padding-top:0;">
+    <section class="light faq-section" id="faqs">
       <div class="wrap">
         <div class="section-head faq-reveal">
-          <span class="eyebrow faq-section__label">Frequently Asked Questions</span>
+          <span class="kicker-label">Frequently Asked Questions</span>
           <h2>Questions parents ask most</h2>
         </div>
         <div class="faq-list faq-reveal faq-reveal--delay" data-faq-accordion>
@@ -622,87 +674,135 @@
       </div>
     </section>
 
-    <section class="light" style="padding-top:0;">
+    <section class="light" id="form">
       <div class="wrap">
-        <div class="cta-band">
-          <div class="left"><span class="eyebrow">Admissions 2026–27</span><h2>See it for yourself.</h2></div>
-          <div class="actions">
-            <a class="btn btn-gold" href="#form">Book a Campus Visit</a>
-            <a class="phone" href="tel:08047092273">📞 080-47092273</a>
-            <a class="phone" href="https://wa.me/919364898405" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+        <div class="form-shell">
+          <div class="form-side">
+            <div>
+              <h3>Book a campus visit or request a callback</h3>
+              <div class="form-side__pitch u-desk-only">
+                <p>Our admissions team responds within one working day. Prefer to talk first? Call or WhatsApp us directly.</p>
+                <ul>
+                  <li><span class="dot"></span> Grades 5–12 · Bengaluru campus</li>
+                  <li><span class="dot"></span> CBSE curriculum · 1:10 mentoring ratio</li>
+                  <li><span class="dot"></span> AC boarding with 24-hr pastoral care</li>
+                  <li><span class="dot"></span> Open for visits daily, 9 AM – 6 PM</li>
+                </ul>
+              </div>
+            </div>
+            <div style="margin-top:32px;"><a class="btn btn-outline" href="tel:08047092273" style="width:100%;">📞 Call 080-47092273</a></div>
+          </div>
+          <div class="form-fields">
+            <form id="enquiryFormPage" class="enquiry-form-modal enquiry-form-page" novalidate>
+              <input type="hidden" name="campus" value="Bangalore">
+              <div class="enquiry-field-grid two-col">
+                <div class="enquiry-field">
+                  <label for="form-fname">Student First Name <span class="req">*</span></label>
+                  <input id="form-fname" name="fname" type="text" autocomplete="given-name" required placeholder="Enter first name">
+                </div>
+                <div class="enquiry-field">
+                  <label for="form-lname">Student Last Name <span class="req">*</span></label>
+                  <input id="form-lname" name="lname" type="text" autocomplete="family-name" required placeholder="Enter last name">
+                </div>
+              </div>
+              <div class="enquiry-field">
+                <label for="form-mobile">Mobile Number <span class="req">*</span></label>
+                <input id="form-mobile" name="mobile" type="tel" autocomplete="tel" required placeholder="Enter your mobile number">
+              </div>
+              <div class="enquiry-field">
+                <label for="form-class">Class Looking For <span class="req">*</span></label>
+                <select id="form-class" name="selectclass" required>
+                  <option value="">Select class</option>
+                  <option>Class 5</option><option>Class 6</option><option>Class 7</option>
+                  <option>Class 8</option><option>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option>
+                </select>
+              </div>
+              <div class="enquiry-field">
+                <label for="form-email">Email Address <span class="req">*</span></label>
+                <input id="form-email" name="email" type="email" autocomplete="email" required placeholder="Enter email address">
+              </div>
+              <div class="enquiry-form-actions enquiry-form-actions--page">
+                <button class="enquiry-submit" type="submit" id="enquiryPageSubmitBtn">Submit Enquiry</button>
+                <p class="enquiry-error" id="enquiryPageFormError" role="alert"></p>
+              </div>
+              <p class="enquiry-form-fineprint">By submitting, you agree to be contacted by The Academic City School admissions team.</p>
+            </form>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="light" id="form" style="padding-top:0;">
-      <div class="wrap">
-        <div class="form-shell">
-          <div class="form-side">
-            <div>
-              <span class="eyebrow" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff;">Start Your Journey</span>
-              <h3 style="margin-top:16px;">Book a campus visit or request a callback</h3>
-              <p>Our admissions team responds within one working day. Prefer to talk first? Call or WhatsApp us directly.</p>
-              <ul>
-                <li><span class="dot"></span> Grades 5–12 · Bengaluru campus</li>
-                <li><span class="dot"></span> CBSE curriculum · 1:10 mentoring ratio</li>
-                <li><span class="dot"></span> AC boarding with 24-hr pastoral care</li>
-                <li><span class="dot"></span> Open for visits daily, 9 AM – 6 PM</li>
-              </ul>
+    <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="wrap contact-section__mobile">
+        <span class="kicker-label">Get in Touch</span>
+        <h2 class="contact-section__title contact-section__title--mobile" id="contact-heading">Talk to our<br>admissions team today!</h2>
+        <div class="contact-section__ctas contact-section__ctas--mobile">
+          <a class="contact-section__cta contact-section__cta--gold" href="tel:08047092273">
+            <svg aria-hidden="true"><use href="#ic-phone"/></svg>
+            Connect with us
+          </a>
+          <a class="contact-section__cta contact-section__cta--outline" href="https://wa.me/919364898405" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true"><use href="#ic-wa"/></svg>
+            WhatsApp
+          </a>
+        </div>
+        <div class="contact-map contact-map--integrated">
+          <div class="contact-map__panel">
+            <div class="contact-map__address-row">
+              <svg class="contact-map__pin" aria-hidden="true"><use href="#ic-pin"/></svg>
+              <p class="contact-map__address">Bairegowdanahalli Bus Stop, Venkatapura, Sondekoppa Main Rd, Nelamangala Town, Karnataka 562123</p>
             </div>
-            <div style="margin-top:32px;"><a class="btn btn-outline" href="tel:08047092273" style="width:100%;">📞 Call 080-47092273</a></div>
+            <p class="contact-map__links">
+              <a href="tel:08047092273">080-47092273 (Admissions)</a>
+              <span class="contact-map__sep" aria-hidden="true">|</span>
+              <a href="mailto:admissions@theacademiccity.com">admissions@theacademiccity.com</a>
+            </p>
           </div>
-          <div class="form-fields">
-            <div id="form-thanks" class="form-thanks" tabindex="-1">Thank you! Our admissions team will reach out within one working day.</div>
-            <!-- Formspree setup: sign up at formspree.io, replace YOUR_FORMSPREE_ID below, and set _next to your live page URL + #form-thanks -->
-            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-              <input type="hidden" name="_subject" value="TACS Admissions Enquiry">
-              <input type="hidden" name="_next" value="">
-              <div class="field">
-                <label for="enquiry-type">Enquiry Type</label>
-                <select id="enquiry-type" name="enquiry_type" required>
-                  <option value="">Select enquiry type</option>
-                  <option value="General Enquiry">General Enquiry</option>
-                  <option value="Book Campus Visit">Book Campus Visit</option>
-                  <option value="Download Brochure">Download Brochure</option>
-                  <option value="Apply Now">Apply Now</option>
-                </select>
+          <iframe
+            title="The Academic City School campus map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.25!2d77.3986306!3d13.0571618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae254ef3b18d5b%3A0xda079052c6df77cc!2sThe%20Academic%20City%20School%20(CBSE%20Residential%20School)!5e1!3m2!1sen!2sin!4v1741459200"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="wrap contact-section__desktop">
+        <div class="contact-section__layout">
+          <div class="contact-section__intro">
+            <span class="kicker-label">Get in Touch</span>
+            <h2 class="contact-section__title">Talk to our<br>admissions team today!</h2>
+            <div class="contact-section__ctas">
+              <a class="contact-section__cta contact-section__cta--gold" href="tel:08047092273">
+                <svg aria-hidden="true"><use href="#ic-phone"/></svg>
+                Connect with us
+              </a>
+              <a class="contact-section__cta contact-section__cta--outline" href="https://wa.me/919364898405" target="_blank" rel="noopener noreferrer">
+                <svg aria-hidden="true"><use href="#ic-wa"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+          <div class="contact-map contact-map--integrated">
+            <div class="contact-map__panel">
+              <div class="contact-map__address-row">
+                <svg class="contact-map__pin" aria-hidden="true"><use href="#ic-pin"/></svg>
+                <p class="contact-map__address">Bairegowdanahalli Bus Stop, Venkatapura, Sondekoppa Main Rd, Nelamangala Town, Karnataka 562123</p>
               </div>
-              <div class="grid2">
-                <div class="field">
-                  <label for="parent-name">Parent's Name</label>
-                  <input id="parent-name" type="text" name="parent_name" required placeholder="Full name" autocomplete="name">
-                </div>
-                <div class="field">
-                  <label for="child-name">Child's Name</label>
-                  <input id="child-name" type="text" name="child_name" required placeholder="Full name">
-                </div>
-              </div>
-              <div class="grid2">
-                <div class="field">
-                  <label for="grade">Grade Applying For</label>
-                  <select id="grade" name="grade" required>
-                    <option value="">Select grade</option>
-                    <option>Grade 5</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option>
-                    <option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="phone">Phone Number</label>
-                  <input id="phone" type="tel" name="phone" required placeholder="10-digit mobile number" autocomplete="tel">
-                </div>
-              </div>
-              <div class="field">
-                <label for="email">Email Address</label>
-                <input id="email" type="email" name="email" required placeholder="you@example.com" autocomplete="email">
-              </div>
-              <div class="field">
-                <label for="message">Message (optional)</label>
-                <textarea id="message" name="message" rows="3" placeholder="Anything you'd like us to know"></textarea>
-              </div>
-              <button class="btn btn-gold" type="submit">Enquire Now</button>
-              <p class="fineprint">By submitting, you agree to be contacted by The Academic City School admissions team.</p>
-            </form>
+              <p class="contact-map__links">
+                <a href="tel:08047092273">080-47092273 (Admissions)</a>
+                <span class="contact-map__sep" aria-hidden="true">|</span>
+                <a href="mailto:admissions@theacademiccity.com">admissions@theacademiccity.com</a>
+              </p>
+            </div>
+            <iframe
+              title="The Academic City School campus map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.25!2d77.3986306!3d13.0571618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae254ef3b18d5b%3A0xda079052c6df77cc!2sThe%20Academic%20City%20School%20(CBSE%20Residential%20School)!5e1!3m2!1sen!2sin!4v1741459200"
+            ></iframe>
           </div>
         </div>
       </div>
@@ -737,7 +837,7 @@
             <li><a href="#form">How to Apply</a></li>
             <li><a href="https://www.theacademiccity.com/boarding">Boarding Life</a></li>
             <li><a href="#awards">Awards</a></li>
-            <li><a href="#form">Contact Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
           </ul>
         </div>
       </div>
@@ -772,10 +872,10 @@
             <li><a href="#form">How to Apply</a></li>
             <li><a href="https://www.theacademiccity.com/boarding">Boarding Life</a></li>
             <li><a href="#awards">Awards</a></li>
-            <li><a href="#form">Contact Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
           </ul>
         </div>
-        <div id="contact">
+        <div>
           <h5>Reach Us</h5>
           <p>Nelamangala, Bengaluru, Karnataka 562123</p>
           <p>080-47092273</p>
@@ -791,7 +891,7 @@
   <div class="mobile-action-bar">
     <a class="call" href="tel:08047092273"><svg><use href="#ic-phone"/></svg>Call</a>
     <a class="wa" href="https://wa.me/919364898405" target="_blank" rel="noopener"><svg><use href="#ic-wa"/></svg>WhatsApp</a>
-    <a class="apply-btn" href="#enquiry"><svg><use href="#ic-arrow"/></svg>Apply Now</a>
+    <a class="chat-btn" href="https://wa.me/919364898405?text=Hi%2C%20I%20have%20a%20question%20about%20admissions%20at%20The%20Academic%20City%20School." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"><svg aria-hidden="true"><use href="#ic-message"/></svg><span>Chat with Us</span></a>
   </div>
 
   <div class="enquiry-modal" id="enquiryModal" aria-hidden="true">
@@ -822,23 +922,14 @@
             <label for="enquiry-mobile">Mobile Number <span class="req">*</span></label>
             <input id="enquiry-mobile" name="mobile" type="tel" autocomplete="tel" required placeholder="Enter your mobile number">
           </div>
-          <div class="enquiry-field-grid two-col">
-            <div class="enquiry-field">
-              <label for="enquiry-class">Class Looking For <span class="req">*</span></label>
-              <select id="enquiry-class" name="selectclass" required>
-                <option value="">Select class</option>
-                <option>Class 4</option><option>Class 5</option><option>Class 6</option><option>Class 7</option>
-                <option>Class 8</option><option>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option>
-              </select>
-            </div>
-            <div class="enquiry-field">
-              <label for="enquiry-campus">Preferred Campus <span class="req">*</span></label>
-              <select id="enquiry-campus" name="campus" required>
-                <option value="">Select campus</option>
-                <option>Bengaluru</option>
-                <option>Indore</option>
-              </select>
-            </div>
+          <input type="hidden" name="campus" value="Bangalore">
+          <div class="enquiry-field">
+            <label for="enquiry-class">Class Looking For <span class="req">*</span></label>
+            <select id="enquiry-class" name="selectclass" required>
+              <option value="">Select class</option>
+              <option>Class 5</option><option>Class 6</option><option>Class 7</option>
+              <option>Class 8</option><option>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option>
+            </select>
           </div>
           <div class="enquiry-field">
             <label for="enquiry-email">Email Address <span class="req">*</span></label>
@@ -875,11 +966,10 @@
     </div>
   </div>
 
-  <script src="js/site-chrome.js"></script>
+  <script src="js/site-chrome.js?v=20260924aboutm"></script>
   <script src="js/enquiry-modal.js"></script>
-  <script src="js/gallery-data.js?v=20260918e"></script>
-  <script src="js/home-gallery.js?v=20260918d"></script>
-  <script src="js/roadmap-puppet.js?v=20260918b"></script>
+  <script src="js/gallery-data.js?v=20260924gallery2"></script>
+  <script src="js/home-gallery.js?v=20260924gallery2"></script>
   <script src="js/achievements-gallery-data.js?v=20260922"></script>
   <script src="js/achievements-gallery.js?v=20260922"></script>
   <script src="js/faq-section.js?v=20260922"></script>

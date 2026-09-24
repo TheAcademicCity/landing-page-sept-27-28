@@ -39,4 +39,23 @@
 
     observer.observe(footer);
   }
+
+  var aboutBento = document.getElementById('aboutBento');
+  var bentoDots = document.querySelectorAll('.bento-mobile-dots span');
+  if (aboutBento && bentoDots.length) {
+    var bentoStep = 240 + 14;
+
+    function syncBentoDots() {
+      if (window.innerWidth > 767) return;
+      var index = Math.round(aboutBento.scrollLeft / bentoStep);
+      index = Math.min(Math.max(index, 0), bentoDots.length - 1);
+      bentoDots.forEach(function (dot, i) {
+        dot.classList.toggle('is-active', i === index);
+      });
+    }
+
+    aboutBento.addEventListener('scroll', syncBentoDots, { passive: true });
+    window.addEventListener('resize', syncBentoDots);
+    syncBentoDots();
+  }
 })();

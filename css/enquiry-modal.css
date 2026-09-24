@@ -291,8 +291,8 @@
   text-transform: uppercase;
   color: var(--forest-deep);
   cursor: pointer;
-  box-shadow: 0 10px 26px -8px rgba(196, 136, 14, 0.6);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: none;
+  transition: background 0.18s ease, transform 0.18s ease;
 }
 
 @media (min-width: 640px) {
@@ -306,8 +306,8 @@
 }
 
 .enquiry-submit:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 14px 30px -8px rgba(196, 136, 14, 0.75);
+  background: linear-gradient(135deg, #f0b020, var(--gold-dark));
+  box-shadow: none;
 }
 
 .enquiry-submit:disabled { opacity: 0.7; cursor: wait; }
@@ -315,6 +315,39 @@
 .enquiry-error {
   font-size: 0.9rem;
   color: #b42318;
+}
+
+.enquiry-error:empty {
+  display: none;
+}
+
+/* Inline #form — same card + fields as popup */
+.enquiry-form-page {
+  margin-top: 0;
+  width: 100%;
+}
+
+.enquiry-form-actions--page {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.enquiry-form-actions--page .enquiry-submit {
+  width: 100%;
+}
+
+.enquiry-form-fineprint {
+  margin: 0.75rem 0 0;
+  font-size: 0.7rem;
+  line-height: 1.55;
+  text-align: center;
+  color: #5a6a72;
+}
+
+@media (min-width: 640px) {
+  .enquiry-form-fineprint {
+    font-size: 0.78rem;
+  }
 }
 
 .thankyou-panel {
