@@ -64,6 +64,18 @@
   object-position: center top;
 }
 
+.testi-card__avatar--zoom-out img {
+  transform: scale(0.72);
+  transform-origin: center 28%;
+  object-position: center 22%;
+}
+
+.testi-card__avatar--zoom-out-slight img {
+  transform: scale(0.93);
+  transform-origin: center 30%;
+  object-position: center 24%;
+}
+
 .testi-card__meta {
   min-width: 0;
 }

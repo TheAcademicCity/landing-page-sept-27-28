@@ -97,95 +97,76 @@
     margin-top: 0;
   }
 
-  .side-action-stack {
+  .side-action-stack,
+  .widget-stack {
     display: none !important;
   }
 
   .hero {
-    min-height: 100svh;
-    padding-top: calc(var(--site-nav-stack) + clamp(12px, 3vw, 18px));
-    padding-bottom: 0;
-  }
-
-  .hero-media {
-    filter: blur(2px);
-    transform: scale(1.04);
-    background-position: center 35%;
-  }
-
-  .hero-frost {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.5) 0%,
-      rgba(255, 255, 255, 0.34) 38%,
-      rgba(255, 255, 255, 0.12) 72%,
-      rgba(255, 255, 255, 0.06) 100%
-    );
+    min-height: calc(100svh - var(--site-mobile-action-height, 72px));
+    padding-top: var(--site-nav-stack);
+    padding-bottom: calc(var(--site-mobile-action-height, 72px) + 0.5rem);
+    background-color: #eef4f1;
   }
 
   .hero-inner {
     display: flex;
     flex-direction: column;
     flex: 1;
+    justify-content: flex-start;
     min-height: 0;
+    padding-top: clamp(5vh, 9vh, 14vh);
     padding-bottom: 0;
   }
 
   .hero-layout {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    gap: 0;
+    flex: 0 0 auto;
+    gap: clamp(10px, 2.5vh, 18px);
     min-height: 0;
-    height: 100%;
+    width: 100%;
   }
 
   .hero-content {
-    flex-shrink: 0;
-    padding-right: 0;
-    padding-top: clamp(28px, 9vw, 48px);
-  }
-
-  .hero .hero-actions {
-    display: none;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
   }
 
   .hero-collage {
-    display: grid;
-    grid-template-rows: minmax(0, 1fr);
-    align-items: end;
-    justify-items: center;
-    flex: 1 1 auto;
-    min-height: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 100%;
+    max-height: min(40vh, 19rem);
     margin: 0 -16px;
-    margin-top: clamp(2px, 1vw, 8px);
+    margin-top: 0;
     pointer-events: none;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .hero-collage img {
     display: block;
-    grid-row: 1;
-    height: 100%;
     width: auto;
-    max-width: 122%;
-    min-height: 0;
+    height: auto;
+    max-width: 118%;
+    max-height: min(40vh, 19rem);
     object-fit: contain;
     object-position: center bottom;
   }
 
   .hero h1 {
     font-size: clamp(1.65rem, 8.2vw, 2.15rem);
+    margin-top: 0;
     margin-bottom: clamp(8px, 2vw, 12px);
-    -webkit-text-stroke: 0.75px #fff;
-  }
-
-  .hero h1 em {
-    -webkit-text-stroke: 0.75px #fff;
-  }
-
-  .hero-title-nowrap {
-    white-space: normal;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
   }
 
   .hero-eyebrow {
@@ -197,13 +178,28 @@
     margin-bottom: 20px;
   }
 
+  .hero-stats {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: clamp(14px, 4.5vw, 22px);
+    width: 100%;
+    max-width: 100%;
+    margin-top: clamp(14px, 3.5vw, 20px);
+    margin-bottom: 0;
+  }
+
+  .hero-stat-card {
+    text-align: center;
+  }
+
   .hero-stats b {
-    font-size: clamp(1.15rem, 5vw, 1.45rem);
+    font-size: clamp(0.78rem, 3.4vw, 0.95rem);
   }
 
   .hero-stats span {
-    font-size: 0.68rem;
-    line-height: 1.35;
+    font-size: 0.52rem;
+    line-height: 1.25;
+    margin-top: 3px;
   }
 
   .cta-band {
@@ -830,8 +826,8 @@
   }
 
   #academics .integrated-programme__partners-logos img {
-    height: 1.5rem;
-    max-width: 6.75rem;
+    height: 2rem;
+    max-width: 8.5rem;
     opacity: 0.85;
   }
 
@@ -859,8 +855,8 @@
 
   #cocurricular .cocurricular-sport__media {
     order: -1;
-    aspect-ratio: 2.2 / 1;
-    max-height: 148px;
+    aspect-ratio: 2.05 / 1;
+    max-height: 138px;
     border-radius: 0;
     box-shadow: none;
     background: var(--forest-deep);
@@ -1422,14 +1418,25 @@
     padding: 1rem 1.125rem 0.875rem;
   }
 
-  #form .form-side h3 {
-    font-size: 1.0625rem;
-    margin-bottom: 0;
-    line-height: 1.35;
+  #form .form-side__title {
+    font-size: 1.85rem;
+    line-height: 1.3;
+    font-weight: 800;
+    color: #fff;
   }
 
-  #form .form-side > div[style] {
+  #form .form-side__cta {
     display: none;
+  }
+
+  #form .form-side__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  #form .form-side {
+    min-height: 12.5rem;
+    padding-bottom: 1.25rem;
   }
 
   #form .form-fields {

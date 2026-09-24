@@ -433,6 +433,12 @@ main.site-main {
   pointer-events: none;
 }
 
+@media (max-width: 1279px) {
+  .widget-stack {
+    display: none !important;
+  }
+}
+
 @media (min-width: 1280px) {
   .widget-stack { display: flex; }
 }
@@ -501,13 +507,13 @@ main.site-main {
 }
 
 .side-action-tab--gold {
-  color: var(--forest-deep);
-  background: var(--gold);
+  color: #fff;
+  background: #2d945c;
 }
 
 .side-action-tab--gold:hover {
-  background: #e09d10;
-  color: var(--forest-deep);
+  background: var(--forest-deep, #0f3d38);
+  color: #fff;
 }
 
 .side-action-divider {
@@ -553,16 +559,26 @@ main.site-main {
 .side-icon.phone:hover,
 .side-icon.pin:hover { background: var(--gold); color: var(--forest-deep); }
 
-.side-icon svg { width: 1.25rem; height: 1.25rem; }
+.side-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  max-width: 1.25rem;
+  max-height: 1.25rem;
+  flex-shrink: 0;
+}
 
 .side-icon.side-icon-insta svg {
   width: 1.5rem;
   height: 1.5rem;
+  max-width: 1.5rem;
+  max-height: 1.5rem;
 }
 
 .side-icon img {
   width: 1.75rem;
   height: 1.75rem;
+  max-width: 1.75rem;
+  max-height: 1.75rem;
   object-fit: contain;
 }
 

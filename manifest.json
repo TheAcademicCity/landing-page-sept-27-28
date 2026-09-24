@@ -1,0 +1,21 @@
+{
+  "name": "The Academic City School",
+  "short_name": "TACS",
+  "description": "India's first career-oriented boarding school — admissions open 2027–28.",
+  "start_url": "/index.html",
+  "display": "browser",
+  "background_color": "#0a2c28",
+  "theme_color": "#185850",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
