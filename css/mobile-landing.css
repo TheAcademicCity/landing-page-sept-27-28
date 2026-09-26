@@ -15,9 +15,22 @@
     --section-head-gap: 18px;
   }
 
+  .u-mob-only {
+    display: block;
+  }
+
+  span.u-mob-only,
   p .u-mob-only,
   .lead .u-mob-only {
     display: inline;
+  }
+
+  p.u-mob-only {
+    display: block;
+  }
+
+  .faq-list.u-mob-only {
+    display: flex;
   }
 
   .u-desk-only {
@@ -45,8 +58,8 @@
   /* Match main site mobile section surfaces */
   #academics.academics-section,
   #cocurricular,
-  #form {
-    background: var(--surface-white, #fff);
+  #form.hero-admissions {
+    background: linear-gradient(180deg, #eef4f1 0%, var(--paper, #f4f8f6) 28%);
   }
 
   #achievements.achievements-section,
@@ -54,9 +67,6 @@
     background: var(--off-white, #ececec);
   }
 
-  #awards {
-    background: var(--surface-white, #fff);
-  }
 
   .wrap {
     padding-left: 16px;
@@ -103,9 +113,9 @@
   }
 
   .hero {
-    min-height: calc(100svh - var(--site-mobile-action-height, 72px));
+    min-height: calc(100svh - var(--site-mobile-action-height, 72px) + 1.25rem);
     padding-top: var(--site-nav-stack);
-    padding-bottom: calc(var(--site-mobile-action-height, 72px) + 0.5rem);
+    padding-bottom: calc(var(--site-mobile-action-height, 72px) + 1rem);
     background-color: #eef4f1;
   }
 
@@ -144,7 +154,7 @@
     justify-content: center;
     flex: 0 0 auto;
     width: 100%;
-    max-height: min(40vh, 19rem);
+    max-height: min(44vh, 21rem);
     margin: 0 -16px;
     margin-top: 0;
     pointer-events: none;
@@ -156,7 +166,7 @@
     width: auto;
     height: auto;
     max-width: 118%;
-    max-height: min(40vh, 19rem);
+    max-height: min(44vh, 21rem);
     object-fit: contain;
     object-position: center bottom;
   }
@@ -453,6 +463,15 @@
     );
   }
 
+  #about .bento .tile.b3::after {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.44) 0%,
+      rgba(0, 0, 0, 0.18) 36%,
+      transparent 100%
+    );
+  }
+
   #about .bento .tile-content {
     padding: 1.125rem 1.125rem 1.375rem;
   }
@@ -734,13 +753,18 @@
     transform: none;
   }
 
-  #academics .pathway-card .d {
-    display: none;
+  #academics .pathway-card .focus {
+    margin-bottom: 0.5rem;
+    font-size: 0.72rem;
   }
 
-  #academics .pathway-card .focus {
-    margin-bottom: 0;
+  #academics .pathway-card .d {
+    display: block;
     font-size: 0.72rem;
+    line-height: 1.45;
+    color: var(--muted);
+    font-weight: 500;
+    margin: 0;
   }
 
   #academics .pathway-card h4 {
@@ -788,19 +812,143 @@
     color: #999;
   }
 
-  #academics .integrated-programme__grid {
-    gap: 0.875rem;
-    margin-inline: 0;
-    padding-inline: 0;
-    padding-bottom: 0.375rem;
-    scroll-padding-inline: 0;
-    -webkit-overflow-scrolling: touch;
+  #academics .integrated-programme__faq.faq-list {
+    margin: 0;
+    max-width: none;
+    gap: 0.625rem;
   }
 
-  #academics .integrated-programme__card {
-    flex: 0 0 235px;
-    padding: 1.25rem;
-    border-radius: 20px;
+  #academics .integrated-programme__faq .sip-faq-card {
+    border: none;
+    border-radius: 18px;
+    color: #fff;
+    box-shadow: 0 10px 28px -18px rgba(10, 44, 40, 0.45);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card:nth-child(1) {
+    background: linear-gradient(150deg, var(--violet), #3d0d63);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card:nth-child(2) {
+    background: linear-gradient(150deg, var(--forest), #0c322c);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card:nth-child(3) {
+    background: linear-gradient(150deg, #2e2a2c, #241f22);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card:not(.is-open):hover {
+    transform: none;
+    box-shadow: 0 10px 28px -18px rgba(10, 44, 40, 0.45);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card.is-open {
+    box-shadow: 0 14px 32px -16px rgba(10, 44, 40, 0.5);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card .faq-card__trigger {
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9375rem 1rem;
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card .faq-card__trigger:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card__head {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-width: 0;
+    flex: 1;
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card__emoji {
+    flex-shrink: 0;
+    font-size: 1.125rem;
+    line-height: 1;
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card .faq-card__question {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: #fff;
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card:not(.is-open):hover .faq-card__question {
+    color: #fff;
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card .faq-card__icon {
+    width: 1.625rem;
+    height: 1.625rem;
+    margin-top: 0;
+    border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card .faq-card__icon svg {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card:not(.is-open):hover .faq-card__icon {
+    transform: none;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card.is-open .faq-card__icon {
+    border-color: var(--gold);
+    background: var(--gold);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card.is-open .faq-card__icon svg {
+    color: var(--forest-deep);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card .faq-card__panel {
+    min-height: 0;
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card .faq-card__panel-inner {
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 1rem 0.875rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card:not(.is-open) .faq-card__panel-inner {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top-color: transparent;
+  }
+
+  #academics .integrated-programme__faq .sip-faq-card.is-open .faq-card__panel-inner {
+    padding-top: 0.625rem;
+  }
+
+  #academics .integrated-programme__faq .sip-accordion__list {
+    margin: 0;
+    padding: 0;
+  }
+
+  #academics .integrated-programme__faq .sip-accordion__list li {
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 0.4375rem;
+  }
+
+  #academics .integrated-programme__faq .sip-accordion__list li:last-child {
+    margin-bottom: 0;
+  }
+
+  #academics .integrated-programme__faq .sip-accordion__list li::before {
+    content: '→';
+    color: var(--gold);
+    font-size: 0.65rem;
+    margin-top: 2px;
   }
 
   #academics .integrated-programme__partners {
@@ -855,15 +1003,21 @@
 
   #cocurricular .cocurricular-sport__media {
     order: -1;
-    aspect-ratio: 2.05 / 1;
-    max-height: 138px;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 168px;
+    max-height: min(220px, 52vw);
     border-radius: 0;
     box-shadow: none;
     background: var(--forest-deep);
   }
 
   #cocurricular .cocurricular-sport__media img {
-    object-position: center 40%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
   }
 
   #cocurricular .cocurricular-sport__copy {
@@ -936,8 +1090,38 @@
   }
 
   #cocurricular .cocurricular-boarding__day {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     margin-bottom: 1rem !important;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid rgba(24, 88, 80, 0.08);
+    background: #fff;
+    box-shadow: 0 10px 32px -22px rgba(36, 48, 55, 0.18);
+  }
+
+  #cocurricular .cocurricular-boarding__media {
+    order: -1;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 168px;
+    max-height: min(220px, 52vw);
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--forest-deep);
+  }
+
+  #cocurricular .cocurricular-boarding__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 22% center;
+  }
+
+  #cocurricular .cocurricular-boarding__copy {
+    padding: 1rem 1rem 1.125rem;
   }
 
   #cocurricular .cocurricular-boarding__day .f-copy .kicker-label {
@@ -958,17 +1142,19 @@
     color: var(--navy, #243037);
   }
 
-  /* Daily schedule — single rail, centered dots, dividers skip the rail column */
+  /* Daily schedule — time + description rows with dividers (no rail) */
   #cocurricular .cocurricular-timeline {
-    --schedule-rail: 1.125rem;
+    --schedule-pad-y: 0.875rem;
+    --schedule-pad-x: 1rem;
+    --schedule-text-gap: 0.625rem;
     position: relative;
-    padding-left: 0;
     margin-top: 0 !important;
+    padding-left: 0;
     overflow: hidden;
-    border-radius: 16px;
-    border: 1px solid var(--line, #dce8e4);
+    border-radius: 14px;
+    border: 1px solid rgba(24, 88, 80, 0.12);
     background: #fff;
-    box-shadow: 0 10px 28px -20px rgba(36, 48, 55, 0.16);
+    box-shadow: 0 8px 24px -18px rgba(36, 48, 55, 0.14);
   }
 
   #cocurricular .cocurricular-timeline::before {
@@ -984,72 +1170,64 @@
   }
 
   #cocurricular .cocurricular-timeline::after {
-    content: "";
-    position: absolute;
-    left: var(--schedule-rail);
-    top: calc(3px + 1.125rem);
-    bottom: 1.125rem;
-    width: 2px;
-    transform: translateX(-50%);
-    background: rgba(24, 88, 80, 0.16);
-    z-index: 0;
-    pointer-events: none;
+    display: none;
   }
 
   #cocurricular .cocurricular-timeline .t-item {
     position: relative;
     display: grid;
-    grid-template-columns: 5.75rem minmax(0, 1fr);
-    column-gap: 0.75rem;
-    align-items: start;
-    padding: 0.8125rem 0.875rem 0.8125rem 2.25rem;
-    border-top: none;
+    grid-template-columns: minmax(5rem, 5.75rem) minmax(0, 1fr);
+    column-gap: 0;
+    align-items: stretch;
+    padding: var(--schedule-pad-y) var(--schedule-pad-x);
+    margin: 0;
+    padding-bottom: var(--schedule-pad-y);
     background: #fff;
+  }
+
+  #cocurricular .cocurricular-timeline .t-item.u-desk-only {
+    display: none !important;
+  }
+
+  #cocurricular .cocurricular-timeline .t-item::before,
+  #cocurricular .cocurricular-timeline .t-item::after {
+    display: none;
+    content: none;
   }
 
   #cocurricular .cocurricular-timeline .t-item + .t-item {
-    padding-top: 0;
-  }
-
-  #cocurricular .cocurricular-timeline .t-item + .t-item .time,
-  #cocurricular .cocurricular-timeline .t-item + .t-item .what {
-    border-top: 1px solid var(--off-white, #ececec);
-    padding-top: 0.8125rem;
-  }
-
-  #cocurricular .cocurricular-timeline .t-item::before {
-    content: "";
-    position: absolute;
-    left: var(--schedule-rail);
-    top: 50%;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid var(--gold-dark, #c4880e);
-    box-shadow: none;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-  }
-
-  #cocurricular .cocurricular-timeline .t-item::after {
-    display: none;
+    border-top: 1px solid rgba(24, 88, 80, 0.08);
   }
 
   #cocurricular .cocurricular-timeline .t-item .time {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.6875rem;
     font-weight: 700;
     line-height: 1.35;
     color: var(--forest, #185850);
+    padding: 0 var(--schedule-text-gap) 0 0;
+    margin: 0;
+    border: none;
+    border-right: 0.5px solid rgba(24, 88, 80, 0.08);
   }
 
   #cocurricular .cocurricular-timeline .t-item .what {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
     font-family: 'Outfit', sans-serif;
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1.45;
-    color: #666;
+    color: #5b6f6c;
+    padding: 0 0 0 var(--schedule-text-gap);
+    margin: 0;
+    border: none;
   }
 
   #cocurricular .cocurricular-boarding__grid {
@@ -1130,14 +1308,33 @@
   }
 
   #achievements .achievements-gallery__track {
-    height: 118px;
-    gap: 5px;
+    height: 92px;
+    gap: 4px;
   }
 
   #achievements .achievements-gallery__tile,
   #achievements .achievements-gallery__words {
-    width: min(58vw, 200px);
-    border-radius: 12px;
+    width: min(50vw, 164px);
+    border-radius: 10px;
+  }
+
+  #achievements .achievements-gallery__cap {
+    padding: 16px 8px 6px;
+  }
+
+  #achievements .achievements-gallery__cap strong {
+    font-size: 0.6rem;
+  }
+
+  #achievements .achievements-gallery__cap span {
+    font-size: 0.55rem;
+  }
+
+  #achievements .achievements-gallery__cat {
+    top: 6px;
+    right: 6px;
+    padding: 3px 7px;
+    font-size: 0.5rem;
   }
 
   #achievements .achievements-gallery__row--offset-b {
@@ -1196,20 +1393,27 @@
     text-transform: none;
   }
 
-  /* Awards — TAC_Main_Website AwardsSection mobile (4×2 compact grid) */
-  #awards.awards-section {
-    padding-top: clamp(28px, 3.5vw, 36px);
-    padding-bottom: 2rem;
-    background: var(--off-white, #ececec) !important;
+  /* Awards strip — below hero (4×2 compact grid) */
+  #awards.awards-strip.awards-section {
+    padding-top: clamp(28px, 7vw, 40px) !important;
+    padding-bottom: clamp(18px, 4vw, 26px) !important;
+    background: linear-gradient(180deg, #f4f9f7 0%, #fff 100%);
   }
 
-  #awards .section-head {
-    margin-bottom: 1.125rem;
-    text-align: left;
+  .awards-strip__head {
+    text-align: center;
+    margin-bottom: 0.875rem;
   }
 
-  #awards .section-head h2 {
-    font-size: 1.3rem;
+  .awards-strip__title {
+    font-size: 1.05rem;
+  }
+
+  .hero-admissions__panel {
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    box-shadow: 0 14px 40px -24px rgba(36, 48, 55, 0.22);
   }
 
   #awards .awards-grid {
@@ -1403,15 +1607,21 @@
     line-height: 1.55;
   }
 
-  #form {
-    padding-top: clamp(24px, 5vw, 32px);
-    padding-bottom: clamp(28px, 6vw, 40px);
+  #form.hero-admissions {
+    padding-top: clamp(16px, 4vw, 24px);
+    padding-bottom: clamp(20px, 5vw, 28px);
   }
 
-  #form .form-shell {
-    border-radius: 18px;
-    border-color: rgba(24, 88, 80, 0.1);
-    box-shadow: 0 12px 32px -22px rgba(36, 48, 55, 0.2);
+  .hero-admissions .form-shell--hero-admissions {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #form .form-shell,
+  .hero-admissions .form-shell {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
   }
 
   #form .form-side {
@@ -1442,6 +1652,12 @@
   #form .form-fields {
     padding: 1rem 1rem 1.125rem;
     background: #fff;
+  }
+
+  .hero-admissions__form-title {
+    font-size: 1.35rem;
+    text-align: left;
+    margin-bottom: 0.875rem;
   }
 
   #form .enquiry-submit {

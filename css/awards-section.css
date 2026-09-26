@@ -4,6 +4,10 @@
   overflow: visible;
 }
 
+.awards-strip.awards-section {
+  overflow: visible;
+}
+
 .awards-section .section-head {
   margin-bottom: clamp(28px, 3.5vw, 40px);
 }

@@ -36,14 +36,14 @@
   display: flex;
   gap: 6px;
   width: max-content;
-  height: 140px;
+  height: 112px;
   animation: achievements-gallery-marquee 120s linear infinite;
 }
 
 @media (min-width: 768px) {
   .achievements-gallery__track {
     gap: 8px;
-    height: 160px;
+    height: 128px;
   }
 }
 
@@ -64,7 +64,7 @@
 .achievements-gallery__tile {
   position: relative;
   flex: 0 0 auto;
-  width: min(64vw, 220px);
+  width: min(56vw, 188px);
   height: 100%;
   overflow: hidden;
   border-radius: 14px;
@@ -73,7 +73,7 @@
 
 @media (min-width: 768px) {
   .achievements-gallery__tile {
-    width: 240px;
+    width: 200px;
     border-radius: 16px;
   }
 }
@@ -113,14 +113,14 @@
   position: absolute;
   inset: auto 0 0;
   z-index: 2;
-  padding: 28px 12px 10px;
+  padding: 22px 10px 8px;
   background: linear-gradient(to top, rgba(15, 61, 56, 0.92), rgba(15, 61, 56, 0.55), transparent);
 }
 
 .achievements-gallery__cap strong {
   display: block;
   font-family: "Montserrat", sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   font-weight: 700;
   line-height: 1.35;
   color: #fff;
@@ -141,7 +141,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: min(64vw, 220px);
+  width: min(56vw, 188px);
   height: 100%;
   text-align: center;
   font-family: "Playfair Display", serif;
@@ -149,13 +149,13 @@
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.02em;
-  font-size: clamp(1.15rem, 12vw, 2.35rem);
+  font-size: clamp(1rem, 10vw, 1.85rem);
 }
 
 @media (min-width: 768px) {
   .achievements-gallery__words {
-    width: 240px;
-    font-size: clamp(1.45rem, 2vw, 2.35rem);
+    width: 200px;
+    font-size: clamp(1.2rem, 1.75vw, 1.95rem);
   }
 }
 

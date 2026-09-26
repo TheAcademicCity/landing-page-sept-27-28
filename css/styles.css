@@ -233,7 +233,7 @@ textarea:focus-visible {
   z-index: 2;
   flex: 1;
   width: 100%;
-  padding-bottom: clamp(28px, 4vw, 40px);
+  padding-bottom: clamp(32px, 5vw, 48px);
 }
 
 .hero-layout {
@@ -291,7 +291,7 @@ textarea:focus-visible {
     grid-template-rows: 1fr;
     align-items: stretch;
     gap: 0;
-    min-height: calc(100svh - var(--site-nav-stack) - 2rem);
+    min-height: calc(100svh - var(--site-nav-stack) + 0.75rem);
     overflow: visible;
   }
 
@@ -336,8 +336,8 @@ textarea:focus-visible {
     height: auto;
     max-width: min(860px, 70vw);
     max-height: min(
-      580px,
-      calc(100svh - var(--site-nav-stack) - 2rem - 16px)
+      620px,
+      calc(100svh - var(--site-nav-stack) + 0.5rem)
     );
     margin: 0 0 0 auto;
     object-fit: contain;
@@ -527,16 +527,12 @@ section {
 #academics.academics-section,
 #achievements.achievements-section,
 #testimonials.testimonials-section,
-#form {
-  background: var(--paper);
+#form.hero-admissions {
+  background: linear-gradient(180deg, #eef4f1 0%, var(--paper) 22%, var(--paper) 100%);
 }
 
 #about {
   background: var(--off-white);
-}
-
-#awards {
-  background: var(--surface-white);
 }
 
 .dark {
@@ -684,12 +680,15 @@ section {
 }
 
 .bento .b1 .tile-photo {
-  object-position: 82% center;
+  object-position: 52% center;
+}
+
+.bento .b3 .tile-photo {
+  object-position: 38% 42%;
 }
 
 .bento .b1::after,
 .bento .b2::after,
-.bento .b3::after,
 .bento .b4::after {
   content: "";
   position: absolute;
@@ -700,6 +699,20 @@ section {
     rgba(10, 44, 40, 0.68) 0%,
     rgba(10, 44, 40, 0.32) 42%,
     rgba(10, 44, 40, 0.08) 100%
+  );
+  pointer-events: none;
+}
+
+.bento .b3::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(10, 44, 40, 0.26) 0%,
+    rgba(10, 44, 40, 0.08) 32%,
+    transparent 100%
   );
   pointer-events: none;
 }
@@ -1720,9 +1733,9 @@ section {
 .cta-band .actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .cta-band .phone { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
 
-#form {
-  padding-top: var(--section-y, clamp(40px, 4.5vw, 52px));
-  padding-bottom: var(--section-y, clamp(40px, 4.5vw, 52px));
+#form.hero-admissions {
+  padding-top: clamp(20px, 3.5vw, 32px);
+  padding-bottom: clamp(28px, 4.5vw, 44px);
 }
 
 .form-shell {

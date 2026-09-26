@@ -1,26 +1,31 @@
 (function () {
-  var list = document.querySelector('.faq-list[data-faq-accordion]');
-  if (!list) return;
+  var lists = document.querySelectorAll('.faq-list[data-faq-accordion]');
 
-  var cards = list.querySelectorAll('.faq-card');
+  lists.forEach(function (list) {
+    var cards = list.querySelectorAll('.faq-card');
 
-  cards.forEach(function (card) {
-    var trigger = card.querySelector('.faq-card__trigger');
-    if (!trigger) return;
+    cards.forEach(function (card) {
+      var trigger = card.querySelector('.faq-card__trigger');
+      if (!trigger) return;
 
-    trigger.addEventListener('click', function () {
-      var isOpen = card.classList.contains('is-open');
-
-      cards.forEach(function (other) {
-        other.classList.remove('is-open');
-        var btn = other.querySelector('.faq-card__trigger');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
-      });
-
-      if (!isOpen) {
-        card.classList.add('is-open');
+      if (card.classList.contains('is-open')) {
         trigger.setAttribute('aria-expanded', 'true');
       }
+
+      trigger.addEventListener('click', function () {
+        var isOpen = card.classList.contains('is-open');
+
+        cards.forEach(function (other) {
+          other.classList.remove('is-open');
+          var btn = other.querySelector('.faq-card__trigger');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          card.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
     });
   });
 

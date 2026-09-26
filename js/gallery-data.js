@@ -3,10 +3,6 @@ window.HOME_GALLERY = {
   label: "Life on Campus",
   title: "A glimpse into everyday TACS",
   titleMobile: "A Glimpse Into Everyday TACS",
-  instagram: {
-    label: "Follow on Instagram",
-    href: "https://www.instagram.com/the_academic_city/",
-  },
   tabs: [
     {
       id: "campus",
