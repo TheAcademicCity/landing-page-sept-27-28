@@ -1612,8 +1612,8 @@
 
   #faqs .faq-card__answer {
     padding: 0 0.875rem 0.75rem;
-    font-size: 0.6875rem;
-    line-height: 1.55;
+    font-size: 0.75rem;
+    line-height: 1.4;
   }
 
   #form.hero-admissions {
