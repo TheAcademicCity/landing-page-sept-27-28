@@ -8,10 +8,17 @@
   const tabsEl = root.querySelector(".home-gallery-tabs");
   const panelsEl = root.querySelector(".home-gallery-panels");
   const lightbox = document.getElementById("galleryLightbox");
+  const lightboxPanel = lightbox?.querySelector(".gallery-lightbox-panel");
   const lightboxImg = lightbox?.querySelector("img");
   const lightboxTitle = lightbox?.querySelector(".gallery-lightbox-title");
+  const lightboxPrev = lightbox?.querySelector("[data-lightbox-prev]");
+  const lightboxNext = lightbox?.querySelector("[data-lightbox-next]");
 
   let activeTab = data.tabs[0]?.id ?? "campus";
+  let lightboxSlides = [];
+  let lightboxIndex = 0;
+  let lightboxTouchStartX = 0;
+  let lightboxTouchStartY = 0;
   let mobileScrollLock = false;
   let mobileScrollTimer = null;
 
@@ -304,11 +311,67 @@
     syncMobileGalleryHeight(0);
   }
 
+  function getActiveGalleryPanel() {
+    if (mobileMq.matches) {
+      return root.querySelector(
+        `.home-gallery-panels-mobile .home-gallery-panel[data-tab="${activeTab}"]`,
+      );
+    }
+    return root.querySelector(
+      `.home-gallery-panels-desktop .home-gallery-panel[data-tab="${activeTab}"]`,
+    );
+  }
+
+  function collectLightboxSlides(panel) {
+    if (!panel) return [];
+    return Array.from(panel.querySelectorAll(".home-gallery-tile"))
+      .map(function (tile) {
+        return { src: tile.dataset.src || "", label: tile.dataset.label || "" };
+      })
+      .filter(function (slide) {
+        return Boolean(slide.src);
+      });
+  }
+
+  function updateLightboxNavUi() {
+    const multi = lightboxSlides.length > 1;
+    if (lightboxPrev) {
+      lightboxPrev.disabled = !multi;
+      lightboxPrev.hidden = !multi;
+    }
+    if (lightboxNext) {
+      lightboxNext.disabled = !multi;
+      lightboxNext.hidden = !multi;
+    }
+  }
+
+  function showLightboxSlide(index) {
+    if (!lightboxImg || !lightboxSlides.length) return;
+    const total = lightboxSlides.length;
+    lightboxIndex = ((index % total) + total) % total;
+    const slide = lightboxSlides[lightboxIndex];
+    lightboxImg.src = slide.src;
+    lightboxImg.alt = slide.label;
+    if (lightboxTitle) lightboxTitle.textContent = slide.label;
+    updateLightboxNavUi();
+  }
+
+  function stepLightbox(delta) {
+    if (lightboxSlides.length < 2) return;
+    showLightboxSlide(lightboxIndex + delta);
+  }
+
   function openLightbox(src, label) {
     if (!lightbox || !lightboxImg) return;
-    lightboxImg.src = src;
-    lightboxImg.alt = label;
-    if (lightboxTitle) lightboxTitle.textContent = label;
+    lightboxSlides = collectLightboxSlides(getActiveGalleryPanel());
+    if (!lightboxSlides.length) {
+      lightboxSlides = [{ src: src, label: label || "" }];
+    }
+    const startIndex = lightboxSlides.findIndex(function (slide) {
+      return slide.src === src;
+    });
+    lightboxIndex = startIndex >= 0 ? startIndex : 0;
+    showLightboxSlide(lightboxIndex);
     lightbox.hidden = false;
     document.body.style.overflow = "hidden";
   }
@@ -317,7 +380,40 @@
     if (!lightbox) return;
     lightbox.hidden = true;
     document.body.style.overflow = "";
+    lightboxSlides = [];
+    lightboxIndex = 0;
     if (lightboxImg) lightboxImg.src = "";
+  }
+
+  function bindLightboxGestures() {
+    if (!lightboxPanel) return;
+
+    lightboxPanel.addEventListener(
+      "touchstart",
+      function (e) {
+        if (lightbox.hidden || lightboxSlides.length < 2) return;
+        const touch = e.changedTouches[0];
+        if (!touch) return;
+        lightboxTouchStartX = touch.clientX;
+        lightboxTouchStartY = touch.clientY;
+      },
+      { passive: true },
+    );
+
+    lightboxPanel.addEventListener(
+      "touchend",
+      function (e) {
+        if (lightbox.hidden || lightboxSlides.length < 2) return;
+        const touch = e.changedTouches[0];
+        if (!touch) return;
+        const dx = touch.clientX - lightboxTouchStartX;
+        const dy = touch.clientY - lightboxTouchStartY;
+        if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
+        if (dx < 0) stepLightbox(1);
+        else stepLightbox(-1);
+      },
+      { passive: true },
+    );
   }
 
   tabsEl.addEventListener("click", function (e) {
@@ -334,10 +430,15 @@
 
   lightbox?.addEventListener("click", function (e) {
     if (e.target.matches("[data-lightbox-close]")) closeLightbox();
+    if (e.target.matches("[data-lightbox-prev]")) stepLightbox(-1);
+    if (e.target.matches("[data-lightbox-next]")) stepLightbox(1);
   });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && lightbox && !lightbox.hidden) closeLightbox();
+    if (!lightbox || lightbox.hidden) return;
+    if (e.key === "Escape") closeLightbox();
+    else if (e.key === "ArrowLeft") stepLightbox(-1);
+    else if (e.key === "ArrowRight") stepLightbox(1);
   });
 
   buildTabs();
@@ -345,6 +446,7 @@
   if (window.loadAllDeferredImages) {
     window.loadAllDeferredImages();
   }
+  bindLightboxGestures();
   initMobileGallery();
   setTab(activeTab);
 })();

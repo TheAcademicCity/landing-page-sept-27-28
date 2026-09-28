@@ -171,12 +171,12 @@
 
   .hero .hero-collage img {
     display: block;
-    width: 100%;
+    width: 112%;
+    max-width: 112%;
     height: auto;
-    max-width: 100%;
     object-fit: contain;
     object-position: left bottom;
-    transform: translate(0, 16px);
+    transform: translate(clamp(-30px, -6.5vw, -16px), 16px);
     transform-origin: left bottom;
   }
 
@@ -626,8 +626,8 @@
   #gallery .home-gallery-bento {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: repeat(4, 72px);
-    gap: 6px;
+    grid-template-rows: repeat(4, min(28vw, 118px));
+    gap: 8px;
     width: 100%;
   }
 
@@ -705,8 +705,8 @@
   }
 
   #gallery .home-gallery-panels-mobile .home-gallery-tile--masonry {
-    height: min(var(--tile-h, 220px), min(48vw, 220px));
-    min-height: min(var(--tile-h, 220px), min(48vw, 220px));
+    height: max(var(--tile-h, 220px), min(52vw, 280px));
+    min-height: max(var(--tile-h, 220px), min(52vw, 280px));
     margin-bottom: 8px;
     break-inside: avoid;
   }

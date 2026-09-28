@@ -1,4 +1,5 @@
 .home-gallery {
+  --gallery-tile-min-h: 240px;
   padding-top: clamp(12px, 1.5vw, 20px);
 }
 
@@ -126,8 +127,8 @@
 
 .home-gallery-tile--masonry {
   display: block;
-  height: var(--tile-h, 220px);
-  min-height: min(var(--tile-h, 220px), min(48vw, 220px));
+  height: max(var(--tile-h, 220px), var(--gallery-tile-min-h, 240px));
+  min-height: max(var(--tile-h, 220px), var(--gallery-tile-min-h, 240px));
 }
 
 .home-gallery-tile--masonry img {
@@ -303,6 +304,39 @@
   cursor: pointer;
 }
 
+.gallery-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  touch-action: manipulation;
+}
+
+.gallery-lightbox-nav--prev {
+  left: 10px;
+}
+
+.gallery-lightbox-nav--next {
+  right: 10px;
+}
+
+.gallery-lightbox-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 .gallery-lightbox-title {
   position: absolute;
   width: 1px;
@@ -361,10 +395,14 @@
     display: block;
   }
 
+  .home-gallery {
+    --gallery-tile-min-h: max(240px, 52vw);
+  }
+
   .home-gallery-bento {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: repeat(4, 90px);
+    grid-template-rows: repeat(4, min(28vw, 118px));
     gap: 8px;
   }
 

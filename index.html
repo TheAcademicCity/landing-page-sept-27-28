@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260928heroshift">
-  <link rel="stylesheet" href="css/home-gallery.css?v=20260924galleryfix">
+  <link rel="stylesheet" href="css/styles.css?v=20260928heroshift5">
+  <link rel="stylesheet" href="css/home-gallery.css?v=20260928lightboxnav">
   <link rel="stylesheet" href="css/achievements-gallery.css?v=20260926achsmall">
   <link rel="stylesheet" href="css/campus-section.css?v=20260924norings">
   <link rel="stylesheet" href="css/contact-section.css?v=20260924cta">
@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="css/testimonials-section.css?v=20260924khushizoom2">
   <link rel="stylesheet" href="css/faq-section.css?v=20260924surfaces">
   <link rel="stylesheet" href="css/site-chrome.css?v=20260928navcompact">
-  <link rel="stylesheet" href="css/mobile-landing.css?v=20260928heromobile12">
+  <link rel="stylesheet" href="css/mobile-landing.css?v=20260928heromobile17">
   <link rel="stylesheet" href="css/enquiry-modal.css?v=20260924selectalign">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -576,7 +576,7 @@
           </p>
         </div>
         <div class="vd-actions">
-          <a class="btn btn-gold" href="#form">Book a Campus Visit</a>
+          <a class="btn btn-gold" href="#enquiry">Book a Campus Visit</a>
         </div>
         </div>
       </div>
@@ -872,18 +872,18 @@
         <div>
           <h5>Explore</h5>
           <ul>
-            <li><a href="https://www.theacademiccity.com/">Home</a></li>
-            <li><a href="https://www.theacademiccity.com/about">About Us</a></li>
-            <li><a href="https://www.theacademiccity.com/academics">Academics</a></li>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">Why TACS?</a></li>
+            <li><a href="#academics">Academics</a></li>
             <li><a href="#gallery">Gallery</a></li>
           </ul>
         </div>
         <div>
           <h5>Admissions</h5>
           <ul>
-            <li><a href="#form">How to Apply</a></li>
-            <li><a href="https://www.theacademiccity.com/boarding">Boarding Life</a></li>
-            <li><a href="#awards">Awards</a></li>
+            <li><a href="#form">Enquire Now</a></li>
+            <li><a href="#enquiry">Apply Now</a></li>
+            <li><a href="#boarding">Boarding Life</a></li>
             <li><a href="#contact">Contact Us</a></li>
           </ul>
         </div>
@@ -900,18 +900,20 @@
         <div>
           <h5>Explore</h5>
           <ul>
-            <li><a href="https://www.theacademiccity.com/">Home</a></li>
-            <li><a href="https://www.theacademiccity.com/about">About Us</a></li>
-            <li><a href="https://www.theacademiccity.com/academics">Academics</a></li>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">Why TACS?</a></li>
+            <li><a href="#academics">Academics</a></li>
+            <li><a href="#cocurricular">Co-curricular</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li><a href="https://www.theacademiccity.com/blog">Blogs &amp; Newsletters</a></li>
+            <li><a href="#campus">Campus Tour</a></li>
           </ul>
         </div>
         <div>
           <h5>Admissions</h5>
           <ul>
-            <li><a href="#form">How to Apply</a></li>
-            <li><a href="https://www.theacademiccity.com/boarding">Boarding Life</a></li>
+            <li><a href="#form">Enquire Now</a></li>
+            <li><a href="#enquiry">Apply Now</a></li>
+            <li><a href="#boarding">Boarding Life</a></li>
             <li><a href="#awards">Awards</a></li>
             <li><a href="#contact">Contact Us</a></li>
           </ul>
@@ -985,32 +987,21 @@
     </div>
   </div>
 
-  <div class="thankyou-modal" id="thankyouModal" aria-hidden="true">
-    <div class="enquiry-modal-backdrop" data-enquiry-close></div>
-    <div class="thankyou-panel" role="dialog" aria-modal="true" aria-labelledby="thankyouTitle">
-      <h2 id="thankyouTitle">Thank You</h2>
-      <div class="thankyou-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-      </div>
-      <h3>You're All Set!</h3>
-      <p>We are glad to receive your interest. You will hear back from our team soon.</p>
-      <a class="thankyou-home" href="#hero" data-enquiry-close>Go Back to Home</a>
-    </div>
-  </div>
-
   <div class="gallery-lightbox" id="galleryLightbox" hidden>
     <div class="gallery-lightbox-backdrop" data-lightbox-close></div>
     <div class="gallery-lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="galleryLightboxTitle">
       <button type="button" class="gallery-lightbox-close" data-lightbox-close aria-label="Close image preview">×</button>
+      <button type="button" class="gallery-lightbox-nav gallery-lightbox-nav--prev" data-lightbox-prev aria-label="Previous image">‹</button>
+      <button type="button" class="gallery-lightbox-nav gallery-lightbox-nav--next" data-lightbox-next aria-label="Next image">›</button>
       <img src="" alt="">
       <span class="gallery-lightbox-title" id="galleryLightboxTitle"></span>
     </div>
   </div>
 
   <script src="js/site-chrome.js?v=20260924aboutm"></script>
-  <script src="js/enquiry-modal.js?v=20260928enquiryapi"></script>
+  <script src="js/enquiry-modal.js?v=20260928thankyoupage"></script>
   <script src="js/gallery-data.js?v=20260924gallery2"></script>
-  <script src="js/home-gallery.js?v=20260928img"></script>
+  <script src="js/home-gallery.js?v=20260928lightboxswipe"></script>
   <script src="js/achievements-gallery-data.js?v=20260922"></script>
   <script src="js/achievements-gallery.js?v=20260928img"></script>
   <script src="js/faq-section.js?v=20260926sipaccordion"></script>

@@ -18,10 +18,7 @@
 
   var ENQUIRY_API = getEnquiryApiUrl();
 
-  var BROCHURE_URL = 'https://www.theacademiccity.com/downloads/tac-brochure-2026.pdf';
-
   var enquiryModal = document.getElementById('enquiryModal');
-  var thankyouModal = document.getElementById('thankyouModal');
   var enquiryForm = document.getElementById('enquiryFormModal');
   var enquirySubtitle = document.getElementById('enquiryModalSubtitle');
   var enquirySubmit = document.getElementById('enquirySubmitBtn');
@@ -72,19 +69,17 @@
     }
   }
 
-  function openThankYouModal() {
-    closeEnquiryModal();
-    if (!thankyouModal) return;
-    thankyouModal.classList.add('is-open');
-    thankyouModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+  function getThankYouPageUrl(intent) {
+    var url = new URL('thank-you.html', window.location.href);
+    if (intent === 'brochure') {
+      url.searchParams.set('brochure', '1');
+    }
+    return url.pathname + url.search;
   }
 
-  function closeThankYouModal() {
-    if (!thankyouModal) return;
-    thankyouModal.classList.remove('is-open');
-    thankyouModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = previousOverflow || '';
+  function goToThankYouPage(intent) {
+    closeEnquiryModal();
+    window.location.assign(getThankYouPageUrl(intent));
   }
 
   function parseIntentFromHref(href) {
@@ -108,8 +103,7 @@
 
   document.querySelectorAll('[data-enquiry-close]').forEach(function (el) {
     el.addEventListener('click', function () {
-      if (el.closest('#thankyouModal')) closeThankYouModal();
-      else closeEnquiryModal();
+      closeEnquiryModal();
     });
   });
 
@@ -121,18 +115,9 @@
     });
   }
 
-  if (thankyouModal) {
-    thankyouModal.addEventListener('click', function (event) {
-      if (event.target === thankyouModal || event.target.classList.contains('enquiry-modal-backdrop')) {
-        closeThankYouModal();
-      }
-    });
-  }
-
   document.addEventListener('keydown', function (event) {
     if (event.key !== 'Escape') return;
-    if (thankyouModal && thankyouModal.classList.contains('is-open')) closeThankYouModal();
-    else if (enquiryModal && enquiryModal.classList.contains('is-open')) closeEnquiryModal();
+    if (enquiryModal && enquiryModal.classList.contains('is-open')) closeEnquiryModal();
   });
 
   if (window.location.hash.replace('#', '').split('?')[0] === 'enquiry') {
@@ -215,17 +200,7 @@
           }
 
           form.reset();
-          openThankYouModal();
-
-          if (intent === 'brochure') {
-            var link = document.createElement('a');
-            link.href = BROCHURE_URL;
-            link.download = 'TAC Brochure 2026.pdf';
-            link.rel = 'noopener';
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-          }
+          goToThankYouPage(intent);
         })
         .catch(function (error) {
           if (errorEl) {

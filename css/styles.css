@@ -334,31 +334,32 @@ textarea:focus-visible {
     justify-content: flex-end;
     align-self: stretch;
     padding: 0;
-    margin-right: calc(-1 * clamp(16px, 2.5vw, 28px) - clamp(40px, 5vw, 88px));
+    margin-right: calc(-1 * clamp(16px, 2.5vw, 28px) - clamp(20px, 3vw, 48px));
   }
 
   .hero-collage picture {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: min(860px, 70vw);
+    width: min(1020px, 82vw);
     max-width: 100%;
     height: 100%;
     margin-left: auto;
+    margin-right: clamp(34px, 5vw, 88px);
   }
 
   .hero-collage img {
     width: 100%;
     height: auto;
-    max-width: min(860px, 70vw);
+    max-width: min(1020px, 82vw);
     max-height: min(
-      680px,
-      calc(100svh - var(--site-nav-stack) - 2rem)
+      800px,
+      calc(100svh - var(--site-nav-stack) - 0.5rem)
     );
     margin: 0;
     object-fit: contain;
-    object-position: right center;
-    transform: translateX(clamp(10px, 1.8vw, 28px));
+    object-position: 68% center;
+    transform: translateX(clamp(-58px, -4.4vw, -28px));
   }
 }
 
