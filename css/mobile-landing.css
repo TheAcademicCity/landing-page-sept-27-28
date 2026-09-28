@@ -117,6 +117,7 @@
     padding-top: var(--site-nav-stack);
     padding-bottom: calc(var(--site-mobile-action-height, 72px) + 1rem);
     background-color: #eef4f1;
+    overflow-x: clip;
   }
 
   .hero-inner {
@@ -132,8 +133,8 @@
   .hero-layout {
     display: flex;
     flex-direction: column;
-    flex: 0 0 auto;
-    gap: clamp(10px, 2.5vh, 18px);
+    flex: 1 1 auto;
+    gap: clamp(0px, 0.6vh, 6px);
     min-height: 0;
     width: 100%;
   }
@@ -151,24 +152,32 @@
   .hero-collage {
     display: flex;
     align-items: flex-end;
-    justify-content: center;
+    justify-content: flex-start;
     flex: 0 0 auto;
-    width: 100%;
-    max-height: min(44vh, 21rem);
-    margin: 0 -16px;
-    margin-top: 0;
+    width: 100vw;
+    max-width: 100vw;
+    margin: clamp(6px, 1.4vh, 14px) calc(50% - 50vw) -10px;
+    padding: 0;
     pointer-events: none;
-    overflow: hidden;
+    overflow: visible;
   }
 
-  .hero-collage img {
+  .hero-collage picture {
     display: block;
-    width: auto;
+    width: 100%;
+    max-width: 100%;
+    line-height: 0;
+  }
+
+  .hero .hero-collage img {
+    display: block;
+    width: 100%;
     height: auto;
-    max-width: 118%;
-    max-height: min(44vh, 21rem);
+    max-width: 100%;
     object-fit: contain;
-    object-position: center bottom;
+    object-position: left bottom;
+    transform: translate(0, 16px);
+    transform-origin: left bottom;
   }
 
   .hero h1 {
@@ -194,7 +203,7 @@
     gap: clamp(14px, 4.5vw, 22px);
     width: 100%;
     max-width: 100%;
-    margin-top: clamp(14px, 3.5vw, 20px);
+    margin-top: clamp(10px, 2.8vw, 16px);
     margin-bottom: 0;
   }
 

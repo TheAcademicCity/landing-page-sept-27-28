@@ -22,6 +22,7 @@
         drawer.classList.remove('open');
         burger.classList.remove('open');
         burger.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
       });
     });
