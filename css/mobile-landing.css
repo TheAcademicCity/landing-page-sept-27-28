@@ -269,7 +269,7 @@
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url("../images/home/gallery/infrastructure-aerial.png") center center / cover no-repeat;
+    background: url("../images/optimized/home/gallery/infrastructure-aerial-800w.webp") center center / cover no-repeat;
     transform: scale(1.02);
   }
 

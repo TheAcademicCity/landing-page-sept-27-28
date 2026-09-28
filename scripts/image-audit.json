@@ -1,0 +1,21 @@
+{
+  "referenced_count": 115,
+  "referenced_bytes": 38517021,
+  "optimized_count": 741,
+  "optimized_bytes": 18827210,
+  "unused": [
+    "boarding.jpeg",
+    "hero-campus.jpg",
+    "herolp1.jpeg",
+    "herolp1.png",
+    "lp3.png",
+    "home/awards/awards-banner.png",
+    "home/gallery/library.png",
+    "home/gallery/science-lab.png",
+    "home/parents/akshara-pradita.png",
+    "home/parents/bhavya-jain.png",
+    "home/parents/tacs-parent.png",
+    "home/campus/partners/allen-white.png",
+    "home/campus/partners/trisha-classes-white.png"
+  ]
+}

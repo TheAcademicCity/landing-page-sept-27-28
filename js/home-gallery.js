@@ -32,7 +32,20 @@
     return tab.layout === "featured-grid" || tab.layout === "featured";
   }
 
-  function tileButton(item, extraClass, mode) {
+  function resolveGalleryImage(item, maxWidth) {
+    const pick = window.pickOptimizedSrc;
+    if (typeof pick === "function") {
+      const resolved = pick(item.src, maxWidth || 800);
+      return {
+        displaySrc: resolved.src || item.src,
+        srcset: resolved.srcset || "",
+        fullSrc: resolved.src || item.src,
+      };
+    }
+    return { displaySrc: item.src, srcset: "", fullSrc: item.src };
+  }
+
+  function tileButton(item, extraClass, mode, deferLoad) {
     const isMasonry = mode === "masonry";
     const isFill = mode === "fill";
     const isHero = mode === "hero";
@@ -45,18 +58,28 @@
           : "home-gallery-tile--natural";
     const tileStyle = isMasonry ? ` style="--tile-h:${item.height ?? 220}px"` : "";
     const imgStyle = item.objectPosition ? ` style="object-position:${item.objectPosition}"` : "";
+    const maxW = isHero ? 800 : isMasonry ? 600 : 800;
+    const imgResolved = resolveGalleryImage(item, maxW);
+    const loadingAttr = deferLoad ? "" : ' loading="lazy"';
+    const imgTag = deferLoad
+      ? `<img data-src="${escapeHtml(imgResolved.displaySrc)}"${
+          imgResolved.srcset ? ` data-srcset="${escapeHtml(imgResolved.srcset)}"` : ""
+        } src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3C/svg%3E" alt="${escapeHtml(item.alt)}" decoding="async" width="800" height="600"${imgStyle}>`
+      : `<img src="${escapeHtml(imgResolved.displaySrc)}"${
+          imgResolved.srcset ? ` srcset="${escapeHtml(imgResolved.srcset)}" sizes="(max-width: 767px) 88vw, 280px"` : ""
+        } alt="${escapeHtml(item.alt)}" loading="lazy" decoding="async" width="800" height="600"${imgStyle}>`;
     return (
-      `<button type="button" class="home-gallery-tile ${sizeClass} ${extraClass}" data-src="${escapeHtml(item.src)}" data-label="${escapeHtml(item.label)}" aria-label="View ${escapeHtml(item.label)}"${tileStyle}>` +
-      `<img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.alt)}" loading="lazy" decoding="async" width="800" height="600"${imgStyle}>` +
+      `<button type="button" class="home-gallery-tile ${sizeClass} ${extraClass}" data-src="${escapeHtml(imgResolved.fullSrc)}" data-label="${escapeHtml(item.label)}" aria-label="View ${escapeHtml(item.label)}"${tileStyle}>` +
+      imgTag +
       `<span class="home-gallery-zoom" aria-hidden="true">+</span></button>`
     );
   }
 
-  function renderMasonry(items) {
-    return `<div class="home-gallery-masonry">${items.map((item) => tileButton(item, "", "masonry")).join("")}</div>`;
+  function renderMasonry(items, deferLoad) {
+    return `<div class="home-gallery-masonry">${items.map((item) => tileButton(item, "", "masonry", deferLoad)).join("")}</div>`;
   }
 
-  function renderFeatured(items) {
+  function renderFeatured(items, deferLoad) {
     const [featured, ...rest] = items;
     const beside = rest.slice(0, 4);
     const masonry = rest.slice(4);
@@ -64,51 +87,52 @@
     return (
       `<div class="home-gallery-featured">` +
       `<div class="home-gallery-featured-top">` +
-      (featured ? tileButton(featured, "is-hero", "fill") : "") +
-      beside.map((item, i) => tileButton(item, slots[i], "fill")).join("") +
+      (featured ? tileButton(featured, "is-hero", "fill", deferLoad) : "") +
+      beside.map((item, i) => tileButton(item, slots[i], "fill", deferLoad)).join("") +
       `</div>` +
-      (masonry.length ? renderMasonry(masonry) : "") +
+      (masonry.length ? renderMasonry(masonry, deferLoad) : "") +
       `</div>`
     );
   }
 
-  function renderMobileBento(items) {
+  function renderMobileBento(items, deferLoad) {
     const slice = items.slice(0, 6);
     const spans = ["mb-1", "mb-2", "mb-3", "mb-4", "mb-5", "mb-6"];
     return (
       `<div class="home-gallery-bento">` +
-      slice.map((item, i) => tileButton(item, spans[i], "fill")).join("") +
+      slice.map((item, i) => tileButton(item, spans[i], "fill", deferLoad)).join("") +
       `</div>`
     );
   }
 
-  function renderMobileFeatured(items) {
+  function renderMobileFeatured(items, deferLoad) {
     const [featured, ...rest] = items;
     return (
       `<div class="home-gallery-mobile-featured">` +
-      (featured ? tileButton(featured, "mobile-hero", "hero") : "") +
+      (featured ? tileButton(featured, "mobile-hero", "hero", deferLoad) : "") +
       `<div class="home-gallery-masonry home-gallery-masonry--2">` +
-      rest.map((item) => tileButton(item, "", "masonry")).join("") +
+      rest.map((item) => tileButton(item, "", "masonry", deferLoad)).join("") +
       `</div></div>`
     );
   }
 
-  function renderPanelContent(tab, isMobile) {
+  function renderPanelContent(tab, isMobile, deferLoad) {
     if (isFeaturedGrid(tab) && !isMobile) {
-      return renderFeatured(tab.items);
+      return renderFeatured(tab.items, deferLoad);
     }
     if (isMobile && isFeaturedGrid(tab)) {
-      return renderMobileFeatured(tab.items);
+      return renderMobileFeatured(tab.items, deferLoad);
     }
     if (isMobile) {
-      return renderMobileBento(tab.items);
+      return renderMobileBento(tab.items, deferLoad);
     }
-    return renderMasonry(tab.items);
+    return renderMasonry(tab.items, deferLoad);
   }
 
   function renderDesktopPanel(tab) {
     const hidden = tab.id !== activeTab ? " hidden" : "";
-    return `<div class="home-gallery-panel" role="tabpanel" data-tab="${tab.id}"${hidden}>${renderPanelContent(tab, false)}</div>`;
+    const deferLoad = tab.id !== activeTab;
+    return `<div class="home-gallery-panel" role="tabpanel" data-tab="${tab.id}"${hidden}>${renderPanelContent(tab, false, deferLoad)}</div>`;
   }
 
   function buildTabs() {
@@ -124,10 +148,10 @@
     const desktop = data.tabs.map((tab) => renderDesktopPanel(tab)).join("");
     const mobileSlides = data.tabs
       .map(
-        (tab) =>
+        (tab, index) =>
           `<div class="home-gallery-mobile-slide" data-tab="${tab.id}">` +
           `<div class="home-gallery-panel" role="tabpanel" data-tab="${tab.id}">` +
-          renderPanelContent(tab, true) +
+          renderPanelContent(tab, true, index !== 0) +
           `</div></div>`,
       )
       .join("");
@@ -194,6 +218,12 @@
     root.querySelectorAll(".home-gallery-panels-desktop .home-gallery-panel").forEach((panel) => {
       panel.hidden = panel.dataset.tab !== tabId;
     });
+    const activeDesktopPanel = root.querySelector(
+      `.home-gallery-panels-desktop .home-gallery-panel[data-tab="${tabId}"]`,
+    );
+    if (activeDesktopPanel && window.loadDeferredImagesIn) {
+      window.loadDeferredImagesIn(activeDesktopPanel);
+    }
   }
 
   function setTab(tabId, options) {
@@ -230,6 +260,10 @@
     updateTabUi(tab.id);
     scrollGalleryTabIntoView(index);
     syncMobileGalleryHeight(index);
+    const slide = root.querySelectorAll(".home-gallery-mobile-slide")[index];
+    if (slide && window.loadDeferredImagesIn) {
+      window.loadDeferredImagesIn(slide);
+    }
   }
 
   function bindMobileGalleryImages() {
@@ -308,6 +342,9 @@
 
   buildTabs();
   buildPanels();
+  if (window.loadAllDeferredImages) {
+    window.loadAllDeferredImages();
+  }
   initMobileGallery();
   setTab(activeTab);
 })();

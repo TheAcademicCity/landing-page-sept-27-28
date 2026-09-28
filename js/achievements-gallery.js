@@ -73,11 +73,20 @@
   }
 
   function imageTile(item) {
+    var resolved =
+      typeof window.pickOptimizedSrc === "function"
+        ? window.pickOptimizedSrc(item.src, 320)
+        : { src: item.src, srcset: "" };
+    var srcsetAttr = resolved.srcset
+      ? ' data-srcset="' + escapeHtml(resolved.srcset) + '" sizes="240px"'
+      : "";
     return (
       '<article class="achievements-gallery__tile">' +
-      '<img src="' +
-      escapeHtml(item.src) +
-      '" alt="' +
+      '<img data-src="' +
+      escapeHtml(resolved.src) +
+      '"' +
+      srcsetAttr +
+      ' src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 480 640\'%3E%3C/svg%3E" alt="' +
       escapeHtml(item.label) +
       '" loading="lazy" decoding="async" width="480" height="640">' +
       (item.category
@@ -111,9 +120,34 @@
     );
   }
 
-  var rows = splitIntoRows(items);
-  root.innerHTML =
-    trackHtml(rows[0], "0s", "") +
-    trackHtml(rows[1], "-40s", "achievements-gallery__row--offset-b") +
-    trackHtml(rows[2], "-80s", "achievements-gallery__row--offset-c");
+  function renderGallery() {
+    if (root.dataset.rendered === "1") return;
+    var rows = splitIntoRows(items);
+    root.innerHTML =
+      trackHtml(rows[0], "0s", "") +
+      trackHtml(rows[1], "-40s", "achievements-gallery__row--offset-b") +
+      trackHtml(rows[2], "-80s", "achievements-gallery__row--offset-c");
+    root.dataset.rendered = "1";
+    if (window.loadDeferredImagesIn) {
+      window.loadDeferredImagesIn(root);
+    }
+  }
+
+  if ("IntersectionObserver" in window) {
+    var section = document.getElementById("achievements");
+    var target = section || root;
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          renderGallery();
+          observer.disconnect();
+        });
+      },
+      { rootMargin: "320px 0px", threshold: 0.01 },
+    );
+    observer.observe(target);
+  } else {
+    renderGallery();
+  }
 })();

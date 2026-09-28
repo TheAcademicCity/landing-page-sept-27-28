@@ -23,12 +23,16 @@
   <link rel="stylesheet" href="css/testimonials-section.css?v=20260924khushizoom2">
   <link rel="stylesheet" href="css/faq-section.css?v=20260924surfaces">
   <link rel="stylesheet" href="css/site-chrome.css?v=20260924enquiretab">
-  <link rel="stylesheet" href="css/mobile-landing.css?v=20260926timeline14">
+  <link rel="stylesheet" href="css/mobile-landing.css?v=20260928img">
   <link rel="stylesheet" href="css/enquiry-modal.css?v=20260924selectalign">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="apple-touch-icon" href="apple-icon.png">
+  <link rel="preload" as="image" type="image/webp" href="images/optimized/Untitled%20designasd_result-480w.webp" imagesrcset="images/optimized/Untitled%20designasd_result-480w.webp 480w, images/optimized/Untitled%20designasd_result-720w.webp 720w, images/optimized/Untitled%20designasd_result-960w.webp 960w" imagesizes="(max-width: 767px) 92vw, 480px" fetchpriority="high">
+  <script src="js/optimized-images-manifest.js?v=20260928img"></script>
+  <script src="js/optimized-images.js?v=20260928img"></script>
+  <script src="js/deferred-image-loader.js?v=20260928img"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -67,8 +71,8 @@
 
   <div class="widget-stack left u-desk-only" aria-label="Quick contact">
     <a class="side-icon phone" href="tel:08047092273" title="Call 080-47092273" aria-label="Call 080-47092273"><svg><use href="#ic-phone"/></svg></a>
-    <a class="side-icon" href="https://wa.me/919364898405" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp"><img src="images/icons/whatsapp.png" alt="" width="28" height="28"></a>
-    <a class="side-icon side-icon-gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=admissions@theacademiccity.com" target="_blank" rel="noopener" title="Email admissions@theacademiccity.com" aria-label="Email admissions@theacademiccity.com"><img src="images/icons/gmail.webp" alt="" width="32" height="32"></a>
+    <a class="side-icon" href="https://wa.me/919364898405" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp"><picture><source type="image/webp" srcset="images/optimized/icons/whatsapp-64w.webp 64w, images/optimized/icons/whatsapp-128w.webp 128w" sizes="32px"><img src="images/icons/whatsapp.png" alt="" width="28" height="28" decoding="async"></picture></a>
+    <a class="side-icon side-icon-gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=admissions@theacademiccity.com" target="_blank" rel="noopener" title="Email admissions@theacademiccity.com" aria-label="Email admissions@theacademiccity.com"><picture><source type="image/webp" srcset="images/optimized/icons/gmail-64w.webp 64w, images/optimized/icons/gmail-128w.webp 128w" sizes="32px"><img src="images/icons/gmail.webp" alt="" width="32" height="32" decoding="async"></picture></a>
     <a class="side-icon pin" href="#contact" title="Find us" aria-label="Find us"><svg><use href="#ic-pin"/></svg></a>
   </div>
 
@@ -103,8 +107,8 @@
     <div class="site-w site-nav-inner">
       <div class="site-brand-group">
         <a class="site-brand" href="#hero" aria-label="The Academic City School — go to top">
-          <img class="logo-dark" src="images/brand/logo.png" alt="The Academic City School" width="1024" height="295" fetchpriority="high">
-          <img class="logo-light" src="images/brand/logo-white.png" alt="The Academic City School" width="1024" height="302" fetchpriority="high">
+          <picture><source type="image/webp" srcset="images/optimized/brand/logo-320w.webp 320w, images/optimized/brand/logo-512w.webp 512w" sizes="(max-width: 767px) 160px, 220px"><img class="logo-dark" src="images/brand/logo.png" alt="The Academic City School" width="1024" height="295" decoding="async"></picture>
+          <picture><source type="image/webp" srcset="images/optimized/brand/logo-white-320w.webp 320w, images/optimized/brand/logo-white-512w.webp 512w" sizes="(max-width: 767px) 160px, 220px"><img class="logo-light" src="images/brand/logo-white.png" alt="The Academic City School" width="1024" height="302" decoding="async"></picture>
         </a>
         <span class="header-chip" role="status" aria-label="Best Boarding School">
           <span class="header-chip__text">Best Boarding School</span>
@@ -175,7 +179,10 @@
             </div>
           </div>
           <div class="hero-collage">
-            <img src="images/Untitled%20designasd_result.png" alt="Students at TACS — academics, sport, music and boarding life" width="800" height="600" decoding="async" fetchpriority="high">
+            <picture>
+              <source type="image/webp" srcset="images/optimized/Untitled%20designasd_result-480w.webp 480w, images/optimized/Untitled%20designasd_result-720w.webp 720w, images/optimized/Untitled%20designasd_result-960w.webp 960w" sizes="(max-width: 767px) 92vw, 480px">
+              <img src="images/Untitled%20designasd_result.png" alt="Students at TACS — academics, sport, music and boarding life" width="800" height="600" decoding="async" fetchpriority="high">
+            </picture>
           </div>
         </div>
       </div>
@@ -188,33 +195,35 @@
         </div>
         <div class="awards-grid awards-strip__grid" role="list" aria-label="School awards and recognitions">
               <div class="awards-grid__item awards-grid__item--emblem" role="listitem">
-                <span class="awards-grid__logo"><img src="images/home/awards/isle-2022.png" alt="21CL ISLE Awards Bengaluru 2022" title="21CL ISLE Awards Bengaluru (2022)" width="286" height="282" loading="lazy" decoding="async"></span>
+                <span class="awards-grid__logo"><picture><source type="image/webp" srcset="images/optimized/home/awards/isle-2022-200w.webp 200w, images/optimized/home/awards/isle-2022-286w.webp 286w" sizes="(max-width: 767px) 42vw, 180px"><img src="images/home/awards/isle-2022.png" alt="21CL ISLE Awards Bengaluru 2022" title="21CL ISLE Awards Bengaluru (2022)" width="286" height="282" loading="lazy" decoding="async"></picture></span>
               </div>
               <div class="awards-grid__item awards-grid__item--emblem" role="listitem">
-                <span class="awards-grid__logo"><img src="images/home/awards/india-school-merit-2022-23.png" alt="India School Merit Awards 2022–23" title="India School Merit Awards (2022–23)" width="262" height="281" loading="lazy" decoding="async"></span>
+                <span class="awards-grid__logo"><picture><source type="image/webp" srcset="images/optimized/home/awards/india-school-merit-2022-23-200w.webp 200w, images/optimized/home/awards/india-school-merit-2022-23-262w.webp 262w" sizes="(max-width: 767px) 42vw, 180px"><img src="images/home/awards/india-school-merit-2022-23.png" alt="India School Merit Awards 2022–23" title="India School Merit Awards (2022–23)" width="262" height="281" loading="lazy" decoding="async"></picture></span>
               </div>
               <div class="awards-grid__item awards-grid__item--emblem" role="listitem">
-                <span class="awards-grid__logo"><img src="images/home/awards/brainfeed-top-500-2022-23.png" alt="Brainfeed Top 500 Schools of India 2022–23" title="Brainfeed Top 500 Schools of India (2022–23)" width="277" height="265" loading="lazy" decoding="async"></span>
+                <span class="awards-grid__logo"><picture><source type="image/webp" srcset="images/optimized/home/awards/brainfeed-top-500-2022-23-200w.webp 200w, images/optimized/home/awards/brainfeed-top-500-2022-23-277w.webp 277w" sizes="(max-width: 767px) 42vw, 180px"><img src="images/home/awards/brainfeed-top-500-2022-23.png" alt="Brainfeed Top 500 Schools of India 2022–23" title="Brainfeed Top 500 Schools of India (2022–23)" width="277" height="265" loading="lazy" decoding="async"></picture></span>
               </div>
               <div class="awards-grid__item awards-grid__item--wide" role="listitem">
-                <span class="awards-grid__logo"><img src="images/home/awards/oxford-2024.png" alt="University of Oxford Best Emerging Residential School for holistic learning 2024" title="University of Oxford - Best Emerging Residential School (2024)" width="866" height="361" loading="lazy" decoding="async"></span>
+                <span class="awards-grid__logo"><picture><source type="image/webp" srcset="images/optimized/home/awards/oxford-2024-200w.webp 200w, images/optimized/home/awards/oxford-2024-400w.webp 400w" sizes="(max-width: 767px) 42vw, 180px"><img src="images/home/awards/oxford-2024.png" alt="University of Oxford Best Emerging Residential School for holistic learning 2024" title="University of Oxford - Best Emerging Residential School (2024)" width="866" height="361" loading="lazy" decoding="async"></picture></span>
               </div>
               <div class="awards-grid__item awards-grid__item--tall" role="listitem">
-                <span class="awards-grid__logo"><img src="images/home/awards/indo-arab-leaders-2024.png" alt="Indo Arab Leaders Summit and Award 2024" title="Indo Arab Leaders Summit &amp; Award (2024)" width="823" height="574" loading="lazy" decoding="async"></span>
+                <span class="awards-grid__logo"><picture><source type="image/webp" srcset="images/optimized/home/awards/indo-arab-leaders-2024-200w.webp 200w, images/optimized/home/awards/indo-arab-leaders-2024-400w.webp 400w" sizes="(max-width: 767px) 42vw, 180px"><img src="images/home/awards/indo-arab-leaders-2024.png" alt="Indo Arab Leaders Summit and Award 2024" title="Indo Arab Leaders Summit &amp; Award (2024)" width="823" height="574" loading="lazy" decoding="async"></picture></span>
               </div>
               <div class="awards-grid__item awards-grid__item--wide" role="listitem">
-                <span class="awards-grid__logo"><img src="images/home/awards/education-today-2024.png" alt="Education Today Dynamic School 2024" title="Education Today - Dynamic School (2024)" width="861" height="369" loading="lazy" decoding="async"></span>
+                <span class="awards-grid__logo"><picture><source type="image/webp" srcset="images/optimized/home/awards/education-today-2024-200w.webp 200w, images/optimized/home/awards/education-today-2024-400w.webp 400w" sizes="(max-width: 767px) 42vw, 180px"><img src="images/home/awards/education-today-2024.png" alt="Education Today Dynamic School 2024" title="Education Today - Dynamic School (2024)" width="861" height="369" loading="lazy" decoding="async"></picture></span>
               </div>
               <div class="awards-grid__item awards-grid__item--emblem" role="listitem">
                 <span class="awards-grid__logo">
                   <picture>
+                    <source media="(max-width: 767px)" type="image/webp" srcset="images/optimized/home/awards/education-leaders-2024-mobile-200w.webp 200w, images/optimized/home/awards/education-leaders-2024-mobile-277w.webp 277w" sizes="(max-width: 767px) 42vw, 180px">
                     <source media="(max-width: 767px)" srcset="images/home/awards/education-leaders-2024-mobile.png">
+                    <source type="image/webp" srcset="images/optimized/home/awards/education-leaders-2024-200w.webp 200w, images/optimized/home/awards/education-leaders-2024-277w.webp 277w" sizes="(max-width: 767px) 42vw, 180px">
                     <img src="images/home/awards/education-leaders-2024.png" alt="Education Leaders Awards 2024" title="Education Leaders Awards (2024)" width="277" height="265" loading="lazy" decoding="async">
                   </picture>
                 </span>
               </div>
               <div class="awards-grid__item awards-grid__item--tall" role="listitem">
-                <span class="awards-grid__logo"><img src="images/home/awards/qs-i-gauge-2025-26.png" alt="QS I-GAUGE Institution of Happiness Certified 2025–26" title="QS I-GAUGE Institution of Happiness (2025–26)" width="811" height="827" loading="lazy" decoding="async"></span>
+                <span class="awards-grid__logo"><picture><source type="image/webp" srcset="images/optimized/home/awards/qs-i-gauge-2025-26-200w.webp 200w, images/optimized/home/awards/qs-i-gauge-2025-26-400w.webp 400w" sizes="(max-width: 767px) 42vw, 180px"><img src="images/home/awards/qs-i-gauge-2025-26.png" alt="QS I-GAUGE Institution of Happiness Certified 2025–26" title="QS I-GAUGE Institution of Happiness (2025–26)" width="811" height="827" loading="lazy" decoding="async"></picture></span>
               </div>
             </div>
       </div>
@@ -226,31 +235,31 @@
           <div class="hero-admissions__mosaic u-desk-only" aria-label="Life on campus at TACS">
             <div class="hero-campus-mosaic">
               <figure class="hero-campus-mosaic__cell hero-campus-mosaic__cell--a1">
-                <img src="images/home/gallery/infrastructure-aerial.png" alt="Aerial view of The Academic City School campus" width="866" height="576" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/gallery/infrastructure-aerial-400w.webp 400w, images/optimized/home/gallery/infrastructure-aerial-800w.webp 800w, images/optimized/home/gallery/infrastructure-aerial-1024w.webp 1024w" sizes="(max-width: 767px) 45vw, 280px"><img src="images/home/gallery/infrastructure-aerial.png" alt="Aerial view of The Academic City School campus" width="866" height="576" loading="lazy" decoding="async"></picture>
               </figure>
               <figure class="hero-campus-mosaic__cell hero-campus-mosaic__cell--a2">
-                <img src="images/home/gallery/campus-3.png" alt="Students in the school garden at TACS" width="600" height="600" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/gallery/campus-3-400w.webp 400w, images/optimized/home/gallery/campus-3-800w.webp 800w, images/optimized/home/gallery/campus-3-1024w.webp 1024w" sizes="(max-width: 767px) 45vw, 280px"><img src="images/home/gallery/campus-3.png" alt="Students in the school garden at TACS" width="600" height="600" loading="lazy" decoding="async"></picture>
               </figure>
               <figure class="hero-campus-mosaic__cell hero-campus-mosaic__cell--b">
-                <img src="images/home/gallery/campus-2.png" alt="Outdoor learning on campus" width="600" height="600" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/gallery/campus-2-400w.webp 400w, images/optimized/home/gallery/campus-2-800w.webp 800w, images/optimized/home/gallery/campus-2-1024w.webp 1024w" sizes="(max-width: 767px) 45vw, 280px"><img src="images/home/gallery/campus-2.png" alt="Outdoor learning on campus" width="600" height="600" loading="lazy" decoding="async"></picture>
               </figure>
               <figure class="hero-campus-mosaic__cell hero-campus-mosaic__cell--c">
-                <img src="images/home/gallery/campus-5.png" alt="Students playing badminton" width="600" height="600" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/gallery/campus-5-400w.webp 400w, images/optimized/home/gallery/campus-5-682w.webp 682w" sizes="(max-width: 767px) 45vw, 280px"><img src="images/home/gallery/campus-5.png" alt="Students playing badminton" width="600" height="600" loading="lazy" decoding="async"></picture>
               </figure>
               <figure class="hero-campus-mosaic__cell hero-campus-mosaic__cell--d">
-                <img src="images/home/gallery/campus-7.png" alt="Science lab at TACS" width="600" height="600" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/gallery/campus-7-400w.webp 400w, images/optimized/home/gallery/campus-7-800w.webp 800w, images/optimized/home/gallery/campus-7-1024w.webp 1024w" sizes="(max-width: 767px) 45vw, 280px"><img src="images/home/gallery/campus-7.png" alt="Science lab at TACS" width="600" height="600" loading="lazy" decoding="async"></picture>
               </figure>
               <figure class="hero-campus-mosaic__cell hero-campus-mosaic__cell--e">
-                <img src="images/home/gallery/campus-6.png" alt="Volleyball on campus" width="600" height="600" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/gallery/campus-6-400w.webp 400w, images/optimized/home/gallery/campus-6-800w.webp 800w, images/optimized/home/gallery/campus-6-1024w.webp 1024w" sizes="(max-width: 767px) 45vw, 280px"><img src="images/home/gallery/campus-6.png" alt="Volleyball on campus" width="600" height="600" loading="lazy" decoding="async"></picture>
               </figure>
               <figure class="hero-campus-mosaic__cell hero-campus-mosaic__cell--f">
-                <img src="images/home/gallery/campus-4.png" alt="Campus dining hall" width="600" height="600" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/gallery/campus-4-400w.webp 400w, images/optimized/home/gallery/campus-4-800w.webp 800w, images/optimized/home/gallery/campus-4-1024w.webp 1024w" sizes="(max-width: 767px) 45vw, 280px"><img src="images/home/gallery/campus-4.png" alt="Campus dining hall" width="600" height="600" loading="lazy" decoding="async"></picture>
               </figure>
               <figure class="hero-campus-mosaic__cell hero-campus-mosaic__cell--g1">
-                <img src="images/home/gallery/campus-1.png" alt="Reading room at TACS" width="600" height="600" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/gallery/campus-1-400w.webp 400w, images/optimized/home/gallery/campus-1-800w.webp 800w, images/optimized/home/gallery/campus-1-1024w.webp 1024w" sizes="(max-width: 767px) 45vw, 280px"><img src="images/home/gallery/campus-1.png" alt="Reading room at TACS" width="600" height="600" loading="lazy" decoding="async"></picture>
               </figure>
               <figure class="hero-campus-mosaic__cell hero-campus-mosaic__cell--g2">
-                <img src="images/home/gallery/campus-8.png" alt="Adventure sports on campus at TACS" width="600" height="600" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/gallery/campus-8-400w.webp 400w, images/optimized/home/gallery/campus-8-800w.webp 800w, images/optimized/home/gallery/campus-8-1024w.webp 1024w" sizes="(max-width: 767px) 45vw, 280px"><img src="images/home/gallery/campus-8.png" alt="Adventure sports on campus at TACS" width="600" height="600" loading="lazy" decoding="async"></picture>
               </figure>
             </div>
           </div>
@@ -307,21 +316,21 @@
         <p class="bento-mobile-hint">Swipe through the four ways every child grows at TACS.</p>
         <div class="bento" id="aboutBento">
           <div class="tile b1">
-            <img class="tile-photo" src="images/lp1.jpeg" alt="" width="800" height="1000" loading="lazy" decoding="async">
+            <picture><source type="image/webp" srcset="images/optimized/lp1-480w.webp 480w, images/optimized/lp1-800w.webp 800w" sizes="(max-width: 767px) 88vw, 400px"><img class="tile-photo" src="images/lp1.jpeg" alt="" width="800" height="1000" loading="lazy" decoding="async"></picture>
             <div class="tile-content">
               <h3>Academics</h3>
               <p>Personalised academic support with 1:10 mentoring and individual progress plans from Grade 5.</p>
             </div>
           </div>
           <div class="tile b2">
-            <img class="tile-photo" src="images/lp2.jpeg" alt="" width="800" height="600" loading="lazy" decoding="async">
+            <picture><source type="image/webp" srcset="images/optimized/lp2-480w.webp 480w, images/optimized/lp2-800w.webp 800w" sizes="(max-width: 767px) 88vw, 400px"><img class="tile-photo" src="images/lp2.jpeg" alt="" width="800" height="600" loading="lazy" decoding="async"></picture>
             <div class="tile-content">
               <h3>Co-curricular &amp; Life Skills</h3>
               <p>Every day brings time for sport, interests and practical life skills.</p>
             </div>
           </div>
           <div class="tile b4">
-            <img class="tile-photo" src="images/lp3.jpeg" alt="" width="800" height="600" loading="lazy" decoding="async">
+            <picture><source type="image/webp" srcset="images/optimized/lp3-480w.webp 480w, images/optimized/lp3-800w.webp 800w" sizes="(max-width: 767px) 88vw, 400px"><img class="tile-photo" src="images/lp3.jpeg" alt="" width="800" height="600" loading="lazy" decoding="async"></picture>
             <div class="tile-content">
               <h3>Career Orientation</h3>
               <p>600+ career paths explored from Grade 6 onward.</p>
@@ -329,7 +338,7 @@
           </div>
           <div class="bento-boarding-col">
             <div class="tile b3">
-              <img class="tile-photo" src="images/lp4.jpg" alt="" width="800" height="600" loading="lazy" decoding="async">
+              <picture><source type="image/webp" srcset="images/optimized/lp4-480w.webp 480w, images/optimized/lp4-800w.webp 800w" sizes="(max-width: 767px) 88vw, 400px"><img class="tile-photo" src="images/lp4.jpg" alt="" width="800" height="600" loading="lazy" decoding="async"></picture>
               <div class="tile-content">
                 <h3>Boarding Life</h3>
                 <p>Separate AC hostels, pastoral care and 24-hour medical support create a safe, structured home away from home.</p>
@@ -492,8 +501,8 @@
           <div class="integrated-programme__partners">
             <p class="integrated-programme__partners-label">Academic Assistance partners</p>
             <div class="integrated-programme__partners-logos">
-              <img src="images/allencoloured.png" width="140" height="40" alt="Allen Career Institute" loading="lazy" decoding="async">
-              <img src="images/trishacoloured.png" width="140" height="40" alt="Trisha Classes" loading="lazy" decoding="async">
+              <picture><source type="image/webp" srcset="images/optimized/allencoloured-140w.webp 140w, images/optimized/allencoloured-280w.webp 280w" sizes="140px"><img src="images/allencoloured.png" width="140" height="40" alt="Allen Career Institute" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/optimized/trishacoloured-140w.webp 140w, images/optimized/trishacoloured-280w.webp 280w" sizes="140px"><img src="images/trishacoloured.png" width="140" height="40" alt="Trisha Classes" loading="lazy" decoding="async"></picture>
             </div>
           </div>
         </div>
@@ -523,16 +532,16 @@
             </div>
           </div>
           <div class="f-media cocurricular-sport__media">
-            <img src="images/co-curricular/facilities-grounds.png" alt="Football and cricket ground at The Academic City School" loading="lazy" width="1200" height="900" decoding="async">
+            <picture><source type="image/webp" srcset="images/optimized/co-curricular/facilities-grounds-640w.webp 640w, images/optimized/co-curricular/facilities-grounds-1000w.webp 1000w" sizes="(max-width: 767px) 100vw, 560px"><img src="images/co-curricular/facilities-grounds.png" alt="Football and cricket ground at The Academic City School" loading="lazy" width="1200" height="900" decoding="async"></picture>
           </div>
         </div>
         <div id="boarding" class="cocurricular-boarding" style="border-top:1px solid #e7e2d4;padding-top:28px;">
           <div class="feature-row cocurricular-boarding__day" style="margin-bottom:36px;">
             <div class="f-media u-desk-only">
-              <img src="images/boarding-day-at-tacs.jpg" alt="Students and dorm parent in the TACS boarding hostel" loading="lazy" width="1200" height="800" decoding="async">
+              <picture><source type="image/webp" srcset="images/optimized/boarding-day-at-tacs-640w.webp 640w, images/optimized/boarding-day-at-tacs-1000w.webp 1000w" sizes="(max-width: 767px) 100vw, 560px"><img src="images/boarding-day-at-tacs.jpg" alt="Students and dorm parent in the TACS boarding hostel" loading="lazy" width="1200" height="800" decoding="async"></picture>
             </div>
             <div class="f-media cocurricular-boarding__media u-mob-only">
-              <img src="images/boarding-day-at-tacs.jpg" alt="Students and dorm parent in the TACS boarding hostel" loading="lazy" width="1200" height="800" decoding="async">
+              <picture><source type="image/webp" srcset="images/optimized/boarding-day-at-tacs-640w.webp 640w, images/optimized/boarding-day-at-tacs-1000w.webp 1000w" sizes="(max-width: 767px) 100vw, 560px"><img src="images/boarding-day-at-tacs.jpg" alt="Students and dorm parent in the TACS boarding hostel" loading="lazy" width="1200" height="800" decoding="async"></picture>
             </div>
             <div class="f-copy cocurricular-boarding__copy">
               <span class="kicker-label">A day at TACS</span>
@@ -618,7 +627,7 @@
           <article class="testi-card">
             <div class="testi-card__head">
               <div class="testi-card__avatar">
-                <img src="images/home/parents/ayush-jishnu.png?v=20260924" alt="Ayush Jishnu sharing his TACS journey" width="200" height="257" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/parents/ayush-jishnu-200w.webp 200w" sizes="200px"><img src="images/home/parents/ayush-jishnu.png?v=20260924" alt="Ayush Jishnu sharing his TACS journey" width="200" height="257" loading="lazy" decoding="async"></picture>
               </div>
               <div class="testi-card__meta">
                 <p class="testi-card__name">Ayush Jishnu</p>
@@ -630,7 +639,7 @@
           <article class="testi-card">
             <div class="testi-card__head">
               <div class="testi-card__avatar testi-card__avatar--zoom-out-slight">
-                <img src="images/home/parents/khushi-jain.png?v=20260924khushi" alt="Khushi Jain, parent testimonial at The Academic City School" width="288" height="360" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/parents/khushi-jain-200w.webp 200w, images/optimized/home/parents/khushi-jain-288w.webp 288w" sizes="200px"><img src="images/home/parents/khushi-jain.png?v=20260924khushi" alt="Khushi Jain, parent testimonial at The Academic City School" width="288" height="360" loading="lazy" decoding="async"></picture>
               </div>
               <div class="testi-card__meta">
                 <p class="testi-card__name">Khushi Jain</p>
@@ -642,7 +651,7 @@
           <article class="testi-card">
             <div class="testi-card__head">
               <div class="testi-card__avatar">
-                <img src="images/home/parents/poorv.png?v=20260924poorv" alt="Poorv celebrating CA Foundation success at TACS" width="170" height="240" loading="lazy" decoding="async">
+                <picture><source type="image/webp" srcset="images/optimized/home/parents/poorv-170w.webp 170w" sizes="200px"><img src="images/home/parents/poorv.png?v=20260924poorv" alt="Poorv celebrating CA Foundation success at TACS" width="170" height="240" loading="lazy" decoding="async"></picture>
               </div>
               <div class="testi-card__meta">
                 <p class="testi-card__name">Poorv</p>
@@ -856,7 +865,7 @@
   <footer class="site-footer">
     <div class="foot-mobile">
       <div class="foot-brand">
-        <img src="images/brand/logo-white.png" alt="The Academic City School" width="1024" height="302">
+        <picture><source type="image/webp" srcset="images/optimized/brand/logo-white-320w.webp 320w, images/optimized/brand/logo-white-512w.webp 512w" sizes="(max-width: 767px) 160px, 220px"><img src="images/brand/logo-white.png" alt="The Academic City School" width="1024" height="302"></picture>
         <p>India's first career-oriented boarding school — where academics, Indic values and future-readiness grow together.</p>
       </div>
       <div class="foot-mobile-cols">
@@ -885,7 +894,7 @@
     <div class="foot-desktop">
       <div class="site-w foot-top">
         <div class="foot-brand">
-          <img src="images/brand/logo-white.png" alt="The Academic City School" width="1024" height="302">
+          <picture><source type="image/webp" srcset="images/optimized/brand/logo-white-320w.webp 320w, images/optimized/brand/logo-white-512w.webp 512w" sizes="(max-width: 767px) 160px, 220px"><img src="images/brand/logo-white.png" alt="The Academic City School" width="1024" height="302"></picture>
           <p>India's first career-oriented boarding school — where academics, Indic values and future-readiness grow together.</p>
         </div>
         <div>
@@ -1001,9 +1010,9 @@
   <script src="js/site-chrome.js?v=20260924aboutm"></script>
   <script src="js/enquiry-modal.js"></script>
   <script src="js/gallery-data.js?v=20260924gallery2"></script>
-  <script src="js/home-gallery.js?v=20260924gallery2"></script>
+  <script src="js/home-gallery.js?v=20260928img"></script>
   <script src="js/achievements-gallery-data.js?v=20260922"></script>
-  <script src="js/achievements-gallery.js?v=20260922"></script>
+  <script src="js/achievements-gallery.js?v=20260928img"></script>
   <script src="js/faq-section.js?v=20260926sipaccordion"></script>
 </body>
 </html>
