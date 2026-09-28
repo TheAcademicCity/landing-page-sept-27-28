@@ -1,8 +1,22 @@
 (function () {
-  var ENQUIRY_API =
-    location.hostname === 'theacademiccity.com' || location.hostname.endsWith('.theacademiccity.com')
-      ? '/api/enquiry'
-      : 'https://www.theacademiccity.com/api/enquiry';
+  /**
+   * Enquiry API — must match the host where server/server.js is proxied (or served).
+   * Production landing: https://admission-enquiry.theacademiccity.com/... → same-origin /api/enquiry
+   * Local static preview: http://localhost:8765 → Node on port 3010
+   */
+  function getEnquiryApiUrl() {
+    if (typeof window.LANDING_ENQUIRY_API === 'string' && window.LANDING_ENQUIRY_API) {
+      return window.LANDING_ENQUIRY_API;
+    }
+    var host = (location.hostname || '').toLowerCase();
+    if (!host || host === 'localhost' || host === '127.0.0.1') {
+      var port = window.LANDING_API_PORT || '3010';
+      return 'http://localhost:' + port + '/api/enquiry';
+    }
+    return location.origin.replace(/\/$/, '') + '/api/enquiry';
+  }
+
+  var ENQUIRY_API = getEnquiryApiUrl();
 
   var BROCHURE_URL = 'https://www.theacademiccity.com/downloads/tac-brochure-2026.pdf';
 
@@ -130,7 +144,23 @@
   var enquiryPageSubmit = document.getElementById('enquiryPageSubmitBtn');
   var enquiryPageError = document.getElementById('enquiryPageFormError');
 
+  function getUtmParams() {
+    var queryParams = new URLSearchParams(window.location.search);
+    return {
+      utm_source: queryParams.get('utm_source') || 'Direct-GAds',
+      utm_medium: queryParams.get('utm_campaign') || 'unknown',
+      utm_campaign: queryParams.get('adgroup') || 'unknown',
+      utm_term: queryParams.get('utm_term') || 'none',
+      utm_content: queryParams.get('utm_content') || 'none',
+      utm_device: queryParams.get('utm_device') || '',
+      A: queryParams.get('A') || '',
+      G: queryParams.get('G') || '',
+      HI: queryParams.get('HI') || '',
+    };
+  }
+
   function buildEnquiryPayload(form, intent) {
+    var utm = getUtmParams();
     return {
       fname: form.fname.value.trim(),
       lname: form.lname.value.trim(),
@@ -141,6 +171,15 @@
       intent: intent,
       sourcePath: window.location.pathname,
       page_url: window.location.href,
+      utm_source: utm.utm_source,
+      utm_medium: utm.utm_medium,
+      utm_campaign: utm.utm_campaign,
+      utm_term: utm.utm_term,
+      utm_content: utm.utm_content,
+      utm_device: utm.utm_device,
+      A: utm.A,
+      G: utm.G,
+      HI: utm.HI,
     };
   }
 
