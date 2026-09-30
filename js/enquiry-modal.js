@@ -144,6 +144,18 @@
     };
   }
 
+  function buildTrackingData(form, intent) {
+    return {
+      studentFirstName: form.fname.value.trim(),
+      studentLastName: form.lname.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.mobile.value.trim(),
+      class: form.selectclass.value,
+      preferredCampus: (form.campus && form.campus.value) || 'Bangalore',
+      formType: intent === 'brochure' ? 'brochure_download' : 'general_inquiry',
+    };
+  }
+
   function buildEnquiryPayload(form, intent) {
     var utm = getUtmParams();
     return {
@@ -184,10 +196,17 @@
         submitBtn.textContent = 'Submitting...';
       }
 
-      fetch(ENQUIRY_API, {
+      var trackingPromise =
+        window.LandingAnalytics && window.LandingAnalytics.sendFormSubmission
+          ? window.LandingAnalytics.sendFormSubmission(buildTrackingData(form, intent))
+          : Promise.resolve();
+
+      trackingPromise.then(function () {
+        return fetch(ENQUIRY_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(buildEnquiryPayload(form, intent)),
+      });
       })
         .then(function (response) {
           return response.json().then(function (result) {

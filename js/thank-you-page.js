@@ -16,4 +16,8 @@
 
   var yearEl = document.getElementById('thankYouYear');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  if (window.LandingAnalytics && window.LandingAnalytics.sendPageView) {
+    window.LandingAnalytics.sendPageView('thank_you');
+  }
 })();
