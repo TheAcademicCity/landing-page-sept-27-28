@@ -1,7 +1,9 @@
 /**
- * WhatsApp links + GTM compatibility (school-story-makers StickyButtons / GTM click triggers).
+ * WhatsApp links + GTM (StickyButtons parity + Custom Event "Whatsapp Outbound").
  */
 (function (global) {
+  /** GTM Custom Event trigger name — must match exactly. */
+  var GTM_EVENT_WHATSAPP_OUTBOUND = 'Whatsapp Outbound';
   var PHONE_E164 = '+919364898405';
   var PREFILL = "Hi, I'm interested in TACS admissions for the 2027-28 session";
 
@@ -50,6 +52,17 @@
     return 'other';
   }
 
+  function pushWhatsappOutbound(anchor) {
+    global.dataLayer = global.dataLayer || [];
+    global.dataLayer.push({
+      event: GTM_EVENT_WHATSAPP_OUTBOUND,
+      link_url: URL,
+      whatsapp_placement: inferPlacement(anchor),
+      page_location: global.location.href,
+      page_path: global.location.pathname,
+    });
+  }
+
   function applyGtmClasses(anchor) {
     if (anchor.classList.contains('side-action-wa') || anchor.closest('.side-action-stack')) {
       anchor.classList.add('whatsapp-button');
@@ -65,15 +78,18 @@
     }
   }
 
-  /**
-   * GTM: trigger "Custom Event - Whatsapp Outbound" is Click — Just Links,
-   * condition Click URL contains "whatsapp". api.whatsapp.com matches; wa.me does not.
-   */
-
   function bindWhatsAppAnchor(anchor) {
     if (!isWhatsAppAnchor(anchor)) return;
     anchor.href = URL;
     applyGtmClasses(anchor);
+    if (!anchor.getAttribute('rel')) {
+      anchor.setAttribute('rel', 'noopener noreferrer');
+    }
+    if (anchor.dataset.gtmWaBound === '1') return;
+    anchor.dataset.gtmWaBound = '1';
+    anchor.addEventListener('click', function () {
+      pushWhatsappOutbound(anchor);
+    });
   }
 
   function wireWhatsAppLinks(scope) {
