@@ -501,6 +501,23 @@ main.site-main {
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+@media (min-width: 1280px) {
+  .side-action-stack {
+    top: auto;
+    bottom: clamp(5.5rem, 14vh, 8.5rem);
+    transform: none;
+    border-radius: 0.75rem 0 0 0.75rem;
+    box-shadow: 0 12px 32px rgba(10, 44, 40, 0.18);
+  }
+
+  .widget-stack.left {
+    top: auto;
+    bottom: clamp(5.5rem, 14vh, 8.5rem);
+    transform: none;
+    box-shadow: 0 12px 32px rgba(10, 44, 40, 0.18);
+  }
+}
+
 .side-action-tab:hover {
   background: var(--emerald);
   color: #fff;

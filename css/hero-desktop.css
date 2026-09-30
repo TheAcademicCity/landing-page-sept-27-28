@@ -1,0 +1,100 @@
+/* Desktop hero — original text layout; collage on the right (900px+) */
+
+@media (min-width: 900px) {
+  .hero-inner {
+    padding-bottom: 0;
+    overflow: visible;
+  }
+
+  .hero-layout {
+    position: relative;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-items: stretch;
+    gap: 0;
+    min-height: calc(100svh - var(--site-nav-stack) + 0.75rem);
+    overflow: visible;
+  }
+
+  .hero-content {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    z-index: 2;
+    max-width: min(540px, 46vw);
+    justify-self: start;
+    align-self: center;
+    padding-bottom: clamp(16px, 2.5vh, 28px);
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 4.8vw, 64px);
+    margin-bottom: clamp(18px, 2.5vh, 26px);
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    padding: 5px 12px;
+    margin-bottom: clamp(6px, 1vh, 10px);
+  }
+
+  .hero-stats {
+    flex-wrap: nowrap;
+    gap: clamp(32px, 4vw, 48px);
+    margin-top: clamp(24px, 3vh, 40px);
+    padding-top: 0;
+    border-top: none;
+  }
+
+  /*
+   * Collage sits in the right band only (padding-left reserves the headline column).
+   */
+  .hero-collage {
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: stretch;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: min(520px, 50vw);
+    padding-right: clamp(12px, 2vw, 28px);
+    margin: 0;
+  }
+
+  .hero-collage picture {
+    display: block;
+    flex: 0 1 auto;
+    width: min(740px, 62vw);
+    max-width: 100%;
+    line-height: 0;
+    margin: 0;
+  }
+
+  .hero-collage img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: min(740px, 62vw);
+    max-height: min(760px, calc(100svh - var(--site-nav-stack) - 2rem));
+    margin: 0 0 0 auto;
+    object-fit: contain;
+    object-position: 100% center;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero-content {
+    max-width: min(640px, 50vw);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-collage {
+    padding-right: 3.25rem;
+  }
+}
