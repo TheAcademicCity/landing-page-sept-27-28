@@ -504,7 +504,7 @@ main.site-main {
 @media (min-width: 1280px) {
   .side-action-stack {
     top: auto;
-    bottom: clamp(5.5rem, 14vh, 8.5rem);
+    bottom: clamp(9.5rem, 26vh, 13.5rem);
     transform: none;
     border-radius: 0.75rem 0 0 0.75rem;
     box-shadow: 0 12px 32px rgba(10, 44, 40, 0.18);
@@ -512,7 +512,7 @@ main.site-main {
 
   .widget-stack.left {
     top: auto;
-    bottom: clamp(5.5rem, 14vh, 8.5rem);
+    bottom: clamp(12.5rem, 34vh, 17.5rem);
     transform: none;
     box-shadow: 0 12px 32px rgba(10, 44, 40, 0.18);
   }
@@ -558,6 +558,19 @@ main.site-main {
 .side-action-bot svg {
   width: 1.5rem;
   height: 1.5rem;
+}
+
+.side-action-wa img {
+  width: 1.75rem;
+  height: 1.75rem;
+  max-width: 1.75rem;
+  max-height: 1.75rem;
+  object-fit: contain;
+  display: block;
+}
+
+.side-action-wa:hover {
+  background: var(--emerald);
 }
 
 .side-icon {
