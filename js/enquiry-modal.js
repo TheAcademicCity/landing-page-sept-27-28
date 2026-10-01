@@ -19,7 +19,7 @@
   var ENQUIRY_API = getEnquiryApiUrl();
 
   var enquiryModal = document.getElementById('enquiryModal');
-  var enquiryForm = document.getElementById('enquiryFormModal');
+  var enquiryForm = document.getElementById('enquire-now-form');
   var enquirySubtitle = document.getElementById('enquiryModalSubtitle');
   var enquirySubmit = document.getElementById('enquirySubmitBtn');
   var enquiryError = document.getElementById('enquiryFormError');
@@ -125,7 +125,7 @@
     openEnquiryModal(params.get('intent') === 'brochure' ? 'brochure' : 'general');
   }
 
-  var enquiryPageForm = document.getElementById('enquiryFormPage');
+  var enquiryPageForm = document.getElementById('enquiry-form');
   var enquiryPageSubmit = document.getElementById('enquiryPageSubmitBtn');
   var enquiryPageError = document.getElementById('enquiryPageFormError');
 

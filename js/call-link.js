@@ -30,7 +30,10 @@
   }
 
   function inferPlacement(anchor) {
-    if (anchor.classList.contains('side-icon') && anchor.classList.contains('phone')) {
+    if (
+      (anchor.classList.contains('side-icon') && anchor.classList.contains('phone')) ||
+      anchor.classList.contains('side-action-call')
+    ) {
       return 'side_widget';
     }
     if (anchor.classList.contains('call') || anchor.closest('.mobile-action-bar')) {
@@ -61,7 +64,10 @@
   }
 
   function applyGtmClasses(anchor) {
-    if (anchor.classList.contains('side-icon') && anchor.classList.contains('phone')) {
+    if (
+      (anchor.classList.contains('side-icon') && anchor.classList.contains('phone')) ||
+      anchor.classList.contains('side-action-call')
+    ) {
       anchor.classList.add('call-button');
     }
     if (anchor.classList.contains('call') || anchor.closest('.mobile-action-bar')) {

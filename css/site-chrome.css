@@ -485,12 +485,12 @@ main.site-main {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 11px;
+  padding: 11px 8px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.12em;
+  line-height: 1.15;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-align: center;
   color: #fff;
@@ -571,6 +571,11 @@ main.site-main {
 
 .side-action-wa:hover {
   background: var(--emerald);
+}
+
+.side-action-call:hover {
+  background: var(--gold);
+  color: var(--forest-deep);
 }
 
 .side-icon {
@@ -766,7 +771,7 @@ main.site-main {
 }
 
 @media (min-width: 768px) {
-  .foot-top { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+  .foot-top { grid-template-columns: 1.5fr 1fr; }
 }
 
 .foot-bottom {
@@ -774,6 +779,7 @@ main.site-main {
   padding: 1.25rem 0;
   font-size: 0.62rem;
   color: #999;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -787,6 +793,7 @@ main.site-main {
   margin-top: 1.25rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 0.875rem;
+  text-align: center;
 }
 
 /* Mobile action bar — matches TAC_Main_Website_2026_27 MobileActionBar */
@@ -849,7 +856,11 @@ main.site-main {
 
 .mobile-action-bar svg { flex-shrink: 0; width: 1rem; height: 1rem; }
 .mobile-action-bar .call svg { color: var(--forest); }
-.mobile-action-bar .wa svg { color: var(--emerald); }
+.mobile-action-bar .wa svg {
+  color: var(--emerald);
+  width: 1.125rem;
+  height: 1.125rem;
+}
 .mobile-action-bar .chat-btn svg { color: var(--navy); }
 
 @media (max-width: 380px) {
