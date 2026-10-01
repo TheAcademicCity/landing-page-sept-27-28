@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+  </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,6 +12,12 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-579PCB3X');</script>
   <!-- End Google Tag Manager -->
+  <!-- Google tag (Google Ads AW-10985996264) — base config; see GTM note in deploy docs / README -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10985996264"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'AW-10985996264');
+  </script>
   <!-- Zoho PageSense (same project as school-story-makers — loaded via GTM-579PCB3X) -->
   <link rel="dns-prefetch" href="https://cdn-in.pagesense.io">
   <meta charset="UTF-8">
@@ -895,7 +905,7 @@
         <div>
           <h5>Reach Us</h5>
           <p>Nelamangala, Bengaluru, Karnataka 562123</p>
-          <p>080-47092273</p>
+          <p data-tacs-admissions-phone-display>080-47092273</p>
           <p>admissions@theacademiccity.com</p>
         </div>
       </div>
@@ -1006,7 +1016,8 @@
   <script src="js/site-chrome.js?v=20260924aboutm"></script>
   <script src="js/enhanced-conversions.js?v=20260930gtm2"></script>
   <script src="js/whatsapp-link.js?v=20261001waprefill"></script>
-  <script src="js/call-link.js?v=20261001sidecall"></script>
+  <script src="js/google-ads-call-conversion.js?v=20261001gadscall2"></script>
+  <script src="js/call-link.js?v=20261001gadscall"></script>
   <script src="js/enquiry-modal.js?v=20261001pagesense"></script>
   <script src="js/gallery-data.js?v=20260924gallery2"></script>
   <script src="js/home-gallery.js?v=20260928lightboxswipe"></script>
