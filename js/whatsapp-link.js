@@ -5,7 +5,11 @@
   /** GTM Custom Event trigger name — must match exactly. */
   var GTM_EVENT_WHATSAPP_OUTBOUND = 'Whatsapp Outbound';
   var PHONE_E164 = '+919364898405';
-  var PREFILL = 'Admission details please!';
+  var PREFILL =
+    (document.documentElement &&
+      document.documentElement.getAttribute('data-whatsapp-prefill')) ||
+    global.TACS_WHATSAPP_PREFILL ||
+    'Admission details please!';
 
   function buildWhatsAppUrl() {
     var encoded = encodeURIComponent(PREFILL);

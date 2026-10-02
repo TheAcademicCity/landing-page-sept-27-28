@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const axios = require('axios');
@@ -10,6 +11,33 @@ const PORT = process.env.PORT || 3010;
 const STATIC_ROOT = path.join(__dirname, '..');
 /** Optional, e.g. /best-boarding-school-india when the landing is not at domain root */
 const LANDING_BASE_PATH = (process.env.LANDING_BASE_PATH || '').replace(/\/$/, '');
+/** Comma-separated extra slugs, e.g. /best-boarding-school-india-v1 (folder name must match slug) */
+const LANDING_VARIANT_PATHS = (process.env.LANDING_VARIANT_PATHS || '')
+    .split(',')
+    .map((p) => p.trim().replace(/\/$/, ''))
+    .filter(Boolean);
+
+function collectLandingPaths() {
+    const paths = new Set();
+    if (LANDING_BASE_PATH) paths.add(LANDING_BASE_PATH);
+    LANDING_VARIANT_PATHS.forEach((p) => paths.add(p));
+    return [...paths];
+}
+
+function mountLandingAt(basePath) {
+    const slug = basePath.replace(/^\//, '');
+    const variantDir = path.join(STATIC_ROOT, slug);
+    const hasVariantDir =
+        fs.existsSync(variantDir) && fs.statSync(variantDir).isDirectory();
+
+    if (hasVariantDir) {
+        app.use(
+            basePath,
+            express.static(variantDir, { index: 'index.html', fallthrough: true }),
+        );
+    }
+    app.use(basePath, express.static(STATIC_ROOT, { index: 'index.html' }));
+}
 const PUBLIC_SITE_URL = (
     process.env.PUBLIC_SITE_URL ||
     'https://admission-enquiry.theacademiccity.com'
@@ -254,8 +282,9 @@ app.post('/api/enquiry', async (req, res) => {
     }
 });
 
-if (LANDING_BASE_PATH) {
-    app.use(LANDING_BASE_PATH, express.static(STATIC_ROOT, { index: 'index.html' }));
+const landingPaths = collectLandingPaths();
+if (landingPaths.length) {
+    landingPaths.forEach(mountLandingAt);
 } else {
     app.use(express.static(STATIC_ROOT, { index: 'index.html' }));
 }
@@ -267,8 +296,11 @@ app.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}`);
     console.log(`Enquiry API: http://localhost:${PORT}/api/enquiry`);
     console.log(`Configured public site: ${PUBLIC_SITE_URL}`);
-    if (LANDING_BASE_PATH) {
-        console.log(`Static landing path: ${LANDING_BASE_PATH}`);
+    if (landingPaths.length) {
+        console.log(`Static landing paths: ${landingPaths.join(', ')}`);
     }
     console.log(`Expected live landing URL (set PUBLIC_SITE_URL): ${landingUrl}`);
+    LANDING_VARIANT_PATHS.forEach((variantPath) => {
+        console.log(`Variant URL: ${PUBLIC_SITE_URL}${variantPath}/`);
+    });
 });
