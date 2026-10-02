@@ -5,11 +5,53 @@
   /** GTM Custom Event trigger name — must match exactly. */
   var GTM_EVENT_WHATSAPP_OUTBOUND = 'Whatsapp Outbound';
   var PHONE_E164 = '+919364898405';
-  var PREFILL =
-    (document.documentElement &&
-      document.documentElement.getAttribute('data-whatsapp-prefill')) ||
-    global.TACS_WHATSAPP_PREFILL ||
-    'Admission details please!';
+  var PREFILL_GOOGLE = 'Admission details please!';
+  var PREFILL_META = 'Admission details please!!';
+
+  var META_UTM_SOURCES = {
+    facebook: true,
+    fb: true,
+    meta: true,
+    instagram: true,
+    ig: true,
+  };
+
+  var GOOGLE_UTM_SOURCES = {
+    google: true,
+    googleads: true,
+    google_ads: true,
+    gads: true,
+  };
+
+  function prefillFromUtmSource() {
+    var raw =
+      typeof global.location !== 'undefined' && global.location.search
+        ? new URLSearchParams(global.location.search).get('utm_source')
+        : '';
+    var source = (raw || '').trim().toLowerCase();
+    if (source && META_UTM_SOURCES[source]) {
+      return PREFILL_META;
+    }
+    if (source && GOOGLE_UTM_SOURCES[source]) {
+      return PREFILL_GOOGLE;
+    }
+    return PREFILL_GOOGLE;
+  }
+
+  function resolvePrefillText() {
+    if (
+      document.documentElement &&
+      document.documentElement.getAttribute('data-whatsapp-prefill')
+    ) {
+      return document.documentElement.getAttribute('data-whatsapp-prefill');
+    }
+    if (global.TACS_WHATSAPP_PREFILL) {
+      return global.TACS_WHATSAPP_PREFILL;
+    }
+    return prefillFromUtmSource();
+  }
+
+  var PREFILL = resolvePrefillText();
 
   function buildWhatsAppUrl() {
     var encoded = encodeURIComponent(PREFILL);
