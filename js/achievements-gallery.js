@@ -76,7 +76,13 @@
     var resolved =
       typeof window.pickOptimizedSrc === "function"
         ? window.pickOptimizedSrc(item.src, 320)
-        : { src: item.src, srcset: "" };
+        : {
+            src:
+              typeof window.toRootImageUrl === "function"
+                ? window.toRootImageUrl(item.src)
+                : item.src,
+            srcset: "",
+          };
     var srcsetAttr = resolved.srcset
       ? ' data-srcset="' + escapeHtml(resolved.srcset) + '" sizes="240px"'
       : "";

@@ -41,15 +41,22 @@
 
   function resolveGalleryImage(item, maxWidth) {
     const pick = window.pickOptimizedSrc;
+    const rootUrl =
+      typeof window.toRootImageUrl === "function"
+        ? window.toRootImageUrl
+        : function (s) {
+            return s;
+          };
+    const baseSrc = rootUrl(item.src);
     if (typeof pick === "function") {
       const resolved = pick(item.src, maxWidth || 800);
       return {
-        displaySrc: resolved.src || item.src,
+        displaySrc: resolved.src || baseSrc,
         srcset: resolved.srcset || "",
-        fullSrc: resolved.src || item.src,
+        fullSrc: resolved.src || baseSrc,
       };
     }
-    return { displaySrc: item.src, srcset: "", fullSrc: item.src };
+    return { displaySrc: baseSrc, srcset: "", fullSrc: baseSrc };
   }
 
   function tileButton(item, extraClass, mode, deferLoad) {
