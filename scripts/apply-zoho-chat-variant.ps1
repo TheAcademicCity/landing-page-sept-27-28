@@ -1,4 +1,7 @@
-# Apply V-1-style Zoho SalesIQ (no WhatsApp icons) to a variant index.html
+# Apply Zoho SalesIQ (no WhatsApp) to a variant index.html after sync-landing-variant.ps1.
+#
+# NORMAL WORKFLOW: Edit best-boarding-school-india-v1/index.html directly for the Zobot LP — do not sync+apply on v1.
+# Legacy / one-off only. See LANDING-PAGES.md.
 param(
   [Parameter(Mandatory = $true)]
   [string]$VariantSlug

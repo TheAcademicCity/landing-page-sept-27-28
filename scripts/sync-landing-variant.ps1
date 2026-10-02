@@ -1,4 +1,11 @@
-# Copy primary landing HTML into a variant folder and fix asset paths for subfolder URLs
+# Copy WhatsApp LP (root index.html) into a variant folder and fix asset paths for subfolder URLs.
+#
+# NORMAL WORKFLOW: Edit root index.html (WhatsApp) and best-boarding-school-india-v1/index.html (Zobot) directly.
+# Do NOT use this script to maintain those two primary LPs.
+#
+# Legacy: optional refresh for -fb folders from WhatsApp LP only. Never sync into best-boarding-school-india-v1
+# (that overwrites Zobot with WhatsApp). See LANDING-PAGES.md.
+#
 # (python -m http.server, static nginx alias, etc.)
 param(
   [Parameter(Mandatory = $true)]
