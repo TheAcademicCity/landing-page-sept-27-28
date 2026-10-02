@@ -17,12 +17,19 @@ button.contact-section__cta {
 
 /* Mobile: hide Zoho’s default bottom-right launcher (use action-bar “Chat” instead) */
 @media (max-width: 767px) {
+  #zsiq_float,
   #zsiq_float .zsiq_flt_rel,
   #zsiq_float .zsiq_cnt,
+  .zsiq_floatmain,
   .zsiq_floatmain .zsiq_flt_rel,
-  .siq_bR.siq_bR {
+  .siq_bR.siq_bR,
+  .siqembed[embedtheme] .zsiq_floatmain {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;
+    opacity: 0 !important;
+    max-height: 0 !important;
+    max-width: 0 !important;
+    overflow: hidden !important;
   }
 }
