@@ -140,6 +140,7 @@ function buildZohoLeadPayload(body, req) {
         G,
         HI,
         currentURL,
+        countryCode,
     } = body;
 
     return {
@@ -148,6 +149,7 @@ function buildZohoLeadPayload(body, req) {
             Last_Name: studentLastName || '',
             Parent_Guardian_Name: parentGuardianName || parentName || '',
             Email: email || '',
+            Country_Code: countryCode || '',
             Mobile: phone || '',
             Preferred_Campus: preferredCampus || 'Not Specified',
             Class_Looking_For: classLookingFor || '',
@@ -232,12 +234,42 @@ app.post('/addleads', async (req, res) => {
     }
 });
 
+function normalizeCountryCode(countryCode) {
+    const raw = (countryCode || '+91').trim().replace(/\s+/g, '');
+    if (!raw) return '+91';
+    return raw.startsWith('+') ? raw : `+${raw.replace(/\D/g, '')}`;
+}
+
+function normalizeEnquiryPhone(mobile, countryCode) {
+    const raw = (mobile || '').trim();
+    if (!raw) return '';
+    if (raw.startsWith('+')) return raw.replace(/\s+/g, '');
+    const dial = normalizeCountryCode(countryCode);
+    const national = raw.replace(/\D/g, '');
+    return `${dial}${national}`;
+}
+
+/** National number for Zoho Mobile when Country_Code is sent separately */
+function nationalMobileForCrm(phoneE164, countryCode) {
+    const dial = normalizeCountryCode(countryCode);
+    const full = (phoneE164 || '').replace(/\s+/g, '');
+    if (!full) return '';
+    if (full.startsWith(dial)) return full.slice(dial.length);
+    const digits = full.replace(/\D/g, '');
+    const dialDigits = dial.replace(/\D/g, '');
+    if (dialDigits && digits.startsWith(dialDigits)) {
+        return digits.slice(dialDigits.length);
+    }
+    return digits;
+}
+
 /** Landing Page 1 — enquiry modal + inline form */
 app.post('/api/enquiry', async (req, res) => {
     const {
         fname,
         lname,
         mobile,
+        country_code,
         selectclass,
         campus,
         email,
@@ -249,12 +281,16 @@ app.post('/api/enquiry', async (req, res) => {
     const utmFromUrl = parseUtmFromPageUrl(pageUrl);
     const formType =
         intent === 'brochure' ? 'Brochure Download' : 'General Inquiry';
+    const dialForCrm = normalizeCountryCode(country_code);
+    const phoneE164 = normalizeEnquiryPhone(mobile, dialForCrm);
+    const mobileForCrm = nationalMobileForCrm(phoneE164, dialForCrm);
 
     const leadBody = {
         studentFirstName: fname || '',
         studentLastName: lname || '',
-        email: email || '',
-        phone: mobile || '',
+        email: (email || '').trim(),
+        countryCode: dialForCrm,
+        phone: mobileForCrm,
         preferredCampus: campus || 'Bangalore',
         classLookingFor: selectclass || '',
         formType,

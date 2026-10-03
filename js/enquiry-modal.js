@@ -144,12 +144,56 @@
     };
   }
 
+  function getDialCode(form) {
+    var el = form.elements.namedItem('country_code');
+    var dial = el && el.value ? String(el.value).trim() : '+91';
+    if (dial.indexOf('+') !== 0) {
+      dial = '+' + dial.replace(/\D/g, '');
+    }
+    return dial;
+  }
+
+  function getNationalPhoneDigits(form) {
+    return String(form.mobile.value || '').replace(/\D/g, '');
+  }
+
+  function formatMobileForCrm(form) {
+    var dial = getDialCode(form);
+    var national = getNationalPhoneDigits(form);
+    if (dial === '+91' && national.length === 11 && national.charAt(0) === '0') {
+      national = national.slice(1);
+    }
+    if (dial === '+91' && national.length === 12 && national.indexOf('91') === 0) {
+      national = national.slice(2);
+    }
+    return dial + national;
+  }
+
+  function validateEnquiryForm(form) {
+    var national = getNationalPhoneDigits(form);
+    if (!national) {
+      return 'Please enter your mobile number.';
+    }
+    var dial = getDialCode(form);
+    if (dial === '+91' && national.length !== 10) {
+      return 'Please enter a valid 10-digit Indian mobile number.';
+    }
+    if (national.length < 6) {
+      return 'Please enter a valid mobile number.';
+    }
+    var email = form.email.value.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return 'Please enter a valid email address or leave it blank.';
+    }
+    return '';
+  }
+
   function buildTrackingData(form, intent) {
     return {
       studentFirstName: form.fname.value.trim(),
       studentLastName: form.lname.value.trim(),
       email: form.email.value.trim(),
-      phone: form.mobile.value.trim(),
+      phone: formatMobileForCrm(form),
       class: form.selectclass.value,
       preferredCampus: (form.campus && form.campus.value) || 'Bangalore',
       formType: intent === 'brochure' ? 'brochure_download' : 'general_inquiry',
@@ -161,7 +205,8 @@
     return {
       fname: form.fname.value.trim(),
       lname: form.lname.value.trim(),
-      mobile: form.mobile.value.trim(),
+      mobile: formatMobileForCrm(form),
+      country_code: getDialCode(form),
       selectclass: form.selectclass.value,
       campus: (form.campus && form.campus.value) || 'Bangalore',
       email: form.email.value.trim(),
@@ -191,6 +236,11 @@
         : options.defaultLabel || 'Submit Enquiry';
 
       if (errorEl) errorEl.textContent = '';
+      var validationMessage = validateEnquiryForm(form);
+      if (validationMessage) {
+        if (errorEl) errorEl.textContent = validationMessage;
+        return;
+      }
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting...';

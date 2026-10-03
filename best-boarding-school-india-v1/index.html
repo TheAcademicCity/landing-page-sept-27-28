@@ -19,12 +19,6 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-579PCB3X');</script>
   <!-- End Google Tag Manager -->
-  <!-- Google tag (Google Ads AW-10985996264) — base config; see GTM note in deploy docs / README -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10985996264"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'AW-10985996264');
-  </script>
   <!-- Zoho PageSense (same project as school-story-makers — loaded via GTM-579PCB3X) -->
   <link rel="dns-prefetch" href="https://cdn-in.pagesense.io">
   <meta charset="UTF-8">
@@ -51,7 +45,7 @@
   <link rel="stylesheet" href="../css/faq-section.css?v=20260928faqanswer">
   <link rel="stylesheet" href="../css/site-chrome.css?v=20261001mobarwa">
   <link rel="stylesheet" href="../css/mobile-landing.css?v=20261001pathway2x2">
-  <link rel="stylesheet" href="../css/enquiry-modal.css?v=20260924selectalign">
+  <link rel="stylesheet" href="../css/enquiry-modal.css?v=20261003ccnarrow">
   <link rel="stylesheet" href="zoho-v1-overrides.css?v=20261002hidemfloat">
   <link rel="manifest" href="../manifest.json">
   <link rel="icon" href="../favicon.ico" sizes="any">
@@ -299,9 +293,14 @@
                     <input id="form-lname" name="lname" type="text" autocomplete="family-name" required placeholder="Enter last name">
                   </div>
                 </div>
-                <div class="enquiry-field">
-                  <label for="form-mobile">Mobile Number <span class="req">*</span></label>
-                  <input id="form-mobile" name="mobile" type="tel" autocomplete="tel" required placeholder="Enter your mobile number">
+                <div class="enquiry-field enquiry-field--phone">
+                  <label id="form-mobile-label" for="form-mobile">Mobile Number <span class="req">*</span></label>
+                  <div class="enquiry-phone-fields">
+                    <select id="form-country-code" name="country_code" class="enquiry-country-code" data-default-iso="IN" aria-label="Country code" autocomplete="off">
+                      <option value="+91" selected>IN +91</option>
+                    </select>
+                    <input id="form-mobile" name="mobile" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="Mobile number" aria-labelledby="form-mobile-label">
+                  </div>
                 </div>
                 <div class="enquiry-field">
                   <label for="form-class">Class Looking For <span class="req">*</span></label>
@@ -312,8 +311,8 @@
                   </select>
                 </div>
                 <div class="enquiry-field">
-                  <label for="form-email">Email Address <span class="req">*</span></label>
-                  <input id="form-email" name="email" type="email" autocomplete="email" required placeholder="Enter email address">
+                  <label for="form-email">Email Address</label>
+                  <input id="form-email" name="email" type="email" autocomplete="email" placeholder="Email address (optional)">
                 </div>
                 <div class="enquiry-form-actions enquiry-form-actions--page">
                   <button class="enquiry-submit" type="submit" id="enquiryPageSubmitBtn">Submit Enquiry</button>
@@ -548,8 +547,8 @@
             <div class="chip-row chip-row--sport">
               <span class="chip">Football</span><span class="chip">Cricket</span><span class="chip">Swimming</span>
               <span class="chip">Basketball</span><span class="chip">Athletics</span>
-              <span class="chip u-desk-only">Volleyball</span><span class="chip u-desk-only">Badminton</span>
-              <span class="chip u-desk-only">Kho-Kho</span><span class="chip u-desk-only">Pickleball</span>
+              <span class="chip">Volleyball</span><span class="chip">Badminton</span>
+              <span class="chip">Kho-Kho</span><span class="chip">Pickleball</span>
             </div>
           </div>
           <div class="f-media cocurricular-sport__media">
@@ -941,9 +940,14 @@
               <input id="enquiry-lname" name="lname" type="text" autocomplete="family-name" required placeholder="Enter last name">
             </div>
           </div>
-          <div class="enquiry-field">
-            <label for="enquiry-mobile">Mobile Number <span class="req">*</span></label>
-            <input id="enquiry-mobile" name="mobile" type="tel" autocomplete="tel" required placeholder="Enter your mobile number">
+          <div class="enquiry-field enquiry-field--phone">
+            <label id="enquiry-mobile-label" for="enquiry-mobile">Mobile Number <span class="req">*</span></label>
+            <div class="enquiry-phone-fields">
+              <select id="enquiry-country-code" name="country_code" class="enquiry-country-code" data-default-iso="IN" aria-label="Country code" autocomplete="off">
+                <option value="+91" selected>IN +91</option>
+              </select>
+              <input id="enquiry-mobile" name="mobile" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="Mobile number" aria-labelledby="enquiry-mobile-label">
+            </div>
           </div>
           <input type="hidden" name="campus" value="Bangalore">
           <div class="enquiry-field">
@@ -955,8 +959,8 @@
             </select>
           </div>
           <div class="enquiry-field">
-            <label for="enquiry-email">Email Address <span class="req">*</span></label>
-            <input id="enquiry-email" name="email" type="email" autocomplete="email" required placeholder="Enter email address">
+            <label for="enquiry-email">Email Address</label>
+            <input id="enquiry-email" name="email" type="email" autocomplete="email" placeholder="Email address (optional)">
           </div>
           <div class="enquiry-form-actions">
             <button class="enquiry-submit" id="enquirySubmitBtn" type="submit">Submit Enquiry</button>
@@ -1017,7 +1021,9 @@
   <script src="../js/zoho-salesiq-v1.js?v=20261002hidemfloat"></script>
   <script src="../js/google-ads-call-conversion.js?v=20261001gadscall2"></script>
   <script src="../js/call-link.js?v=20261001gadscall"></script>
-  <script src="../js/enquiry-modal.js?v=20261001pagesense"></script>
+  <script src="../js/country-codes-data.js?v=20261003cc"></script>
+  <script src="../js/country-codes.js?v=20261003ccnarrow"></script>
+  <script src="../js/enquiry-modal.js?v=20261003cc"></script>
   <script src="../js/gallery-data.js?v=20260924gallery2"></script>
   <script src="../js/home-gallery.js?v=20260928lightboxswipe"></script>
   <script src="../js/achievements-gallery-data.js?v=20260922"></script>
