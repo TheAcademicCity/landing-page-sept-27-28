@@ -10,6 +10,7 @@
 
   var META_UTM_SOURCES = {
     facebook: true,
+    facebookads: true,
     fb: true,
     meta: true,
     instagram: true,
