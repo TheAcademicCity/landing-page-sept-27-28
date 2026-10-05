@@ -463,20 +463,20 @@
     border-radius: 20px;
   }
 
-  #about .bento .tile::after {
+  #about .bento .tile-content::before {
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.92) 0%,
-      rgba(0, 0, 0, 0.55) 45%,
-      rgba(0, 0, 0, 0.2) 100%
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.55) 48%,
+      transparent 100%
     );
   }
 
-  #about .bento .tile.b3::after {
+  #about .bento .tile.b3 .tile-content::before {
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.44) 0%,
-      rgba(0, 0, 0, 0.18) 36%,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.38) 40%,
       transparent 100%
     );
   }
