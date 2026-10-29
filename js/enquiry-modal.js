@@ -269,6 +269,11 @@
           }
 
           form.reset();
+          try {
+            sessionStorage.setItem('tacs_oai_lead_pending', String(Date.now()));
+          } catch (storageErr) {
+            /* sessionStorage unavailable — thank-you page skips OpenAI conversion */
+          }
           goToThankYouPage(intent);
         })
         .catch(function (error) {
