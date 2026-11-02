@@ -7,6 +7,7 @@ Production uses **two primary landing-page experiences** (independently editable
 | Experience | Public URL | Edit this file | Channel |
 |------------|------------|----------------|---------|
 | **WhatsApp / Gallabox** | `/best-boarding-school-india/` | **`index.html`** (repo root) | WhatsApp CTAs, `whatsapp-link.js`, prefill `Admission details please!` |
+| **WhatsApp / Early Bird scholarship** | `/best-boarding-school-sship/` | **`best-boarding-school-sship/index.html`** | Same WhatsApp flow + Early Bird UI (`css/early-bird.css`, `js/early-bird-countdown.js`) |
 | **Zoho SalesIQ / Zobot** | `/best-boarding-school-india-v1/` | **`best-boarding-school-india-v1/index.html`** | Chat CTAs, SalesIQ widget, `zoho-salesiq-v1.js`, `zoho-v1-overrides.css` |
 
 - Change the **WhatsApp** hero or CTAs → edit **root** `index.html` only.
