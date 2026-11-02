@@ -130,17 +130,20 @@
   var enquiryPageError = document.getElementById('enquiryPageFormError');
 
   function getUtmParams() {
-    var queryParams = new URLSearchParams(window.location.search);
+    if (window.TacsUtmAttribution && window.TacsUtmAttribution.parse) {
+      return window.TacsUtmAttribution.parse(new URLSearchParams(window.location.search));
+    }
     return {
-      utm_source: queryParams.get('utm_source') || 'Direct-GAds',
-      utm_medium: queryParams.get('utm_campaign') || 'unknown',
-      utm_campaign: queryParams.get('adgroup') || 'unknown',
-      utm_term: queryParams.get('utm_term') || 'none',
-      utm_content: queryParams.get('utm_content') || 'none',
-      utm_device: queryParams.get('utm_device') || '',
-      A: queryParams.get('A') || '',
-      G: queryParams.get('G') || '',
-      HI: queryParams.get('HI') || '',
+      utm_source: 'Direct-GAds',
+      utm_medium: 'unknown',
+      utm_campaign: 'unknown',
+      adgroup: '',
+      utm_term: 'none',
+      utm_content: 'none',
+      utm_device: '',
+      A: '',
+      G: '',
+      HI: '',
     };
   }
 
@@ -216,6 +219,7 @@
       utm_source: utm.utm_source,
       utm_medium: utm.utm_medium,
       utm_campaign: utm.utm_campaign,
+      adgroup: utm.adgroup,
       utm_term: utm.utm_term,
       utm_content: utm.utm_content,
       utm_device: utm.utm_device,

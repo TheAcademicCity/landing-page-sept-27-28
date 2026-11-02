@@ -5,6 +5,7 @@ const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+const { parseUtmFromPageUrl } = require('./utmAttribution');
 
 const app = express();
 const PORT = process.env.PORT || 3010;
@@ -86,35 +87,6 @@ app.use((req, res, next) => {
     next();
 });
 
-function parseUtmFromPageUrl(pageUrl) {
-    try {
-        const queryParams = new URL(pageUrl).searchParams;
-        return {
-            utm_source: queryParams.get('utm_source') || 'Direct-GAds',
-            utm_medium: queryParams.get('utm_campaign') || 'unknown',
-            utm_campaign: queryParams.get('adgroup') || 'unknown',
-            utm_term: queryParams.get('utm_term') || 'none',
-            utm_content: queryParams.get('utm_content') || 'none',
-            utm_device: queryParams.get('utm_device') || '',
-            A: queryParams.get('A') || '',
-            G: queryParams.get('G') || '',
-            HI: queryParams.get('HI') || '',
-        };
-    } catch {
-        return {
-            utm_source: 'Direct-GAds',
-            utm_medium: 'unknown',
-            utm_campaign: 'unknown',
-            utm_term: 'none',
-            utm_content: 'none',
-            utm_device: '',
-            A: '',
-            G: '',
-            HI: '',
-        };
-    }
-}
-
 function buildZohoLeadPayload(body, req) {
     const {
         studentFirstName,
@@ -133,6 +105,7 @@ function buildZohoLeadPayload(body, req) {
         utm_source,
         utm_medium,
         utm_campaign,
+        adgroup,
         utm_term,
         utm_content,
         utm_device,
@@ -170,7 +143,7 @@ function buildZohoLeadPayload(body, req) {
             URL: currentURL || req.headers.referer || 'Unknown',
             UTM_Source: utm_source || '',
             UTM_Medium: utm_medium || '',
-            Ad_Group: utm_campaign || '',
+            Ad_Group: adgroup || '',
             UTM_Device: utm_device || '',
             UTM_Term: utm_term || '',
             UTM_Content: utm_content || '',
@@ -298,6 +271,7 @@ app.post('/api/enquiry', async (req, res) => {
         utm_source: req.body.utm_source || utmFromUrl.utm_source,
         utm_medium: req.body.utm_medium || utmFromUrl.utm_medium,
         utm_campaign: req.body.utm_campaign || utmFromUrl.utm_campaign,
+        adgroup: req.body.adgroup || utmFromUrl.adgroup,
         utm_term: req.body.utm_term || utmFromUrl.utm_term,
         utm_content: req.body.utm_content || utmFromUrl.utm_content,
         utm_device: req.body.utm_device || utmFromUrl.utm_device,
