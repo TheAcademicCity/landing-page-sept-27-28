@@ -51,6 +51,24 @@
     return anchor.dataset.tacsAdmissionsCall === '1' || isFallbackAdmissionsTel(anchor.getAttribute('href'));
   }
 
+  function measureOpenAiTelLinkClick() {
+    try {
+      if (typeof global.oaiq === 'function') {
+        global.oaiq('measure', 'contents_viewed', { type: 'contents' });
+      }
+    } catch (err) {
+      /* OpenAI pixel optional — never block tel: navigation */
+    }
+  }
+
+  function onTelLinkClick(event) {
+    var target = event.target;
+    if (!target || !target.closest) return;
+    var anchor = target.closest('a[href^="tel:"]');
+    if (!anchor) return;
+    measureOpenAiTelLinkClick();
+  }
+
   function applyGtmClasses(anchor) {
     if (
       (anchor.classList.contains('side-icon') && anchor.classList.contains('phone')) ||
@@ -185,6 +203,7 @@
     applyPhonesToDocument(document);
     configureWebsiteCallConversion();
     startDomObserver();
+    document.addEventListener('click', onTelLinkClick);
     global.addEventListener('hashchange', function () {
       applyPhonesToDocument(document);
     });
