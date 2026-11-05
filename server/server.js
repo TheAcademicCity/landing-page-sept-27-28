@@ -1,13 +1,21 @@
 require('dotenv').config();
 
+const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const { parseUtmFromPageUrl } = require('./utmAttribution');
+const { classifyZohoLandingPageLeadOutcome, CRM_OUTCOMES } =
+    require('./zohoLeadOutcome');
+const {
+    sendLeadCreatedConversion,
+    getClientIp,
+} = require('./openaiConversionsApi');
 
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3010;
 const STATIC_ROOT = path.join(__dirname, '..');
 /** Optional, e.g. /best-boarding-school-india when the landing is not at domain root */
@@ -172,7 +180,8 @@ function handleZohoError(error, res, format) {
                 ? {
                       success: false,
                       message: 'Error adding lead',
-                      error: error.response.data,
+                      crm_outcome: 'transport_error',
+                      conversion_eligible: false,
                   }
                 : {
                       status: 'error',
@@ -185,9 +194,40 @@ function handleZohoError(error, res, format) {
 
     const payload =
         format === 'enquiry'
-            ? { success: false, message: 'Internal server error', error: error.message }
+            ? {
+                  success: false,
+                  message: 'Internal server error',
+                  crm_outcome: 'transport_error',
+                  conversion_eligible: false,
+              }
             : { status: 'error', message: 'Internal server error', error: error.message };
     res.status(500).json(payload);
+}
+
+function createConversionEventId() {
+    return `tacs-lead-${crypto.randomUUID()}`;
+}
+
+function buildEnquirySuccessMessage(outcome) {
+    if (outcome.crm_outcome === CRM_OUTCOMES.DUPLICATE) {
+        return 'Your enquiry has been received.';
+    }
+    return 'Lead added successfully';
+}
+
+function buildEnquiryFailureMessage(outcome) {
+    if (outcome.crm_outcome === CRM_OUTCOMES.MALFORMED) {
+        return 'Something went wrong. Please try again.';
+    }
+    return 'Error adding lead';
+}
+
+function scheduleOpenAiLeadCreatedCapi(req, capiParams) {
+    setImmediate(() => {
+        sendLeadCreatedConversion(capiParams).catch(() => {
+            /* logged inside sendLeadCreatedConversion */
+        });
+    });
 }
 
 app.get('/test', (req, res) => {
@@ -281,12 +321,54 @@ app.post('/api/enquiry', async (req, res) => {
     };
 
     try {
-        const data = await submitLeadToZoho(leadBody, req);
-        res.status(200).json({
+        const zohoExecuteBody = await submitLeadToZoho(leadBody, req);
+        const outcome = classifyZohoLandingPageLeadOutcome(zohoExecuteBody);
+
+        if (
+            outcome.crm_outcome === CRM_OUTCOMES.CRM_ERROR ||
+            outcome.crm_outcome === CRM_OUTCOMES.EXECUTE_FAILED ||
+            outcome.crm_outcome === CRM_OUTCOMES.MALFORMED
+        ) {
+            res.status(200).json({
+                success: false,
+                message: buildEnquiryFailureMessage(outcome),
+                crm_outcome: outcome.crm_outcome,
+                conversion_eligible: false,
+            });
+            return;
+        }
+
+        const conversion_event_id = outcome.conversion_eligible
+            ? createConversionEventId()
+            : undefined;
+        const conversionTimestampMs = Date.now();
+
+        const responsePayload = {
             success: true,
-            message: 'Lead added successfully',
-            data,
-        });
+            message: buildEnquirySuccessMessage(outcome),
+            crm_outcome: outcome.crm_outcome,
+            conversion_eligible: outcome.conversion_eligible,
+        };
+        if (conversion_event_id) {
+            responsePayload.conversion_event_id = conversion_event_id;
+        }
+
+        res.status(200).json(responsePayload);
+
+        if (outcome.conversion_eligible && conversion_event_id) {
+            scheduleOpenAiLeadCreatedCapi(req, {
+                eventId: conversion_event_id,
+                timestampMs: conversionTimestampMs,
+                sourceUrl: pageUrl,
+                oppref: (req.body.oppref || '').trim(),
+                obref: (req.body.obref || '').trim(),
+                phoneE164,
+                email: (email || '').trim(),
+                zohoLeadId: outcome.leadId,
+                ipAddress: getClientIp(req),
+                userAgent: req.headers['user-agent'],
+            });
+        }
     } catch (error) {
         handleZohoError(error, res, 'enquiry');
     }

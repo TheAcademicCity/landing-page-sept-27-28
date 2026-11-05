@@ -22,14 +22,16 @@
   }
 
   /**
-   * OpenAI Ads conversion (base pixel via GTM). Fires once per successful enquiry
-   * redirect; not on direct visits or thank-you refresh. No oaiq in repo — confirm
-   * GTM is not also firing lead_created on this page to avoid duplicates.
+   * OpenAI Ads lead_created — only after a confirmed new CRM lead (conversion_eligible).
+   * Uses conversion_event_id from /api/enquiry for Pixel ↔ CAPI deduplication.
+   * GTM: do not fire a separate lead_created on thank-you; rely on this script or
+   * gate GTM tags on absence of dataLayer event tacs_openai_lead_created_handled.
    */
   (function fireOpenAiLeadCreatedOnce() {
     var pendingKey = 'tacs_oai_lead_pending';
     var firedKey = 'tacs_oai_lead_fired';
     var pendingTtlMs = 30000;
+    var pendingRaw;
     var pending;
 
     function clearPending() {
@@ -41,37 +43,66 @@
     }
 
     try {
-      pending = sessionStorage.getItem(pendingKey);
+      pendingRaw = sessionStorage.getItem(pendingKey);
     } catch (e) {
       return;
     }
-    if (!pending) return;
+    if (!pendingRaw) return;
 
-    var pendingAt = parseInt(pending, 10);
-    if (!pendingAt || Date.now() - pendingAt > pendingTtlMs) {
+    try {
+      pending = JSON.parse(pendingRaw);
+    } catch (parseErr) {
+      clearPending();
+      return;
+    }
+
+    if (!pending || !pending.eventId || !pending.at) {
+      clearPending();
+      return;
+    }
+
+    if (Date.now() - pending.at > pendingTtlMs) {
       clearPending();
       return;
     }
 
     try {
-      if (sessionStorage.getItem(firedKey) === pending) return;
+      if (sessionStorage.getItem(firedKey) === pending.eventId) return;
     } catch (e2) {
       return;
+    }
+
+    function notifyGtmHandled(eventId) {
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'tacs_openai_lead_created_handled',
+          tacs_conversion_event_id: eventId,
+        });
+      } catch (gtmErr) {
+        /* ignore */
+      }
     }
 
     function tryMeasure() {
       if (typeof window.oaiq !== 'function') return false;
       try {
-        window.oaiq('measure', 'lead_created', { type: 'customer_action' });
+        window.oaiq(
+          'measure',
+          'lead_created',
+          { type: 'customer_action' },
+          { event_id: pending.eventId },
+        );
       } catch (measureErr) {
         return false;
       }
       try {
-        sessionStorage.setItem(firedKey, pending);
+        sessionStorage.setItem(firedKey, pending.eventId);
         sessionStorage.removeItem(pendingKey);
       } catch (e3) {
         /* conversion call succeeded; storage cleanup best-effort */
       }
+      notifyGtmHandled(pending.eventId);
       return true;
     }
 

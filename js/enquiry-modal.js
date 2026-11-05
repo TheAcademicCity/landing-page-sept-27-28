@@ -205,7 +205,11 @@
 
   function buildEnquiryPayload(form, intent) {
     var utm = getUtmParams();
-    return {
+    var oai =
+      window.TacsOaiAttribution && window.TacsOaiAttribution.getForEnquiry
+        ? window.TacsOaiAttribution.getForEnquiry()
+        : { oppref: '', obref: '' };
+    var payload = {
       fname: form.fname.value.trim(),
       lname: form.lname.value.trim(),
       mobile: formatMobileForCrm(form),
@@ -227,6 +231,9 @@
       G: utm.G,
       HI: utm.HI,
     };
+    if (oai.oppref) payload.oppref = oai.oppref;
+    if (oai.obref) payload.obref = oai.obref;
+    return payload;
   }
 
   function handleEnquirySubmit(form, options) {
@@ -274,7 +281,17 @@
 
           form.reset();
           try {
-            sessionStorage.setItem('tacs_oai_lead_pending', String(Date.now()));
+            if (payload.result.conversion_eligible && payload.result.conversion_event_id) {
+              sessionStorage.setItem(
+                'tacs_oai_lead_pending',
+                JSON.stringify({
+                  eventId: payload.result.conversion_event_id,
+                  at: Date.now(),
+                }),
+              );
+            } else {
+              sessionStorage.removeItem('tacs_oai_lead_pending');
+            }
           } catch (storageErr) {
             /* sessionStorage unavailable — thank-you page skips OpenAI conversion */
           }

@@ -1,0 +1,10 @@
+{
+  "code": "success",
+  "message": "function executed successfully",
+  "details": {
+    "output_type": "string",
+    "output": "{\"code\":\"DUPLICATE_DATA\",\"details\":{\"api_name\":\"Mobile\",\"id\":\"5750000000000654321\"},\"message\":\"duplicate data\",\"status\":\"error\"}",
+    "id": "5750000000000888002",
+    "userMessage": ["Duplicate mobile"]
+  }
+}
