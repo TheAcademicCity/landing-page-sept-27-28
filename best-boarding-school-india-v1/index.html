@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
-  SOURCE OF TRUTH — Zoho SalesIQ / Zobot LP
+  SOURCE OF TRUTH — TACS admissions chatbot LP
   URL: /best-boarding-school-india-v1/
-  Edit this file for Zobot experience changes. Independent from root index.html (WhatsApp LP).
-  Shared assets: ../css/, ../js/, ../images/. Local: zoho-v1-overrides.css
+  Edit this file for chatbot-experience changes. Independent from root index.html (WhatsApp LP).
+  Shared assets: ../css/, ../js/, ../images/. Local: tacs-chatbot-v1.css
   See LANDING-PAGES.md
 -->
 <html lang="en" data-landing-slug="best-boarding-school-india-v1">
@@ -46,7 +46,7 @@
   <link rel="stylesheet" href="../css/site-chrome.css?v=20261001mobarwa">
   <link rel="stylesheet" href="../css/mobile-landing.css?v=20261005bentotext">
   <link rel="stylesheet" href="../css/enquiry-modal.css?v=20261003ccnarrow">
-  <link rel="stylesheet" href="zoho-v1-overrides.css?v=20261002hidemfloat">
+  <link rel="stylesheet" href="tacs-chatbot-v1.css?v=20261106chatbot">
   <link rel="manifest" href="../manifest.json">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../icon.png">
@@ -814,7 +814,7 @@
             <svg aria-hidden="true"><use href="#ic-phone"/></svg>
             Connect with us
           </a>
-          <button type="button" class="contact-section__cta contact-section__cta--outline" data-zoho-chat-open>
+          <button type="button" class="contact-section__cta contact-section__cta--outline" data-tacs-chatbot-open>
             <svg aria-hidden="true"><use href="#ic-message"/></svg>
             Live chat
           </button>
@@ -851,7 +851,7 @@
                 <svg aria-hidden="true"><use href="#ic-phone"/></svg>
                 Connect with us
               </a>
-              <button type="button" class="contact-section__cta contact-section__cta--outline" data-zoho-chat-open>
+              <button type="button" class="contact-section__cta contact-section__cta--outline" data-tacs-chatbot-open>
                 <svg aria-hidden="true"><use href="#ic-message"/></svg>
                 Live chat
               </button>
@@ -912,7 +912,7 @@
 
   <div class="mobile-action-bar">
     <a class="call" href="tel:08047092273"><svg><use href="#ic-phone"/></svg>Call</a>
-    <button type="button" class="wa zoho-chat-bar-btn" data-zoho-chat-open aria-label="Open live chat"><svg aria-hidden="true"><use href="#ic-message"/></svg>Chat</button>
+    <button type="button" class="wa tacs-chat-bar-btn" data-tacs-chatbot-open aria-label="Open live chat"><svg aria-hidden="true"><use href="#ic-message"/></svg>Chat</button>
     <a class="chat-btn" href="#enquiry" aria-label="Apply now"><span>APPLY NOW</span></a>
   </div>
 
@@ -1013,12 +1013,19 @@
     </form>
   </div>
 
-  <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script>
-  <script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siq4ec795e2bca1da2c2ef11208374174cb56aa3e08d8517178026165bd5d5de979" defer></script>
+  <script>
+    window.TACS_CHATBOT_API = (function () {
+      var host = (location.hostname || '').toLowerCase();
+      if (!host || host === 'localhost' || host === '127.0.0.1') {
+        return 'http://localhost:3021/api';
+      }
+      return location.origin.replace(/\/$/, '') + '/tacs-chatbot/api';
+    })();
+  </script>
+  <script src="../js/tacs-chatbot-widget.js?v=20261106widget2"></script>
 
   <script src="../js/site-chrome.js?v=20260924aboutm"></script>
   <script src="../js/enhanced-conversions.js?v=20260930gtm2"></script>
-  <script src="../js/zoho-salesiq-v1.js?v=20261002hidemfloat"></script>
   <script src="../js/google-ads-call-conversion.js?v=20261103oaicall2"></script>
   <script src="../js/call-link.js?v=20261001gadscall"></script>
   <script src="../js/country-codes-data.js?v=20261003cc"></script>

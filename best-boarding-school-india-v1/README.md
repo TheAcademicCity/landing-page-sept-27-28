@@ -1,6 +1,6 @@
-# Zobot LP — `best-boarding-school-india-v1`
+# TACS chatbot LP — `best-boarding-school-india-v1`
 
-**Source of truth** for the Zoho SalesIQ / Zobot landing experience.
+**Source of truth** for the TACS admissions chatbot landing experience (replaces Zoho SalesIQ on this URL only).
 
 ## Live URL
 
@@ -8,20 +8,24 @@
 
 ## Edit here
 
-- **`index.html`** — page content, chat CTAs, SalesIQ embed, `zoho-v1-overrides.css` link
+- **`index.html`** — page content, Chat / Live chat CTAs, TACS widget embed, `tacs-chatbot-v1.css`
 - **`thank-you.html`** — post-form thank-you for this URL path
-- **`zoho-v1-overrides.css`** — SalesIQ mobile launcher overrides (variant-local)
+- **`tacs-chatbot-v1.css`** — Chat button styling (variant-local)
 
 Shared styles/scripts/images: repo root `../css/`, `../js/`, `../images/`.
 
-## Zoho SalesIQ
+## Chatbot
 
-Widget in `index.html`; helpers in `../js/zoho-salesiq-v1.js`. No WhatsApp / `whatsapp-link.js` on this LP.
+Local/staging widget: `../js/tacs-chatbot-widget.js` (copied from the TAC Chatbot `client` widget build).
+
+API (local): `http://localhost:3021/api` via `window.TACS_CHATBOT_API`.
+
+Do **not** load `zoho-salesiq-v1.js` or the SalesIQ `zsiqscript` on this page. Other variants still use SalesIQ.
 
 ## Do not
 
-- Run `sync-landing-variant.ps1` on this slug (replaces Zobot with WhatsApp HTML).
-- Use this folder as a mirror of root `index.html` — maintain Zobot and WhatsApp LPs separately.
+- Run `sync-landing-variant.ps1` on this slug (replaces this HTML with WhatsApp HTML).
+- Use this folder as a mirror of root `index.html`.
 
 See **`LANDING-PAGES.md`** at repo root.
 
