@@ -173,6 +173,21 @@
   }
 
   function validateEnquiryForm(form) {
+    var fname = form.fname && form.fname.value ? form.fname.value.trim() : '';
+    var lname = form.lname && form.lname.value ? form.lname.value.trim() : '';
+    var classVal =
+      form.selectclass && form.selectclass.value ? form.selectclass.value.trim() : '';
+
+    if (!fname) {
+      return 'Please enter the student\'s first name.';
+    }
+    if (!lname) {
+      return 'Please enter the student\'s last name.';
+    }
+    if (!classVal) {
+      return 'Please select a class.';
+    }
+
     var national = getNationalPhoneDigits(form);
     if (!national) {
       return 'Please enter your mobile number.';
